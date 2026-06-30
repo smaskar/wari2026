@@ -119,6 +119,14 @@
       return n.replace(/^\+91(?=[6-9]\d{9}$)/,'');
     }
 
+    function cleanVehicleFromTitle(title){
+      return (title||'')
+        .replace(/\b[A-Z]{2}\s*\d{1,2}\s*[A-Z]{1,3}\s*\d{3,4}\b/ig,'')
+        .replace(/\s*[-–—|,/]+\s*$/,'')
+        .replace(/\s{2,}/g,' ')
+        .trim();
+    }
+
     function formatHelpCards(doc){
       if(!doc || !doc.body) return;
       addCardFormatStyle(doc);
@@ -131,7 +139,7 @@
         var clone=titleNode.cloneNode(true);
         var badges=Array.from(clone.querySelectorAll('.badge')).map(function(b){return b.textContent.trim();}).filter(Boolean);
         clone.querySelectorAll('.badges').forEach(function(x){x.remove();});
-        var baseTitle=clone.textContent.trim().replace(/\s+/g,' ');
+        var baseTitle=cleanVehicleFromTitle(clone.textContent.trim().replace(/\s+/g,' '));
         var typeIcon=(card.querySelector('.ico')||{}).textContent||'';
         var serviceType=typeIcon.indexOf('🚑')>-1?'रुग्णवाहिका सेवा':typeIcon.indexOf('🏥')>-1?'रुग्णालय सेवा':typeIcon.indexOf('🩺')>-1?'डॉक्टर / आरोग्य सेवा':typeIcon.indexOf('⛺')>-1?'मुक्काम सेवा':'मदत केंद्र';
         var lines={};
