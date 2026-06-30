@@ -1,0 +1,1965 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.84852,
+          18.61771
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Gavhanevasti",
+        "Type": "Ambulance",
+        "Landmark": "Gavhanevasti",
+        "Vehicle / Contact": "",
+        "Phone": "",
+        "Risk zone": "",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Gavhanevasti",
+        "Description": "Actual vehicle/doctor/driver details not matched from MEMS deployment plan. Verify local deployment sheet before public release.",
+        "Call Number": "",
+        "MEMS Source Sheet": "",
+        "MEMS Source Row": "",
+        "MEMS Deployed Place": "",
+        "MEMS Ambulance Base": "",
+        "MEMS Vehicle No": "",
+        "MEMS Type": "",
+        "MEMS EMSO/Doctor": "",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Needs field verification",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "No matching MEMS record found",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.61771,73.84852"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9765,
+          18.44375
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Palkhi Marg Wadaki | MH 14 CL 0796",
+        "Type": "Ambulance",
+        "Landmark": "Palkhi Marg Wadaki",
+        "Vehicle / Contact": "MH 14 CL 0796",
+        "Phone": "9175994947",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Palkhi Marg Wadaki | MH 14 CL 0796",
+        "Description": "Original map point: Amb 2 — Palkhi Marg Wadaki | MEMS deployed place: Palkhi Marg, Wadaki Nala, Saswad Road | Ambulance/Base: Fursungi Primary Health Center | Vehicle: MH 14 CL 0796 | Type: ALS | Date: 2026-07-11 | Time: 10:00 | EMSO/Doctor: Dr Appasaheb Jadhav (9175994947) | Pilot/EA: Devdatta Shirke (8411922611); Subhas Baravkar (9527444343) | Source sheet: On Route with Dnyaneshwar Mahar row 18 | Match note: Matched by landmark/facility name",
+        "Call Number": "9175994947",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "18",
+        "MEMS Deployed Place": "Palkhi Marg, Wadaki Nala, Saswad Road",
+        "MEMS Ambulance Base": "Fursungi Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 0796",
+        "MEMS Type": "ALS",
+        "MEMS EMSO/Doctor": "Dr Appasaheb Jadhav (9175994947)",
+        "MEMS Pilot/EA": "Devdatta Shirke (8411922611); Subhas Baravkar (9527444343)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.44375,73.97650"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9813,
+          18.42747
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Wadki Nala | MH 14 CL 0796",
+        "Type": "Ambulance",
+        "Landmark": "Wadki Nala",
+        "Vehicle / Contact": "MH 14 CL 0796",
+        "Phone": "9175994947",
+        "Risk zone": "HIGH — Dive Ghat (cardiac)",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Wadki Nala | MH 14 CL 0796",
+        "Description": "Original map point: Amb 3 — Wadki Nala | MEMS deployed place: Palkhi Marg, Wadaki Nala, Saswad Road | Ambulance/Base: Fursungi Primary Health Center | Vehicle: MH 14 CL 0796 | Type: ALS | Date: 2026-07-11 | Time: 10:00 | EMSO/Doctor: Dr Appasaheb Jadhav (9175994947) | Pilot/EA: Devdatta Shirke (8411922611); Subhas Baravkar (9527444343) | Source sheet: On Route with Dnyaneshwar Mahar row 18 | Match note: Matched by landmark/facility name",
+        "Call Number": "9175994947",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "18",
+        "MEMS Deployed Place": "Palkhi Marg, Wadaki Nala, Saswad Road",
+        "MEMS Ambulance Base": "Fursungi Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 0796",
+        "MEMS Type": "ALS",
+        "MEMS EMSO/Doctor": "Dr Appasaheb Jadhav (9175994947)",
+        "MEMS Pilot/EA": "Devdatta Shirke (8411922611); Subhas Baravkar (9527444343)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.42747,73.98130"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.99126,
+          18.41495
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Dive Ghat",
+        "Type": "Ambulance",
+        "Landmark": "Dive Ghat",
+        "Vehicle / Contact": "",
+        "Phone": "",
+        "Risk zone": "HIGH — Dive Ghat (cardiac)",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Dive Ghat",
+        "Description": "Actual vehicle/doctor/driver details not matched from MEMS deployment plan. Verify local deployment sheet before public release.",
+        "Call Number": "",
+        "MEMS Source Sheet": "",
+        "MEMS Source Row": "",
+        "MEMS Deployed Place": "",
+        "MEMS Ambulance Base": "",
+        "MEMS Vehicle No": "",
+        "MEMS Type": "",
+        "MEMS EMSO/Doctor": "",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Needs field verification",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "No matching MEMS record found",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.41495,73.99126"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.0058,
+          18.41542
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Shree Vitthal Murti, Diveghat",
+        "Type": "Ambulance",
+        "Landmark": "Shree Vitthal Murti, Diveghat",
+        "Vehicle / Contact": "",
+        "Phone": "",
+        "Risk zone": "HIGH — Dive Ghat (cardiac)",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Shree Vitthal Murti, Diveghat",
+        "Description": "Actual vehicle/doctor/driver details not matched from MEMS deployment plan. Verify local deployment sheet before public release.",
+        "Call Number": "",
+        "MEMS Source Sheet": "",
+        "MEMS Source Row": "",
+        "MEMS Deployed Place": "",
+        "MEMS Ambulance Base": "",
+        "MEMS Vehicle No": "",
+        "MEMS Type": "",
+        "MEMS EMSO/Doctor": "",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Needs field verification",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "No matching MEMS record found",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.41542,74.00580"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.01647,
+          18.38042
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Dive village | MH 14 CL 1271",
+        "Type": "Ambulance",
+        "Landmark": "Dive village",
+        "Vehicle / Contact": "MH 14 CL 1271",
+        "Phone": "9527054341",
+        "Risk zone": "HIGH — Dive Ghat (cardiac)",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Dive village | MH 14 CL 1271",
+        "Description": "Original map point: Amb 6 — Dive village | MEMS deployed place: Saswad Rural Hospital | Ambulance/Base: Saswad Rural Hospital | Vehicle: MH 14 CL 1271 | Type: BLS | Date: 2026-07-11 | Time: 00:00 | EMSO/Doctor: Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954) | Pilot/EA: Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404) | Source sheet: On Route with Dnyaneshwar Mahar row 19 | Match note: Geo matched to nearest route facility/segment (4014 m); verify on ground",
+        "Call Number": "9527054341",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "19",
+        "MEMS Deployed Place": "Saswad Rural Hospital",
+        "MEMS Ambulance Base": "Saswad Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1271",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954)",
+        "MEMS Pilot/EA": "Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (4014 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.38042,74.01647"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.02896,
+          18.35399
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 7 | MH 14 CL 1271",
+        "Type": "Ambulance",
+        "Landmark": "Point 7",
+        "Vehicle / Contact": "MH 14 CL 1271",
+        "Phone": "9527054341",
+        "Risk zone": "",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Point 7 | MH 14 CL 1271",
+        "Description": "Original map point: Amb 7 — Point 7 | MEMS deployed place: Saswad Rural Hospital | Ambulance/Base: Saswad Rural Hospital | Vehicle: MH 14 CL 1271 | Type: BLS | Date: 2026-07-11 | Time: 00:00 | EMSO/Doctor: Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954) | Pilot/EA: Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404) | Source sheet: On Route with Dnyaneshwar Mahar row 19 | Match note: Geo matched to nearest route facility/segment (798 m); verify on ground",
+        "Call Number": "9527054341",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "19",
+        "MEMS Deployed Place": "Saswad Rural Hospital",
+        "MEMS Ambulance Base": "Saswad Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1271",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954)",
+        "MEMS Pilot/EA": "Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (798 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.35399,74.02896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.0475,
+          18.33639
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 8 | MH 14 CL 1271",
+        "Type": "Ambulance",
+        "Landmark": "Point 8",
+        "Vehicle / Contact": "MH 14 CL 1271",
+        "Phone": "9527054341",
+        "Risk zone": "",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Point 8 | MH 14 CL 1271",
+        "Description": "Original map point: Amb 8 — Point 8 | MEMS deployed place: Saswad Rural Hospital | Ambulance/Base: Saswad Rural Hospital | Vehicle: MH 14 CL 1271 | Type: BLS | Date: 2026-07-11 | Time: 00:00 | EMSO/Doctor: Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954) | Pilot/EA: Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404) | Source sheet: On Route with Dnyaneshwar Mahar row 19 | Match note: Geo matched to nearest route facility/segment (2095 m); verify on ground",
+        "Call Number": "9527054341",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "19",
+        "MEMS Deployed Place": "Saswad Rural Hospital",
+        "MEMS Ambulance Base": "Saswad Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1271",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954)",
+        "MEMS Pilot/EA": "Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (2095 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.33639,74.04750"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.07016,
+          18.32498
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 9 | MH 14 CL 1271",
+        "Type": "Ambulance",
+        "Landmark": "Point 9",
+        "Vehicle / Contact": "MH 14 CL 1271",
+        "Phone": "9527054341",
+        "Risk zone": "",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Point 9 | MH 14 CL 1271",
+        "Description": "Original map point: Amb 9 — Point 9 | MEMS deployed place: Saswad Rural Hospital | Ambulance/Base: Saswad Rural Hospital | Vehicle: MH 14 CL 1271 | Type: BLS | Date: 2026-07-11 | Time: 00:00 | EMSO/Doctor: Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954) | Pilot/EA: Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404) | Source sheet: On Route with Dnyaneshwar Mahar row 19 | Match note: Geo matched to nearest route facility/segment (4794 m); verify on ground",
+        "Call Number": "9527054341",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "19",
+        "MEMS Deployed Place": "Saswad Rural Hospital",
+        "MEMS Ambulance Base": "Saswad Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1271",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954)",
+        "MEMS Pilot/EA": "Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (4794 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.32498,74.07016"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.09622,
+          18.30581
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 10",
+        "Type": "Ambulance",
+        "Landmark": "Point 10",
+        "Vehicle / Contact": "MH-12-SF 8931",
+        "Phone": "8889632894",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 10",
+        "Description": "Actual vehicle/doctor/driver details not matched from MEMS deployment plan. Verify local deployment sheet before public release.",
+        "Call Number": "8889632894",
+        "MEMS Source Sheet": "",
+        "MEMS Source Row": "",
+        "MEMS Deployed Place": "",
+        "MEMS Ambulance Base": "",
+        "MEMS Vehicle No": "",
+        "MEMS Type": "",
+        "MEMS EMSO/Doctor": "",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Needs field verification",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "No matching MEMS record found",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.30581,74.09622"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.1206,
+          18.29277
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 11 | MH 14 CL 1373",
+        "Type": "Ambulance",
+        "Landmark": "Point 11",
+        "Vehicle / Contact": "MH 14 CL 1373",
+        "Phone": "8080113194",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 11 | MH 14 CL 1373",
+        "Description": "Original map point: Amb 11 — Point 11 | MEMS deployed place: Jejuri Rural Hospital | Ambulance/Base: Jejuri Rural Hospital | Vehicle: MH 14 CL 1373 | Type: BLS | Date: 2026-07-13 | Time: 00:00 | EMSO/Doctor: Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455) | Pilot/EA: Prashant Walhekar (8007216459); Rahul Shewale (9503322090) | Source sheet: On Route with Dnyaneshwar Mahar row 25 | Match note: Geo matched to nearest route facility/segment (4878 m); verify on ground",
+        "Call Number": "8080113194",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "25",
+        "MEMS Deployed Place": "Jejuri Rural Hospital",
+        "MEMS Ambulance Base": "Jejuri Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1373",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455)",
+        "MEMS Pilot/EA": "Prashant Walhekar (8007216459); Rahul Shewale (9503322090)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (4878 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.29277,74.12060"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.15599,
+          18.28115
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 12 | MH 14 CL 1373",
+        "Type": "Ambulance",
+        "Landmark": "Point 12",
+        "Vehicle / Contact": "MH 14 CL 1373",
+        "Phone": "8080113194",
+        "Risk zone": "",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Point 12 | MH 14 CL 1373",
+        "Description": "Original map point: Amb 12 — Point 12 | MEMS deployed place: Jejuri Rural Hospital | Ambulance/Base: Jejuri Rural Hospital | Vehicle: MH 14 CL 1373 | Type: BLS | Date: 2026-07-13 | Time: 00:00 | EMSO/Doctor: Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455) | Pilot/EA: Prashant Walhekar (8007216459); Rahul Shewale (9503322090) | Source sheet: On Route with Dnyaneshwar Mahar row 25 | Match note: Geo matched to nearest route facility/segment (969 m); verify on ground",
+        "Call Number": "8080113194",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "25",
+        "MEMS Deployed Place": "Jejuri Rural Hospital",
+        "MEMS Ambulance Base": "Jejuri Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1373",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455)",
+        "MEMS Pilot/EA": "Prashant Walhekar (8007216459); Rahul Shewale (9503322090)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (969 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.28115,74.15599"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.17781,
+          18.24641
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 13 | MH 14 CL 1373",
+        "Type": "Ambulance",
+        "Landmark": "Point 13",
+        "Vehicle / Contact": "MH 14 CL 1373",
+        "Phone": "8080113194",
+        "Risk zone": "",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Point 13 | MH 14 CL 1373",
+        "Description": "Original map point: Amb 13 — Point 13 | MEMS deployed place: Jejuri Rural Hospital | Ambulance/Base: Jejuri Rural Hospital | Vehicle: MH 14 CL 1373 | Type: BLS | Date: 2026-07-13 | Time: 00:00 | EMSO/Doctor: Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455) | Pilot/EA: Prashant Walhekar (8007216459); Rahul Shewale (9503322090) | Source sheet: On Route with Dnyaneshwar Mahar row 25 | Match note: Geo matched to nearest route facility/segment (3607 m); verify on ground",
+        "Call Number": "8080113194",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "25",
+        "MEMS Deployed Place": "Jejuri Rural Hospital",
+        "MEMS Ambulance Base": "Jejuri Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1373",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455)",
+        "MEMS Pilot/EA": "Prashant Walhekar (8007216459); Rahul Shewale (9503322090)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (3607 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.24641,74.17781"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.16803,
+          18.23027
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 14",
+        "Type": "Ambulance",
+        "Landmark": "Point 14",
+        "Vehicle / Contact": "",
+        "Phone": "",
+        "Risk zone": "",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Point 14",
+        "Description": "Actual vehicle/doctor/driver details not matched from MEMS deployment plan. Verify local deployment sheet before public release.",
+        "Call Number": "",
+        "MEMS Source Sheet": "",
+        "MEMS Source Row": "",
+        "MEMS Deployed Place": "",
+        "MEMS Ambulance Base": "",
+        "MEMS Vehicle No": "",
+        "MEMS Type": "",
+        "MEMS EMSO/Doctor": "",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Needs field verification",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "No matching MEMS record found",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.23027,74.16803"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.16255,
+          18.21434
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 15 | MH 14 CL 1053",
+        "Type": "Ambulance",
+        "Landmark": "Point 15",
+        "Vehicle / Contact": "MH 14 CL 1053",
+        "Phone": "8308609595",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 15 | MH 14 CL 1053",
+        "Description": "Original map point: Amb 15 — Point 15 | MEMS deployed place: Walhe Primary Health Center | Ambulance/Base: Morgaon Primary Health Center | Vehicle: MH 14 CL 1053 | Type: BLS | Date: 2026-07-14 | Time: 10:00 | EMSO/Doctor: Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628) | Pilot/EA: Dinesh Inamke (9518748866); Rohit Adhagle (7709070997) | Source sheet: On Route with Dnyaneshwar Mahar row 27 | Match note: Geo matched to nearest route facility/segment (3380 m); verify on ground",
+        "Call Number": "8308609595",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "27",
+        "MEMS Deployed Place": "Walhe Primary Health Center",
+        "MEMS Ambulance Base": "Morgaon Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 1053",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628)",
+        "MEMS Pilot/EA": "Dinesh Inamke (9518748866); Rohit Adhagle (7709070997)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (3380 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.21434,74.16255"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.15775,
+          18.20179
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 16 | MH 14 CL 1053",
+        "Type": "Ambulance",
+        "Landmark": "Point 16",
+        "Vehicle / Contact": "MH 14 CL 1053",
+        "Phone": "8308609595",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 16 | MH 14 CL 1053",
+        "Description": "Original map point: Amb 16 — Point 16 | MEMS deployed place: Walhe Primary Health Center | Ambulance/Base: Morgaon Primary Health Center | Vehicle: MH 14 CL 1053 | Type: BLS | Date: 2026-07-14 | Time: 10:00 | EMSO/Doctor: Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628) | Pilot/EA: Dinesh Inamke (9518748866); Rohit Adhagle (7709070997) | Source sheet: On Route with Dnyaneshwar Mahar row 27 | Match note: Geo matched to nearest route facility/segment (1947 m); verify on ground",
+        "Call Number": "8308609595",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "27",
+        "MEMS Deployed Place": "Walhe Primary Health Center",
+        "MEMS Ambulance Base": "Morgaon Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 1053",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628)",
+        "MEMS Pilot/EA": "Dinesh Inamke (9518748866); Rohit Adhagle (7709070997)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (1947 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.20179,74.15775"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.15517,
+          18.18874
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 17 | MH 14 CL 1053",
+        "Type": "Ambulance",
+        "Landmark": "Point 17",
+        "Vehicle / Contact": "MH 14 CL 1053",
+        "Phone": "8308609595",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 17 | MH 14 CL 1053",
+        "Description": "Original map point: Amb 17 — Point 17 | MEMS deployed place: Walhe Primary Health Center | Ambulance/Base: Morgaon Primary Health Center | Vehicle: MH 14 CL 1053 | Type: BLS | Date: 2026-07-14 | Time: 10:00 | EMSO/Doctor: Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628) | Pilot/EA: Dinesh Inamke (9518748866); Rohit Adhagle (7709070997) | Source sheet: On Route with Dnyaneshwar Mahar row 27 | Match note: Geo matched to nearest route facility/segment (568 m); verify on ground",
+        "Call Number": "8308609595",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "27",
+        "MEMS Deployed Place": "Walhe Primary Health Center",
+        "MEMS Ambulance Base": "Morgaon Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 1053",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628)",
+        "MEMS Pilot/EA": "Dinesh Inamke (9518748866); Rohit Adhagle (7709070997)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (568 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.18874,74.15517"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.1651,
+          18.17667
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 18 | MH 14 CL 1053",
+        "Type": "Ambulance",
+        "Landmark": "Point 18",
+        "Vehicle / Contact": "MH 14 CL 1053",
+        "Phone": "8308609595",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 18 | MH 14 CL 1053",
+        "Description": "Original map point: Amb 18 — Point 18 | MEMS deployed place: Walhe Primary Health Center | Ambulance/Base: Morgaon Primary Health Center | Vehicle: MH 14 CL 1053 | Type: BLS | Date: 2026-07-14 | Time: 10:00 | EMSO/Doctor: Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628) | Pilot/EA: Dinesh Inamke (9518748866); Rohit Adhagle (7709070997) | Source sheet: On Route with Dnyaneshwar Mahar row 27 | Match note: Geo matched to nearest route facility/segment (1145 m); verify on ground",
+        "Call Number": "8308609595",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "27",
+        "MEMS Deployed Place": "Walhe Primary Health Center",
+        "MEMS Ambulance Base": "Morgaon Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 1053",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628)",
+        "MEMS Pilot/EA": "Dinesh Inamke (9518748866); Rohit Adhagle (7709070997)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (1145 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.17667,74.16510"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.16835,
+          18.1651
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 19 | MH 14 CL 1053",
+        "Type": "Ambulance",
+        "Landmark": "Point 19",
+        "Vehicle / Contact": "MH 14 CL 1053",
+        "Phone": "8308609595",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 19 | MH 14 CL 1053",
+        "Description": "Original map point: Amb 19 — Point 19 | MEMS deployed place: Walhe Primary Health Center | Ambulance/Base: Morgaon Primary Health Center | Vehicle: MH 14 CL 1053 | Type: BLS | Date: 2026-07-14 | Time: 10:00 | EMSO/Doctor: Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628) | Pilot/EA: Dinesh Inamke (9518748866); Rohit Adhagle (7709070997) | Source sheet: On Route with Dnyaneshwar Mahar row 27 | Match note: Geo matched to nearest route facility/segment (2406 m); verify on ground",
+        "Call Number": "8308609595",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "27",
+        "MEMS Deployed Place": "Walhe Primary Health Center",
+        "MEMS Ambulance Base": "Morgaon Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 1053",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628)",
+        "MEMS Pilot/EA": "Dinesh Inamke (9518748866); Rohit Adhagle (7709070997)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (2406 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.16510,74.16835"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.1735,
+          18.15303
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 20 | MH 14 CL 1053",
+        "Type": "Ambulance",
+        "Landmark": "Point 20",
+        "Vehicle / Contact": "MH 14 CL 1053",
+        "Phone": "8308609595",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 20 | MH 14 CL 1053",
+        "Description": "Original map point: Amb 20 — Point 20 | MEMS deployed place: Walhe Primary Health Center | Ambulance/Base: Morgaon Primary Health Center | Vehicle: MH 14 CL 1053 | Type: BLS | Date: 2026-07-14 | Time: 10:00 | EMSO/Doctor: Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628) | Pilot/EA: Dinesh Inamke (9518748866); Rohit Adhagle (7709070997) | Source sheet: On Route with Dnyaneshwar Mahar row 27 | Match note: Geo matched to nearest route facility/segment (3850 m); verify on ground",
+        "Call Number": "8308609595",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "27",
+        "MEMS Deployed Place": "Walhe Primary Health Center",
+        "MEMS Ambulance Base": "Morgaon Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 1053",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628)",
+        "MEMS Pilot/EA": "Dinesh Inamke (9518748866); Rohit Adhagle (7709070997)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (3850 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.15303,74.17350"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.18106,
+          18.1421
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 21 | MH-14 CL 0785",
+        "Type": "Ambulance",
+        "Landmark": "Point 21",
+        "Vehicle / Contact": "MH-14 CL 0785",
+        "Phone": "8177866647",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 21 | MH-14 CL 0785",
+        "Description": "Original map point: Amb 21 — Point 21 | MEMS deployed place: Lonand Primary Health Center | Ambulance/Base: Nira PHC | Vehicle: MH-14 CL 0785 | Type: BLS | Date: 2026-07-15 | Time: 00:00 | EMSO/Doctor: Dr.Rakesh Deshmukh (8177866647) | Source sheet: On Route with Dnyaneshwar Mahar row 29 | Match note: Geo matched to nearest route facility/segment (4889 m); verify on ground",
+        "Call Number": "8177866647",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "29",
+        "MEMS Deployed Place": "Lonand Primary Health Center",
+        "MEMS Ambulance Base": "Nira PHC",
+        "MEMS Vehicle No": "MH-14 CL 0785",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr.Rakesh Deshmukh (8177866647)",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (4889 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.14210,74.18106"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.18775,
+          18.13427
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 22 | MH-14 CL 0785",
+        "Type": "Ambulance",
+        "Landmark": "Point 22",
+        "Vehicle / Contact": "MH-14 CL 0785",
+        "Phone": "8177866647",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 22 | MH-14 CL 0785",
+        "Description": "Original map point: Amb 22 — Point 22 | MEMS deployed place: Lonand Primary Health Center | Ambulance/Base: Nira PHC | Vehicle: MH-14 CL 0785 | Type: BLS | Date: 2026-07-15 | Time: 00:00 | EMSO/Doctor: Dr.Rakesh Deshmukh (8177866647) | Source sheet: On Route with Dnyaneshwar Mahar row 29 | Match note: Geo matched to nearest route facility/segment (3768 m); verify on ground",
+        "Call Number": "8177866647",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "29",
+        "MEMS Deployed Place": "Lonand Primary Health Center",
+        "MEMS Ambulance Base": "Nira PHC",
+        "MEMS Vehicle No": "MH-14 CL 0785",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr.Rakesh Deshmukh (8177866647)",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (3768 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.13427,74.18775"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.19428,
+          18.12546
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 23 | MH-14 CL 0785",
+        "Type": "Ambulance",
+        "Landmark": "Point 23",
+        "Vehicle / Contact": "MH-14 CL 0785",
+        "Phone": "8177866647",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 23 | MH-14 CL 0785",
+        "Description": "Original map point: Amb 23 — Point 23 | MEMS deployed place: Lonand Primary Health Center | Ambulance/Base: Nira PHC | Vehicle: MH-14 CL 0785 | Type: BLS | Date: 2026-07-15 | Time: 00:00 | EMSO/Doctor: Dr.Rakesh Deshmukh (8177866647) | Source sheet: On Route with Dnyaneshwar Mahar row 29 | Match note: Geo matched to nearest route facility/segment (2575 m); verify on ground",
+        "Call Number": "8177866647",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "29",
+        "MEMS Deployed Place": "Lonand Primary Health Center",
+        "MEMS Ambulance Base": "Nira PHC",
+        "MEMS Vehicle No": "MH-14 CL 0785",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr.Rakesh Deshmukh (8177866647)",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (2575 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.12546,74.19428"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.19977,
+          18.1173
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 24 | MH-14 CL 0785",
+        "Type": "Ambulance",
+        "Landmark": "Point 24",
+        "Vehicle / Contact": "MH-14 CL 0785",
+        "Phone": "8177866647",
+        "Risk zone": "HIGH — final approach / Nira river",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 24 | MH-14 CL 0785",
+        "Description": "Original map point: Amb 24 — Point 24 | MEMS deployed place: Lonand Primary Health Center | Ambulance/Base: Nira PHC | Vehicle: MH-14 CL 0785 | Type: BLS | Date: 2026-07-15 | Time: 00:00 | EMSO/Doctor: Dr.Rakesh Deshmukh (8177866647) | Source sheet: On Route with Dnyaneshwar Mahar row 29 | Match note: Matched by landmark/facility name",
+        "Call Number": "8177866647",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "29",
+        "MEMS Deployed Place": "Lonand Primary Health Center",
+        "MEMS Ambulance Base": "Nira PHC",
+        "MEMS Vehicle No": "MH-14 CL 0785",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr.Rakesh Deshmukh (8177866647)",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.11730,74.19977"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.20526,
+          18.10882
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 25 | MH-14 CL 0785",
+        "Type": "Ambulance",
+        "Landmark": "Point 25",
+        "Vehicle / Contact": "MH-14 CL 0785",
+        "Phone": "8177866647",
+        "Risk zone": "HIGH — final approach / Nira river",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 25 | MH-14 CL 0785",
+        "Description": "Original map point: Amb 25 — Point 25 | MEMS deployed place: Lonand Primary Health Center | Ambulance/Base: Nira PHC | Vehicle: MH-14 CL 0785 | Type: BLS | Date: 2026-07-15 | Time: 00:00 | EMSO/Doctor: Dr.Rakesh Deshmukh (8177866647) | Source sheet: On Route with Dnyaneshwar Mahar row 29 | Match note: Matched by landmark/facility name",
+        "Call Number": "8177866647",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "29",
+        "MEMS Deployed Place": "Lonand Primary Health Center",
+        "MEMS Ambulance Base": "Nira PHC",
+        "MEMS Vehicle No": "MH-14 CL 0785",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr.Rakesh Deshmukh (8177866647)",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.10882,74.20526"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.21336,
+          18.10374
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 26 | MH-14 CL 0785",
+        "Type": "Ambulance",
+        "Landmark": "Point 26",
+        "Vehicle / Contact": "MH-14 CL 0785",
+        "Phone": "8177866647",
+        "Risk zone": "HIGH — final approach / Nira river",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 26 | MH-14 CL 0785",
+        "Description": "Original map point: Amb 26 — Point 26 | MEMS deployed place: Lonand Primary Health Center | Ambulance/Base: Nira PHC | Vehicle: MH-14 CL 0785 | Type: BLS | Date: 2026-07-15 | Time: 00:00 | EMSO/Doctor: Dr.Rakesh Deshmukh (8177866647) | Source sheet: On Route with Dnyaneshwar Mahar row 29 | Match note: Matched by landmark/facility name",
+        "Call Number": "8177866647",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "29",
+        "MEMS Deployed Place": "Lonand Primary Health Center",
+        "MEMS Ambulance Base": "Nira PHC",
+        "MEMS Vehicle No": "MH-14 CL 0785",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr.Rakesh Deshmukh (8177866647)",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.10374,74.21336"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.20226,
+          18.11369
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 27 | MH-14 CL 0785",
+        "Type": "Ambulance",
+        "Landmark": "Point 27",
+        "Vehicle / Contact": "MH-14 CL 0785",
+        "Phone": "8177866647",
+        "Risk zone": "HIGH — final approach / Nira river",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 27 | MH-14 CL 0785",
+        "Description": "Original map point: Amb 27 — Point 27 | MEMS deployed place: Lonand Primary Health Center | Ambulance/Base: Nira PHC | Vehicle: MH-14 CL 0785 | Type: BLS | Date: 2026-07-15 | Time: 00:00 | EMSO/Doctor: Dr.Rakesh Deshmukh (8177866647) | Source sheet: On Route with Dnyaneshwar Mahar row 29 | Match note: Matched by landmark/facility name",
+        "Call Number": "8177866647",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "29",
+        "MEMS Deployed Place": "Lonand Primary Health Center",
+        "MEMS Ambulance Base": "Nira PHC",
+        "MEMS Vehicle No": "MH-14 CL 0785",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr.Rakesh Deshmukh (8177866647)",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.11369,74.20226"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.19049,
+          18.12967
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 28 | MH-14 CL 0785",
+        "Type": "Ambulance",
+        "Landmark": "Point 28",
+        "Vehicle / Contact": "MH-14 CL 0785",
+        "Phone": "8177866647",
+        "Risk zone": "",
+        "Notes": "inferred (nearest base)",
+        "Public Label": "Ambulance Support – Point 28 | MH-14 CL 0785",
+        "Description": "Original map point: Amb 28 — Point 28 | MEMS deployed place: Lonand Primary Health Center | Ambulance/Base: Nira PHC | Vehicle: MH-14 CL 0785 | Type: BLS | Date: 2026-07-15 | Time: 00:00 | EMSO/Doctor: Dr.Rakesh Deshmukh (8177866647) | Source sheet: On Route with Dnyaneshwar Mahar row 29 | Match note: Geo matched to nearest route facility/segment (3191 m); verify on ground",
+        "Call Number": "8177866647",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "29",
+        "MEMS Deployed Place": "Lonand Primary Health Center",
+        "MEMS Ambulance Base": "Nira PHC",
+        "MEMS Vehicle No": "MH-14 CL 0785",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr.Rakesh Deshmukh (8177866647)",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (3191 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.12967,74.19049"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.17124,
+          18.26484
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Point 29 | MH 14 CL 1373",
+        "Type": "Ambulance",
+        "Landmark": "Point 29",
+        "Vehicle / Contact": "MH 14 CL 1373",
+        "Phone": "8080113194",
+        "Risk zone": "",
+        "Notes": "",
+        "Public Label": "Ambulance Support – Point 29 | MH 14 CL 1373",
+        "Description": "Original map point: Amb 29 — Point 29 | MEMS deployed place: Jejuri Rural Hospital | Ambulance/Base: Jejuri Rural Hospital | Vehicle: MH 14 CL 1373 | Type: BLS | Date: 2026-07-13 | Time: 00:00 | EMSO/Doctor: Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455) | Pilot/EA: Prashant Walhekar (8007216459); Rahul Shewale (9503322090) | Source sheet: On Route with Dnyaneshwar Mahar row 25 | Match note: Geo matched to nearest route facility/segment (1480 m); verify on ground",
+        "Call Number": "8080113194",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "25",
+        "MEMS Deployed Place": "Jejuri Rural Hospital",
+        "MEMS Ambulance Base": "Jejuri Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1373",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455)",
+        "MEMS Pilot/EA": "Prashant Walhekar (8007216459); Rahul Shewale (9503322090)",
+        "Verification Status": "Geo matched - verify before public release",
+        "Publish Priority": "Verify before public release",
+        "Match Reason": "Geo matched to nearest route facility/segment (1480 m); verify on ground",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.26484,74.17124"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9506,
+          18.73516
+        ]
+      },
+      "properties": {
+        "Name": "Primary Health Center Shelpimpalgaon , Khed block",
+        "Type": "PHC",
+        "Landmark": "",
+        "Vehicle / Contact": "Dr. Ashok Chamkure",
+        "Phone": "7350242541",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Primary Health Center Shelpimpalgaon , Khed block",
+        "Description": "Contact/Doctor: Dr. Ashok Chamkure | Phone: 7350242541 | Fixed facility",
+        "Call Number": "7350242541",
+        "MEMS Source Sheet": "",
+        "MEMS Source Row": "",
+        "MEMS Deployed Place": "",
+        "MEMS Ambulance Base": "",
+        "MEMS Vehicle No": "",
+        "MEMS Type": "",
+        "MEMS EMSO/Doctor": "",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Verified from existing support point/SOP data",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "No matching MEMS record found",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.73516,73.95060"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.97617,
+          18.47388
+        ]
+      },
+      "properties": {
+        "Name": "Primary Health Center, Fursungi,Purandar Block | MEMS MH 14 CL 0796",
+        "Type": "PHC",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 0796",
+        "Phone": "9175994947",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Primary Health Center, Fursungi,Purandar Block | MEMS MH 14 CL 0796",
+        "Description": "Original map point: Primary Health Center, Fursungi,Purandar Block | MEMS deployed place: Palkhi Marg, Wadaki Nala, Saswad Road | Ambulance/Base: Fursungi Primary Health Center | Vehicle: MH 14 CL 0796 | Type: ALS | Date: 2026-07-11 | Time: 10:00 | EMSO/Doctor: Dr Appasaheb Jadhav (9175994947) | Pilot/EA: Devdatta Shirke (8411922611); Subhas Baravkar (9527444343) | Source sheet: On Route with Dnyaneshwar Mahar row 18 | Match note: Matched by landmark/facility name",
+        "Call Number": "9175994947",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "18",
+        "MEMS Deployed Place": "Palkhi Marg, Wadaki Nala, Saswad Road",
+        "MEMS Ambulance Base": "Fursungi Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 0796",
+        "MEMS Type": "ALS",
+        "MEMS EMSO/Doctor": "Dr Appasaheb Jadhav (9175994947)",
+        "MEMS Pilot/EA": "Devdatta Shirke (8411922611); Subhas Baravkar (9527444343)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.47388,73.97617"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.23283,
+          18.40922
+        ]
+      },
+      "properties": {
+        "Name": "Primary Health Centre Malshiras Purandar Block",
+        "Type": "PHC",
+        "Landmark": "",
+        "Vehicle / Contact": "Dr. Shubhankar Deshmukh",
+        "Phone": "9518592320",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Primary Health Centre Malshiras Purandar Block",
+        "Description": "Contact/Doctor: Dr. Shubhankar Deshmukh | Phone: 9518592320 | Fixed facility",
+        "Call Number": "9518592320",
+        "MEMS Source Sheet": "",
+        "MEMS Source Row": "",
+        "MEMS Deployed Place": "",
+        "MEMS Ambulance Base": "",
+        "MEMS Vehicle No": "",
+        "MEMS Type": "",
+        "MEMS EMSO/Doctor": "",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Verified from existing support point/SOP data",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "No matching MEMS record found",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.40922,74.23283"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.13084,
+          18.31716
+        ]
+      },
+      "properties": {
+        "Name": "Primary Health Centre Belsar Purandar",
+        "Type": "PHC",
+        "Landmark": "",
+        "Vehicle / Contact": "Dr. Anuradha Borhade",
+        "Phone": "8605487422",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Primary Health Centre Belsar Purandar",
+        "Description": "Contact/Doctor: Dr. Anuradha Borhade | Phone: 8605487422 | Fixed facility",
+        "Call Number": "8605487422",
+        "MEMS Source Sheet": "",
+        "MEMS Source Row": "",
+        "MEMS Deployed Place": "",
+        "MEMS Ambulance Base": "",
+        "MEMS Vehicle No": "",
+        "MEMS Type": "",
+        "MEMS EMSO/Doctor": "",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Verified from existing support point/SOP data",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "No matching MEMS record found",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.31716,74.13084"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.1578,
+          18.18428
+        ]
+      },
+      "properties": {
+        "Name": "Primary Health Center WALHA Purandar | MEMS MH 14 CL 1053",
+        "Type": "PHC",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1053",
+        "Phone": "8308609595",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Primary Health Center WALHA Purandar | MEMS MH 14 CL 1053",
+        "Description": "Original map point: Primary Health Center WALHA Purandar | MEMS deployed place: Walhe Primary Health Center | Ambulance/Base: Morgaon Primary Health Center | Vehicle: MH 14 CL 1053 | Type: BLS | Date: 2026-07-14 | Time: 10:00 | EMSO/Doctor: Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628) | Pilot/EA: Dinesh Inamke (9518748866); Rohit Adhagle (7709070997) | Source sheet: On Route with Dnyaneshwar Mahar row 27 | Match note: Matched by landmark/facility name",
+        "Call Number": "8308609595",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "27",
+        "MEMS Deployed Place": "Walhe Primary Health Center",
+        "MEMS Ambulance Base": "Morgaon Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 1053",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628)",
+        "MEMS Pilot/EA": "Dinesh Inamke (9518748866); Rohit Adhagle (7709070997)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.18428,74.15780"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.21054,
+          18.10821
+        ]
+      },
+      "properties": {
+        "Name": "Primary Health Center NIRA, Purandar | MEMS MH-14 CL 0785",
+        "Type": "PHC",
+        "Landmark": "",
+        "Vehicle / Contact": "MH-14 CL 0785",
+        "Phone": "8177866647",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Primary Health Center NIRA, Purandar | MEMS MH-14 CL 0785",
+        "Description": "Original map point: Primary Health Center NIRA, Purandar | MEMS deployed place: Lonand Primary Health Center | Ambulance/Base: Nira PHC | Vehicle: MH-14 CL 0785 | Type: BLS | Date: 2026-07-15 | Time: 00:00 | EMSO/Doctor: Dr.Rakesh Deshmukh (8177866647) | Source sheet: On Route with Dnyaneshwar Mahar row 29 | Match note: Matched by landmark/facility name",
+        "Call Number": "8177866647",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "29",
+        "MEMS Deployed Place": "Lonand Primary Health Center",
+        "MEMS Ambulance Base": "Nira PHC",
+        "MEMS Vehicle No": "MH-14 CL 0785",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr.Rakesh Deshmukh (8177866647)",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.10821,74.21054"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.898,
+          18.67515
+        ]
+      },
+      "properties": {
+        "Name": "Rural Hospital, Alandi | MEMS MH 14 CL 1083",
+        "Type": "Rural Hospital",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1083",
+        "Phone": "9623664533",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Rural Hospital, Alandi | MEMS MH 14 CL 1083",
+        "Description": "Original map point: Rural Hospital, Alandi | MEMS deployed place: Alandi Rural Hospital | Ambulance/Base: Alandi Rural Hospital | Vehicle: MH 14 CL 1083 | Type: ALS | Date: 2026-07-09 | Time: 00:00 | EMSO/Doctor: Dr.Sunita Pulawale (9623664533); Dr.Yashoda Shelake (8766765082); Dr.Vishal Kakade (9527979453) | Pilot/EA: Rohit Sonawane (8766915600); Deepak Mandlik (9270303093) | SPOC ADM: Mr. Vijay Somvanshi 9730795570 | SPOC DM: Dr. Vijay Patil 9730795512 | Source sheet: On Route with Dnyaneshwar Mahar row 4 | Match note: Matched by landmark/facility name",
+        "Call Number": "9623664533",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "4",
+        "MEMS Deployed Place": "Alandi Rural Hospital",
+        "MEMS Ambulance Base": "Alandi Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1083",
+        "MEMS Type": "ALS",
+        "MEMS EMSO/Doctor": "Dr.Sunita Pulawale (9623664533); Dr.Yashoda Shelake (8766765082); Dr.Vishal Kakade (9527979453)",
+        "MEMS Pilot/EA": "Rohit Sonawane (8766915600); Deepak Mandlik (9270303093)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.67515,73.89800"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.03119,
+          18.34713
+        ]
+      },
+      "properties": {
+        "Name": "Rural Govt. Hospital, Saswad | MEMS MH 14 CL 1271",
+        "Type": "Rural Hospital",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1271",
+        "Phone": "9527054341",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Rural Govt. Hospital, Saswad | MEMS MH 14 CL 1271",
+        "Description": "Original map point: Rural Govt. Hospital, Saswad | MEMS deployed place: Saswad Rural Hospital | Ambulance/Base: Saswad Rural Hospital | Vehicle: MH 14 CL 1271 | Type: BLS | Date: 2026-07-11 | Time: 00:00 | EMSO/Doctor: Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954) | Pilot/EA: Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404) | Source sheet: On Route with Dnyaneshwar Mahar row 19 | Match note: Matched by landmark/facility name",
+        "Call Number": "9527054341",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "19",
+        "MEMS Deployed Place": "Saswad Rural Hospital",
+        "MEMS Ambulance Base": "Saswad Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1271",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954)",
+        "MEMS Pilot/EA": "Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.34713,74.03119"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.16317,
+          18.27572
+        ]
+      },
+      "properties": {
+        "Name": "Rural Hospital, Jejuri | MEMS MH 14 CL 1373",
+        "Type": "Rural Hospital",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1373",
+        "Phone": "8080113194",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Rural Hospital, Jejuri | MEMS MH 14 CL 1373",
+        "Description": "Original map point: Rural Hospital, Jejuri | MEMS deployed place: Jejuri Rural Hospital | Ambulance/Base: Jejuri Rural Hospital | Vehicle: MH 14 CL 1373 | Type: BLS | Date: 2026-07-13 | Time: 00:00 | EMSO/Doctor: Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455) | Pilot/EA: Prashant Walhekar (8007216459); Rahul Shewale (9503322090) | Source sheet: On Route with Dnyaneshwar Mahar row 25 | Match note: Matched by landmark/facility name",
+        "Call Number": "8080113194",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "25",
+        "MEMS Deployed Place": "Jejuri Rural Hospital",
+        "MEMS Ambulance Base": "Jejuri Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1373",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455)",
+        "MEMS Pilot/EA": "Prashant Walhekar (8007216459); Rahul Shewale (9503322090)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.27572,74.16317"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.87852,
+          18.50224
+        ]
+      },
+      "properties": {
+        "Name": "Parmar Dispensary HBT Pune Cantonment Board",
+        "Type": "HBT",
+        "Landmark": "",
+        "Vehicle / Contact": "",
+        "Phone": "",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "Parmar Dispensary HBT Pune Cantonment Board",
+        "Description": "Fixed facility",
+        "Call Number": "",
+        "MEMS Source Sheet": "",
+        "MEMS Source Row": "",
+        "MEMS Deployed Place": "",
+        "MEMS Ambulance Base": "",
+        "MEMS Vehicle No": "",
+        "MEMS Type": "",
+        "MEMS EMSO/Doctor": "",
+        "MEMS Pilot/EA": "",
+        "Verification Status": "Verified from existing support point/SOP data",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "No matching MEMS record found",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.50224,73.87852"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.02788,
+          18.34008
+        ]
+      },
+      "properties": {
+        "Name": "HBT SASWAD | MEMS MH 14 CL 1271",
+        "Type": "HBT",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1271",
+        "Phone": "9527054341",
+        "Risk zone": "",
+        "Notes": "Fixed facility",
+        "Public Label": "HBT SASWAD | MEMS MH 14 CL 1271",
+        "Description": "Original map point: HBT SASWAD | MEMS deployed place: Saswad Rural Hospital | Ambulance/Base: Saswad Rural Hospital | Vehicle: MH 14 CL 1271 | Type: BLS | Date: 2026-07-11 | Time: 00:00 | EMSO/Doctor: Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954) | Pilot/EA: Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404) | Source sheet: On Route with Dnyaneshwar Mahar row 19 | Match note: Matched by landmark/facility name",
+        "Call Number": "9527054341",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "19",
+        "MEMS Deployed Place": "Saswad Rural Hospital",
+        "MEMS Ambulance Base": "Saswad Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1271",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954)",
+        "MEMS Pilot/EA": "Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.34008,74.02788"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.89503,
+          18.67829
+        ]
+      },
+      "properties": {
+        "Name": "Alandi  (Night Stay ) | MEMS MH 14 CL 1083",
+        "Type": "Night Halt (Mukkam)",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1083",
+        "Phone": "9623664533",
+        "Risk zone": "",
+        "Notes": "Health tent at halt",
+        "Public Label": "Alandi  (Night Stay ) | MEMS MH 14 CL 1083",
+        "Description": "Original map point: Alandi  (Night Stay ) | MEMS deployed place: Alandi Rural Hospital | Ambulance/Base: Alandi Rural Hospital | Vehicle: MH 14 CL 1083 | Type: ALS | Date: 2026-07-09 | Time: 00:00 | EMSO/Doctor: Dr.Sunita Pulawale (9623664533); Dr.Yashoda Shelake (8766765082); Dr.Vishal Kakade (9527979453) | Pilot/EA: Rohit Sonawane (8766915600); Deepak Mandlik (9270303093) | SPOC ADM: Mr. Vijay Somvanshi 9730795570 | SPOC DM: Dr. Vijay Patil 9730795512 | Source sheet: On Route with Dnyaneshwar Mahar row 4 | Match note: Matched by landmark/facility name",
+        "Call Number": "9623664533",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "4",
+        "MEMS Deployed Place": "Alandi Rural Hospital",
+        "MEMS Ambulance Base": "Alandi Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1083",
+        "MEMS Type": "ALS",
+        "MEMS EMSO/Doctor": "Dr.Sunita Pulawale (9623664533); Dr.Yashoda Shelake (8766765082); Dr.Vishal Kakade (9527979453)",
+        "MEMS Pilot/EA": "Rohit Sonawane (8766915600); Deepak Mandlik (9270303093)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.67829,73.89503"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.86992,
+          18.51166
+        ]
+      },
+      "properties": {
+        "Name": "Bhawani Peth (2 Night stay  ) | MEMS MH 14 CL 1225",
+        "Type": "Night Halt (Mukkam)",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1225",
+        "Phone": "9209168925",
+        "Risk zone": "",
+        "Notes": "Health tent at halt",
+        "Public Label": "Bhawani Peth (2 Night stay  ) | MEMS MH 14 CL 1225",
+        "Description": "Original map point: Bhawani Peth (2 Night stay  ) | MEMS deployed place: Shri Nivdunga Vitthal Mandir, Nanapeth, Pune | Ambulance/Base: Bibvewadi Anna Bhau Sathe Auditorium | Vehicle: MH 14 CL 1225 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Tejal Gaikwad (9209168925); Ganesh Todkari (9422644413) | Pilot/EA: Sagar Padwal (9623757548); Ganesh Chavan (8805914569) | SPOC ADM: Mr. Vishal Dalvi 9730795286 | Source sheet: Pune City ambulances row 9 | Match note: Matched by landmark/facility name",
+        "Call Number": "9209168925",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "9",
+        "MEMS Deployed Place": "Shri Nivdunga Vitthal Mandir, Nanapeth, Pune",
+        "MEMS Ambulance Base": "Bibvewadi Anna Bhau Sathe Auditorium",
+        "MEMS Vehicle No": "MH 14 CL 1225",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Tejal Gaikwad (9209168925); Ganesh Todkari (9422644413)",
+        "MEMS Pilot/EA": "Sagar Padwal (9623757548); Ganesh Chavan (8805914569)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.51166,73.86992"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.03018,
+          18.34631
+        ]
+      },
+      "properties": {
+        "Name": "Saswad (Night Stay) | MEMS MH 14 CL 1271",
+        "Type": "Night Halt (Mukkam)",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1271",
+        "Phone": "9527054341",
+        "Risk zone": "",
+        "Notes": "Health tent at halt",
+        "Public Label": "Saswad (Night Stay) | MEMS MH 14 CL 1271",
+        "Description": "Original map point: Saswad (Night Stay) | MEMS deployed place: Saswad Rural Hospital | Ambulance/Base: Saswad Rural Hospital | Vehicle: MH 14 CL 1271 | Type: BLS | Date: 2026-07-11 | Time: 00:00 | EMSO/Doctor: Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954) | Pilot/EA: Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404) | Source sheet: On Route with Dnyaneshwar Mahar row 19 | Match note: Matched by landmark/facility name",
+        "Call Number": "9527054341",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "19",
+        "MEMS Deployed Place": "Saswad Rural Hospital",
+        "MEMS Ambulance Base": "Saswad Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1271",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Rajgauri Salunke (9527054341); Omkar Zinjurke (9922056954)",
+        "MEMS Pilot/EA": "Deepak Gondhali (9373109596); Sandip Yerandkar (9696520404)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.34631,74.03018"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.16122,
+          18.2781
+        ]
+      },
+      "properties": {
+        "Name": "Jejuri (Night STAY) | MEMS MH 14 CL 1373",
+        "Type": "Night Halt (Mukkam)",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1373",
+        "Phone": "8080113194",
+        "Risk zone": "",
+        "Notes": "Health tent at halt",
+        "Public Label": "Jejuri (Night STAY) | MEMS MH 14 CL 1373",
+        "Description": "Original map point: Jejuri (Night STAY) | MEMS deployed place: Jejuri Rural Hospital | Ambulance/Base: Jejuri Rural Hospital | Vehicle: MH 14 CL 1373 | Type: BLS | Date: 2026-07-13 | Time: 00:00 | EMSO/Doctor: Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455) | Pilot/EA: Prashant Walhekar (8007216459); Rahul Shewale (9503322090) | Source sheet: On Route with Dnyaneshwar Mahar row 25 | Match note: Matched by landmark/facility name",
+        "Call Number": "8080113194",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "25",
+        "MEMS Deployed Place": "Jejuri Rural Hospital",
+        "MEMS Ambulance Base": "Jejuri Rural Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1373",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Balaji Panchal (8080113194); Ajay Deshmane (9922566455)",
+        "MEMS Pilot/EA": "Prashant Walhekar (8007216459); Rahul Shewale (9503322090)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.27810,74.16122"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.15336,
+          18.18082
+        ]
+      },
+      "properties": {
+        "Name": "Walhe (Night Stay) | MEMS MH 14 CL 1053",
+        "Type": "Night Halt (Mukkam)",
+        "Landmark": "",
+        "Vehicle / Contact": "MH 14 CL 1053",
+        "Phone": "8308609595",
+        "Risk zone": "",
+        "Notes": "Health tent at halt",
+        "Public Label": "Walhe (Night Stay) | MEMS MH 14 CL 1053",
+        "Description": "Original map point: Walhe (Night Stay) | MEMS deployed place: Walhe Primary Health Center | Ambulance/Base: Morgaon Primary Health Center | Vehicle: MH 14 CL 1053 | Type: BLS | Date: 2026-07-14 | Time: 10:00 | EMSO/Doctor: Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628) | Pilot/EA: Dinesh Inamke (9518748866); Rohit Adhagle (7709070997) | Source sheet: On Route with Dnyaneshwar Mahar row 27 | Match note: Matched by landmark/facility name",
+        "Call Number": "8308609595",
+        "MEMS Source Sheet": "On Route with Dnyaneshwar Mahar",
+        "MEMS Source Row": "27",
+        "MEMS Deployed Place": "Walhe Primary Health Center",
+        "MEMS Ambulance Base": "Morgaon Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 1053",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Rohit More (8308609595); Dr Sanjay Devkate (9970074628)",
+        "MEMS Pilot/EA": "Dinesh Inamke (9518748866); Rohit Adhagle (7709070997)",
+        "Verification Status": "Matched from MEMS deployment plan",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Matched by landmark/facility name",
+        "Source": "Base support CSV + Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.18082,74.15336"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.850015,
+          18.502907
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Ambilodha Ambedkar Hospital | MH 14 CL 1143",
+        "Type": "Ambulance",
+        "Landmark": "Ambilodha Ambedkar Hospital",
+        "Vehicle / Contact": "MH 14 CL 1143",
+        "Phone": "7972360878",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Ambilodha Ambedkar Hospital | MH 14 CL 1143",
+        "Description": "Deployed place: Ambilodha Ambedkar Hospital | Ambulance/Base: Sadashiv Peth Matoshri Ramabai Ambedkar Maternity Home | Vehicle: MH 14 CL 1143 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Dr Harish Bodhke (7972360878) | Pilot/EA: Atul Shinde (7030563399); Laxman Vavare (9881144120) | SPOC ADM: Mr. Krishna Yadav / 9730795538 | Source sheet: Pune City ambulances row 3",
+        "Call Number": "7972360878",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "3",
+        "MEMS Deployed Place": "Ambilodha Ambedkar Hospital",
+        "MEMS Ambulance Base": "Sadashiv Peth Matoshri Ramabai Ambedkar Maternity Home",
+        "MEMS Vehicle No": "MH 14 CL 1143",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Harish Bodhke (7972360878)",
+        "MEMS Pilot/EA": "Atul Shinde (7030563399); Laxman Vavare (9881144120)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.502907,73.850015"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.868696,
+          18.505588
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Bhavani Peth Chandumama Hospital | MH 14 CL 1125",
+        "Type": "Ambulance",
+        "Landmark": "Bhavani Peth Chandumama Hospital",
+        "Vehicle / Contact": "MH 14 CL 1125",
+        "Phone": "9552409004",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Bhavani Peth Chandumama Hospital | MH 14 CL 1125",
+        "Description": "Deployed place: Bhavani Peth Chandumama Hospital | Ambulance/Base: Bhavani Peth Chandu Mama Sonawane Maternity Home | Vehicle: MH 14 CL 1125 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Dr. Asif Ahmed (899344886) | Pilot/EA: Mr. Mayur Gholap (9552409004); Vishal Reddy (7773941600) | Source sheet: Pune City ambulances row 4",
+        "Call Number": "9552409004",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "4",
+        "MEMS Deployed Place": "Bhavani Peth Chandumama Hospital",
+        "MEMS Ambulance Base": "Bhavani Peth Chandu Mama Sonawane Maternity Home",
+        "MEMS Vehicle No": "MH 14 CL 1125",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr. Asif Ahmed (899344886)",
+        "MEMS Pilot/EA": "Mr. Mayur Gholap (9552409004); Vishal Reddy (7773941600)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.505588,73.868696"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.807714,
+          18.503817
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Kothrud Nanasaheb Sutar Hospital | MH 14 CL 1378",
+        "Type": "Ambulance",
+        "Landmark": "Kothrud Nanasaheb Sutar Hospital",
+        "Vehicle / Contact": "MH 14 CL 1378",
+        "Phone": "8446464660",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Kothrud Nanasaheb Sutar Hospital | MH 14 CL 1378",
+        "Description": "Deployed place: Kothrud Nanasaheb Sutar Hospital | Ambulance/Base: Kothrud Jayabai Nanasaheb Sutar Maternity Home | Vehicle: MH 14 CL 1378 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Dr. Meena Pulaware (8446464660); Dr. Prajakta Kadam (9370144283); Dr. Nitesh Rajkar (8237135533) | Pilot/EA: Alibaba Sayyad (9923070329); Avinash Ovhal (9765293484) | SPOC ADM: Mr. Akshay Mohod 9730795561 | Source sheet: Pune City ambulances row 5",
+        "Call Number": "8446464660",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "5",
+        "MEMS Deployed Place": "Kothrud Nanasaheb Sutar Hospital",
+        "MEMS Ambulance Base": "Kothrud Jayabai Nanasaheb Sutar Maternity Home",
+        "MEMS Vehicle No": "MH 14 CL 1378",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr. Meena Pulaware (8446464660); Dr. Prajakta Kadam (9370144283); Dr. Nitesh Rajkar (8237135533)",
+        "MEMS Pilot/EA": "Alibaba Sayyad (9923070329); Avinash Ovhal (9765293484)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.503817,73.807714"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.857911,
+          18.511939
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Kotnis PMC Hospital | MH 14 CL 1055",
+        "Type": "Ambulance",
+        "Landmark": "Kotnis PMC Hospital",
+        "Vehicle / Contact": "MH 14 CL 1055",
+        "Phone": "8329047116",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Kotnis PMC Hospital | MH 14 CL 1055",
+        "Description": "Deployed place: Kotnis PMC Hospital | Ambulance/Base: Shukrawar Peth Doctor Kotnis-Gadikhana PMC Dispensary | Vehicle: MH 14 CL 1055 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Jivan Nakate (8329047116); Nilkanth Dev (9970781528) | Pilot/EA: Satyawan Langar (7875610310); Satyawan Langar (7507042905) | SPOC ADM: Mr. Vishal Dalvi / 9730795286 | Source sheet: Pune City ambulances row 6",
+        "Call Number": "8329047116",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "6",
+        "MEMS Deployed Place": "Kotnis PMC Hospital",
+        "MEMS Ambulance Base": "Shukrawar Peth Doctor Kotnis-Gadikhana PMC Dispensary",
+        "MEMS Vehicle No": "MH 14 CL 1055",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Jivan Nakate (8329047116); Nilkanth Dev (9970781528)",
+        "MEMS Pilot/EA": "Satyawan Langar (7875610310); Satyawan Langar (7507042905)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.511939,73.857911"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.861644,
+          18.522532
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Manglwar Peth Kamla Neharu Hospital | MH 14 CL 1054",
+        "Type": "Ambulance",
+        "Landmark": "Manglwar Peth Kamla Neharu Hospital",
+        "Vehicle / Contact": "MH 14 CL 1054",
+        "Phone": "9762754941",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Manglwar Peth Kamla Neharu Hospital | MH 14 CL 1054",
+        "Description": "Deployed place: Manglwar Peth Kamla Neharu Hospital | Ambulance/Base: Mangalwar Peth Kamla Nehru General Hospital | Vehicle: MH 14 CL 1054 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Maharudra Dake (9762754941); Akbar Sayyad (7767903848); Sageer Pathan (9307041313) | Pilot/EA: Dharmaraj Landge (9860398447); Vishal Sapte (8668577331) | Source sheet: Pune City ambulances row 7",
+        "Call Number": "9762754941",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "7",
+        "MEMS Deployed Place": "Manglwar Peth Kamla Neharu Hospital",
+        "MEMS Ambulance Base": "Mangalwar Peth Kamla Nehru General Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1054",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Maharudra Dake (9762754941); Akbar Sayyad (7767903848); Sageer Pathan (9307041313)",
+        "MEMS Pilot/EA": "Dharmaraj Landge (9860398447); Vishal Sapte (8668577331)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.522532,73.861644"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.854291,
+          18.497295
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Rajmata Jijau Maternity Hospital - Gol Dawakhana | MH 14 CL 1372",
+        "Type": "Ambulance",
+        "Landmark": "Rajmata Jijau Maternity Hospital - Gol Dawakhana",
+        "Vehicle / Contact": "MH 14 CL 1372",
+        "Phone": "7666379760",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Rajmata Jijau Maternity Hospital - Gol Dawakhana | MH 14 CL 1372",
+        "Description": "Deployed place: Rajmata Jijau Maternity Hospital - Gol Dawakhana | Ambulance/Base: Parvati Paytha Rajamata Jijau Maternity Hospital - Gol Dawakhana | Vehicle: MH 14 CL 1372 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Dr Amardeep Matre (7666379760); Dr Maheshwar Humbare (9511732750) | Pilot/EA: Gaurav Kamble (8999573901); Sunil Pawar (9823974882) | SPOC ADM: Mr. Akshay Mohod 9730795561 | Source sheet: Pune City ambulances row 8",
+        "Call Number": "7666379760",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "8",
+        "MEMS Deployed Place": "Rajmata Jijau Maternity Hospital - Gol Dawakhana",
+        "MEMS Ambulance Base": "Parvati Paytha Rajamata Jijau Maternity Hospital - Gol Dawakhana",
+        "MEMS Vehicle No": "MH 14 CL 1372",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr Amardeep Matre (7666379760); Dr Maheshwar Humbare (9511732750)",
+        "MEMS Pilot/EA": "Gaurav Kamble (8999573901); Sunil Pawar (9823974882)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.497295,73.854291"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.865993,
+          18.516004
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Shri Nivdunga Vitthal Mandir, Nanapeth, Pune | MH 14 CL 1225",
+        "Type": "Ambulance",
+        "Landmark": "Shri Nivdunga Vitthal Mandir, Nanapeth, Pune",
+        "Vehicle / Contact": "MH 14 CL 1225",
+        "Phone": "9209168925",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Shri Nivdunga Vitthal Mandir, Nanapeth, Pune | MH 14 CL 1225",
+        "Description": "Deployed place: Shri Nivdunga Vitthal Mandir, Nanapeth, Pune | Ambulance/Base: Bibvewadi Anna Bhau Sathe Auditorium | Vehicle: MH 14 CL 1225 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Tejal Gaikwad (9209168925); Ganesh Todkari (9422644413) | Pilot/EA: Sagar Padwal (9623757548); Ganesh Chavan (8805914569) | SPOC ADM: Mr. Vishal Dalvi 9730795286 | Source sheet: Pune City ambulances row 9",
+        "Call Number": "9209168925",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "9",
+        "MEMS Deployed Place": "Shri Nivdunga Vitthal Mandir, Nanapeth, Pune",
+        "MEMS Ambulance Base": "Bibvewadi Anna Bhau Sathe Auditorium",
+        "MEMS Vehicle No": "MH 14 CL 1225",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Tejal Gaikwad (9209168925); Ganesh Todkari (9422644413)",
+        "MEMS Pilot/EA": "Sagar Padwal (9623757548); Ganesh Chavan (8805914569)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.516004,73.865993"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.84583,
+          18.530002
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Shivajinagar Police Parade Ground | MH 14 CL 0803",
+        "Type": "Ambulance",
+        "Landmark": "Shivajinagar Police Parade Ground",
+        "Vehicle / Contact": "MH 14 CL 0803",
+        "Phone": "8208090598",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Shivajinagar Police Parade Ground | MH 14 CL 0803",
+        "Description": "Deployed place: Shivajinagar Police Parade Ground | Vehicle: MH 14 CL 0803 | Type: ALS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Dr Amol Bhure (8208090598); Dr Shivkumar Darade (8446881746) | Pilot/EA: Ajit Suhase (9623576123); Mahesh Rathod (9146311536) | SPOC ADM: Mr. Krishna Yadav / 9730795538 | Source sheet: Pune City ambulances row 10",
+        "Call Number": "8208090598",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "10",
+        "MEMS Deployed Place": "Shivajinagar Police Parade Ground",
+        "MEMS Ambulance Base": "Shivajinagar Police Parade Ground",
+        "MEMS Vehicle No": "MH 14 CL 0803",
+        "MEMS Type": "ALS",
+        "MEMS EMSO/Doctor": "Dr Amol Bhure (8208090598); Dr Shivkumar Darade (8446881746)",
+        "MEMS Pilot/EA": "Ajit Suhase (9623576123); Mahesh Rathod (9146311536)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.530002,73.84583"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.866481,
+          18.512469
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Palkhi Vithoba Mandir, Bhavanipeth, Pune | MH 14 CL 1050",
+        "Type": "Ambulance",
+        "Landmark": "Palkhi Vithoba Mandir, Bhavanipeth, Pune",
+        "Vehicle / Contact": "MH 14 CL 1050",
+        "Phone": "8669564705",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Palkhi Vithoba Mandir, Bhavanipeth, Pune | MH 14 CL 1050",
+        "Description": "Deployed place: Palkhi Vithoba Mandir, Bhavanipeth, Pune | Ambulance/Base: Taleghar Primary Health Center | Vehicle: MH 14 CL 1050 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Dr. Dada Gaikwad (8669564705) | Pilot/EA: Pravin Paradhi (9307847481); Pramod Genjage (9403980898) | SPOC ADM: Mr. Vishal Dalvi 9730795286 | Source sheet: Pune City ambulances row 12",
+        "Call Number": "8669564705",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "12",
+        "MEMS Deployed Place": "Palkhi Vithoba Mandir, Bhavanipeth, Pune",
+        "MEMS Ambulance Base": "Taleghar Primary Health Center",
+        "MEMS Vehicle No": "MH 14 CL 1050",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr. Dada Gaikwad (8669564705)",
+        "MEMS Pilot/EA": "Pravin Paradhi (9307847481); Pramod Genjage (9403980898)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.512469,73.866481"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.865993,
+          18.516004
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Shri Nivdunga Vitthal Mandir, Nanapeth, Pune | MH 14 CL 1379",
+        "Type": "Ambulance",
+        "Landmark": "Shri Nivdunga Vitthal Mandir, Nanapeth, Pune",
+        "Vehicle / Contact": "MH 14 CL 1379",
+        "Phone": "7798588125",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Shri Nivdunga Vitthal Mandir, Nanapeth, Pune | MH 14 CL 1379",
+        "Description": "Deployed place: Shri Nivdunga Vitthal Mandir, Nanapeth, Pune | Ambulance/Base: Pimpri Jijamata Municipal Hospital | Vehicle: MH 14 CL 1379 | Type: BLS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Dr. Gaurav Bangale (7798588125); Dr.Shyam Sakhare (7350271556); Dr. Shobha Rode (9604278106) | Pilot/EA: Vinayak Fodkar (9922557453); Vikas Sonawne (7776017177) | SPOC ADM: Mr. Krishna Yadav / 9730795538 | Source sheet: Pune City ambulances row 13",
+        "Call Number": "7798588125",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "13",
+        "MEMS Deployed Place": "Shri Nivdunga Vitthal Mandir, Nanapeth, Pune",
+        "MEMS Ambulance Base": "Pimpri Jijamata Municipal Hospital",
+        "MEMS Vehicle No": "MH 14 CL 1379",
+        "MEMS Type": "BLS",
+        "MEMS EMSO/Doctor": "Dr. Gaurav Bangale (7798588125); Dr.Shyam Sakhare (7350271556); Dr. Shobha Rode (9604278106)",
+        "MEMS Pilot/EA": "Vinayak Fodkar (9922557453); Vikas Sonawne (7776017177)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.516004,73.865993"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.868696,
+          18.505588
+        ]
+      },
+      "properties": {
+        "Name": "Ambulance Support – Bhavani Peth Chandumama Hospital | MH 14 CL 1316",
+        "Type": "Ambulance",
+        "Landmark": "Bhavani Peth Chandumama Hospital",
+        "Vehicle / Contact": "MH 14 CL 1316",
+        "Phone": "9699281511",
+        "Risk zone": "",
+        "Notes": "Actual MEMS deployment record with coordinates from uploaded Excel",
+        "Public Label": "Ambulance Support – Bhavani Peth Chandumama Hospital | MH 14 CL 1316",
+        "Description": "Deployed place: Bhavani Peth Chandumama Hospital | Ambulance/Base: Yerwada Rajiv Gandhi Maternity Home | Vehicle: MH 14 CL 1316 | Type: ALS | Date: 2026-07-10 to 2026-07-11 | Time: 16:00 to 10:00 | EMSO/Doctor: Shraddha Patil (9699281511); Shrikant Korekar (7559167691) | Pilot/EA: Sunil Chavan (9325795780); Ravi Chavan (8600340517) | Source sheet: Pune City ambulances row 14",
+        "Call Number": "9699281511",
+        "Verification Status": "Matched from MEMS deployment plan - coordinate supplied",
+        "Publish Priority": "Public Ready",
+        "Match Reason": "Coordinate supplied in MEMS deployment plan",
+        "MEMS Source Sheet": "Pune City ambulances",
+        "MEMS Source Row": "14",
+        "MEMS Deployed Place": "Bhavani Peth Chandumama Hospital",
+        "MEMS Ambulance Base": "Yerwada Rajiv Gandhi Maternity Home",
+        "MEMS Vehicle No": "MH 14 CL 1316",
+        "MEMS Type": "ALS",
+        "MEMS EMSO/Doctor": "Shraddha Patil (9699281511); Shrikant Korekar (7559167691)",
+        "MEMS Pilot/EA": "Sunil Chavan (9325795780); Ravi Chavan (8600340517)",
+        "Source": "Aashadhi Wari 2026 MEMS Ambulance Deployment Plan Edited 26-6-26.xlsx",
+        "Google Maps Link": "https://www.google.com/maps/search/?api=1&query=18.505588,73.868696"
+      }
+    }
+  ]
+}
