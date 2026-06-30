@@ -13,43 +13,33 @@
   </style>
 </head>
 <body>
-  <iframe class="mobile-frame" src="./app.html?v=osm11" title="वारी सहाय्य" allow="geolocation; clipboard-write; web-share"></iframe>
+  <iframe class="mobile-frame" src="./app.html?v=osm12" title="वारी सहाय्य" allow="geolocation; clipboard-write; web-share"></iframe>
 
   <main class="desktop-shell">
     <section class="phone-wrap">
-      <iframe id="appFrame" src="./app.html?v=osm11" title="वारी सहाय्य मोबाइल UI" allow="geolocation; clipboard-write; web-share"></iframe>
+      <iframe id="appFrame" src="./app.html?v=osm12" title="वारी सहाय्य मोबाइल UI" allow="geolocation; clipboard-write; web-share"></iframe>
     </section>
     <section class="map-wrap">
       <div class="desktop-head">
         <h1>वारी सहाय्य · मदत नकाशा</h1>
         <p>श्री संत ज्ञानेश्वर महाराज आणि जगद्गुरू श्री संत तुकाराम महाराज पालखी मार्गासाठी आमचे मदत केंद्र.</p>
         <div class="desk-actions">
-          <button class="desk-btn" onclick="callApp('locateMe')">📍 माझ्या जवळ मदत शोधा<span>डाव्या app map मध्ये जवळची मदत दाखवा</span></button>
+          <button class="desk-btn" onclick="locateBothMaps()">📍 माझ्या जवळ मदत शोधा<span>दोन्ही map मध्ये माझे स्थान दाखवा</span></button>
           <button class="desk-btn" onclick="showDesktopMap()">🗺 नकाशा दाखवा<span>उजव्या मदत नकाशावर सर्व points दाखवा</span></button>
         </div>
       </div>
       <!-- Google My Map is intentionally disabled for now. Kept for later reference: https://www.google.com/maps/d/u/0/embed?mid=1151dFIqz_htDjnDRMRnDqnJQE9JW3VQ -->
-      <iframe id="osmFrame" class="map-frame" src="./map.html?v=osm11" title="वारी सहाय्य मदत नकाशा" allow="geolocation; clipboard-write; web-share" loading="lazy"></iframe>
+      <iframe id="osmFrame" class="map-frame" src="./map.html?v=osm12" title="वारी सहाय्य मदत नकाशा" allow="geolocation; clipboard-write; web-share" loading="lazy"></iframe>
     </section>
   </main>
 
   <script>
-    function setDesktopPalkhi(p){
-      var m=document.getElementById('osmFrame');
-      if(m && m.contentWindow) m.contentWindow.postMessage({type:'PALKHI_FILTER',palkhi:p||'all'},'*');
-    }
-    function setDesktopType(t){
-      var m=document.getElementById('osmFrame');
-      if(m && m.contentWindow) m.contentWindow.postMessage({type:'TYPE_FILTER',typeFilter:t||'all'},'*');
-    }
-    function showDesktopMap(){
-      var m=document.getElementById('osmFrame');
-      if(!m) return;
-      try{
-        m.contentWindow.postMessage({type:'RESET_MAP'},'*');
-        m.focus();
-      }catch(e){console.warn('Unable to control desktop map',e);}
-    }
+    function postToDesktopMap(msg){var m=document.getElementById('osmFrame');if(m&&m.contentWindow)m.contentWindow.postMessage(msg,'*');}
+    function setDesktopPalkhi(p){postToDesktopMap({type:'PALKHI_FILTER',palkhi:p||'all'});}
+    function setDesktopType(t){postToDesktopMap({type:'TYPE_FILTER',typeFilter:t||'all'});}
+    function showDesktopMap(){postToDesktopMap({type:'RESET_MAP'});var m=document.getElementById('osmFrame');if(m)m.focus();}
+    function locateDesktopMap(){postToDesktopMap({type:'LOCATE_ME'});var m=document.getElementById('osmFrame');if(m)m.focus();}
+    function locateBothMaps(){callApp('locateMe');setTimeout(locateDesktopMap,200);}
     function backToAppMap(frame){
       try{
         var w=frame.contentWindow, doc=frame.contentDocument || w.document;
@@ -140,7 +130,7 @@
       document.querySelectorAll('iframe').forEach(function(frame){
         var src=frame.getAttribute('src')||'';
         if(src.indexOf('google.com/maps')>-1 || src.indexOf('maps/d/u')>-1){
-          frame.setAttribute('src','./map.html?v=osm11');
+          frame.setAttribute('src','./map.html?v=osm12');
           frame.setAttribute('title','वारी सहाय्य मदत नकाशा');
         }
       });
@@ -151,7 +141,7 @@
     function registerOfflineSupport(){
       if(!('serviceWorker' in navigator)) return;
       window.addEventListener('load', function(){
-        navigator.serviceWorker.register('./sw.js?v=osm11').then(function(reg){
+        navigator.serviceWorker.register('./sw.js?v=osm12').then(function(reg){
           function syncNow(){
             if(reg.update) reg.update();
             if(navigator.serviceWorker.controller){navigator.serviceWorker.controller.postMessage({type:'SYNC_NOW'});}
