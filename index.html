@@ -81,7 +81,7 @@
       if(doc.getElementById('wariCardFormatStyle')) return;
       var st=doc.createElement('style');
       st.id='wariCardFormatStyle';
-      st.textContent='.card.formatted-card{padding:14px!important}.card.formatted-card .ct,.card.formatted-card .meta{display:none!important}.formatted-title{font-size:16px;font-weight:950;line-height:1.25;color:#23160d}.formatted-vehicle{font-size:13px;font-weight:900;margin-top:8px;color:#4b3b2b}.formatted-service{margin-top:10px;padding:8px 10px;border-radius:13px;background:#f3ead8;font-size:12px;font-weight:950;color:#5a4430}.formatted-field{margin-top:8px;font-size:13px;line-height:1.35;color:#4b3b2b}.formatted-field b{color:#23160d}.contact-section{margin-top:12px}.contact-heading{font-size:13px;font-weight:950;color:#9a3a00;margin-bottom:6px}.contact-line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;margin-top:6px;padding:7px 8px;border-radius:12px;background:#fff8e8;border:1px solid #f1e5d1}.contact-name{font-size:13px;font-weight:900;color:#3a2b1d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.phone-pill{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 9px;border-radius:999px;background:#159653;color:#fff!important;text-decoration:none!important;font-size:12px;font-weight:950;white-space:nowrap}@media(max-width:370px){.contact-line{grid-template-columns:1fr}.phone-pill{width:max-content}}';
+      st.textContent='.card.formatted-card{padding:14px!important}.card.formatted-card .ct,.card.formatted-card .meta{display:none!important}.card.formatted-card .act{grid-template-columns:1fr 1fr!important}.card.formatted-card .act a.call{display:none!important}.formatted-title{font-size:16px;font-weight:950;line-height:1.25;color:#23160d}.formatted-vehicle{font-size:13px;font-weight:900;margin-top:8px;color:#4b3b2b}.formatted-service{margin-top:10px;padding:8px 10px;border-radius:13px;background:#f3ead8;font-size:12px;font-weight:950;color:#5a4430}.formatted-field{margin-top:8px;font-size:13px;line-height:1.35;color:#4b3b2b}.formatted-field b{color:#23160d}.contact-section{margin-top:12px}.contact-heading{font-size:13px;font-weight:950;color:#9a3a00;margin-bottom:6px}.contact-line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;margin-top:6px;padding:7px 8px;border-radius:12px;background:#fff8e8;border:1px solid #f1e5d1}.contact-line.ambulance-main{background:#fff1ec;border-color:#ffd0c8}.contact-line.ambulance-main .contact-name{color:#b51d18}.contact-name{font-size:13px;font-weight:900;color:#3a2b1d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.phone-pill{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 9px;border-radius:999px;background:#159653;color:#fff!important;text-decoration:none!important;font-size:12px;font-weight:950;white-space:nowrap}@media(max-width:370px){.contact-line{grid-template-columns:1fr}.phone-pill{width:max-content}}';
       doc.head.appendChild(st);
     }
 
@@ -93,15 +93,15 @@
         var nums=part.match(phoneRe)||[];
         var name=part.replace(phoneRe,'').replace(/[()]/g,'').replace(/\s+/g,' ').replace(/[,:;—-]+$/,'').trim();
         if(!name && nums.length) name='संपर्क';
-        return {name:name,phone:nums[0]||''};
+        return {name:name,phone:nums[0]||'',cls:''};
       }).filter(Boolean);
     }
 
-    function contactSection(title, value){
-      var contacts=splitContacts(value);
+    function contactSection(title, value, extraContacts){
+      var contacts=(extraContacts||[]).concat(splitContacts(value));
       if(!contacts.length) return '';
       return '<div class="contact-section"><div class="contact-heading">'+escHtml(title)+'</div>'+contacts.map(function(c){
-        return '<div class="contact-line"><span class="contact-name">'+escHtml(c.name)+'</span>'+(c.phone?makePhoneLink(c.phone):'')+'</div>';
+        return '<div class="contact-line '+escHtml(c.cls||'')+'"><span class="contact-name">'+escHtml(c.name)+'</span>'+(c.phone?makePhoneLink(c.phone):'')+'</div>';
       }).join('')+'</div>';
     }
 
@@ -109,6 +109,14 @@
       if(text.indexOf('तुकाराम')>-1) return 'जगद्गुरू श्री संत तुकाराम महाराज';
       if(text.indexOf('ज्ञानेश्वर')>-1) return 'श्री संत ज्ञानेश्वर महाराज';
       return text;
+    }
+
+    function ambulancePhoneFromActions(act){
+      var a=act?act.querySelector('a.call'):null;
+      if(!a) return '';
+      var href=a.getAttribute('href')||'';
+      var n=href.replace(/^tel:/,'').trim();
+      return n.replace(/^\+91(?=[6-9]\d{9}$)/,'');
     }
 
     function formatHelpCards(doc){
@@ -138,6 +146,8 @@
         var ready=badges[1]||'';
         var mems=badges[2]||'';
         var serviceLine=[palkhi,ready,mems?('('+mems+')'):''].filter(Boolean).join(' – ');
+        var ambulancePhone=ambulancePhoneFromActions(act);
+        var ambulanceContact=ambulancePhone?[{name:'रुग्णवाहिका संपर्क',phone:ambulancePhone,cls:'ambulance-main'}]:[];
         var html='';
         html+='<div class="formatted-title">'+escHtml(serviceType+' – '+baseTitle)+'</div>';
         if(lines['वाहन क्रमांक']) html+='<div class="formatted-vehicle"><b>वाहन क्रमांक:</b> '+escHtml(lines['वाहन क्रमांक'])+'</div>';
@@ -145,7 +155,7 @@
         if(lines['ठिकाण']) html+='<div class="formatted-field"><b>ठिकाण:</b> '+escHtml(lines['ठिकाण'])+'</div>';
         if(lines['बेस']) html+='<div class="formatted-field"><b>बेस:</b> '+escHtml(lines['बेस'])+'</div>';
         html+=contactSection('डॉक्टर / EMSO', lines['डॉक्टर/EMSO']||'');
-        html+=contactSection('पायलट / EA', lines['पायलट/EA']||'');
+        html+=contactSection('पायलट / EA / रुग्णवाहिका संपर्क', lines['पायलट/EA']||'', ambulanceContact);
         if(lines['तारीख']) html+='<div class="formatted-field"><b>तारीख:</b> '+escHtml(lines['तारीख'])+'</div>';
         if(lines['टप्पा']) html+='<div class="formatted-field"><b>टप्पा:</b> '+escHtml(lines['टप्पा'])+'</div>';
         var wrap=doc.createElement('div');
