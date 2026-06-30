@@ -60,6 +60,48 @@
           .replace(/Google Map/g,'मोठा नकाशा');
       }
     }
+
+    function telHref(raw){
+      var s=(raw||'').replace(/[^0-9+]/g,'');
+      if(s.indexOf('+')===0) return s;
+      if(s.length===10 && /^[6-9]/.test(s)) return '+91'+s;
+      return s;
+    }
+
+    function addPhoneLinkStyle(doc){
+      if(doc.getElementById('wariPhoneLinkStyle')) return;
+      var st=doc.createElement('style');
+      st.id='wariPhoneLinkStyle';
+      st.textContent='.meta .phone-pill{display:inline-flex;align-items:center;gap:4px;margin:2px 3px;padding:3px 8px;border-radius:999px;background:#159653;color:#fff!important;text-decoration:none!important;font-weight:950;white-space:nowrap}.meta div{margin-top:3px}.meta b{color:#3a2b1d}';
+      doc.head.appendChild(st);
+    }
+
+    function linkifyHelpCardPhones(doc){
+      if(!doc || !doc.body) return;
+      addPhoneLinkStyle(doc);
+      var re=/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g;
+      doc.querySelectorAll('.card .meta div').forEach(function(el){
+        if(el.dataset.phoneLinked==='yes') return;
+        if(el.innerHTML.indexOf('phone-pill')>-1){el.dataset.phoneLinked='yes';return;}
+        el.innerHTML=el.innerHTML.replace(re,function(m){
+          return '<a class="phone-pill" href="tel:'+telHref(m)+'">📞 '+m.trim()+'</a>';
+        });
+        el.dataset.phoneLinked='yes';
+      });
+    }
+
+    function installPhoneLinkObserver(doc){
+      if(!doc || !doc.body || doc.body.dataset.phoneLinksReady==='yes') return;
+      doc.body.dataset.phoneLinksReady='yes';
+      linkifyHelpCardPhones(doc);
+      var pending=false;
+      new MutationObserver(function(){
+        if(pending) return;
+        pending=true;
+        setTimeout(function(){pending=false;linkifyHelpCardPhones(doc);},60);
+      }).observe(doc.body,{childList:true,subtree:true});
+    }
+
     function expandMapByDefault(frame, doc){
       if(!doc || !doc.body) return;
       var page=doc.getElementById('page');
@@ -75,6 +117,8 @@
           var doc=frame.contentDocument || frame.contentWindow.document;
           cleanAppText(doc);
           expandMapByDefault(frame, doc);
+          installPhoneLinkObserver(doc);
+          linkifyHelpCardPhones(doc);
           var help=doc.querySelector('.helpline');
           if(!help || help.dataset.autoCloseReady==='yes') return;
           help.dataset.autoCloseReady='yes';
@@ -93,10 +137,12 @@
         var doc=frame.contentDocument || frame.contentWindow.document;
         cleanAppText(doc);
         expandMapByDefault(frame, doc);
+        installPhoneLinkObserver(doc);
+        linkifyHelpCardPhones(doc);
         var help=doc.querySelector('.helpline');
         if(help) help.open=false;
         if(typeof frame.contentWindow[fn]==='function') frame.contentWindow[fn]();
-        setTimeout(function(){cleanAppText(doc);expandMapByDefault(frame, doc);},100);
+        setTimeout(function(){cleanAppText(doc);expandMapByDefault(frame, doc);linkifyHelpCardPhones(doc);},100);
         frame.focus();
       }catch(e){console.warn('Unable to call app function', e);}
     }
