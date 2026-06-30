@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>वारी सहाय्य</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <meta name="theme-color" content="#f27405" />
   <style>
     :root{--orange:#f27405;--cream:#f3ead8;--ink:#23160d;--muted:#806f5a;--line:#eee2cf;--shadow:0 22px 55px rgba(42,24,8,.18)}
     *{box-sizing:border-box}
@@ -259,6 +261,23 @@
         frame.focus();
       }catch(e){console.warn('Unable to call app function', e);}
     }
+
+    function registerOfflineSupport(){
+      if(!('serviceWorker' in navigator)) return;
+      window.addEventListener('load', function(){
+        navigator.serviceWorker.register('./sw.js').then(function(reg){
+          function syncNow(){
+            if(reg.update) reg.update();
+            if(navigator.serviceWorker.controller){
+              navigator.serviceWorker.controller.postMessage({type:'SYNC_NOW'});
+            }
+          }
+          if(navigator.onLine) syncNow();
+          window.addEventListener('online', syncNow);
+        }).catch(function(e){console.warn('Offline support not installed', e);});
+      });
+    }
+    registerOfflineSupport();
   </script>
 </body>
 </html>
