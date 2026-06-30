@@ -60,12 +60,21 @@
           .replace(/Google Map/g,'मोठा नकाशा');
       }
     }
+    function expandMapByDefault(frame, doc){
+      if(!doc || !doc.body) return;
+      var page=doc.getElementById('page');
+      if(page && !page.classList.contains('map-open')) page.classList.add('map-open');
+      try{
+        if(frame && frame.contentWindow && typeof frame.contentWindow.refresh==='function') frame.contentWindow.refresh();
+      }catch(e){}
+    }
     function installFrameEnhancements(frame){
       if(!frame) return;
       frame.addEventListener('load', function(){
         try{
           var doc=frame.contentDocument || frame.contentWindow.document;
           cleanAppText(doc);
+          expandMapByDefault(frame, doc);
           var help=doc.querySelector('.helpline');
           if(!help || help.dataset.autoCloseReady==='yes') return;
           help.dataset.autoCloseReady='yes';
@@ -83,10 +92,11 @@
       try{
         var doc=frame.contentDocument || frame.contentWindow.document;
         cleanAppText(doc);
+        expandMapByDefault(frame, doc);
         var help=doc.querySelector('.helpline');
         if(help) help.open=false;
         if(typeof frame.contentWindow[fn]==='function') frame.contentWindow[fn]();
-        setTimeout(function(){cleanAppText(doc);},100);
+        setTimeout(function(){cleanAppText(doc);expandMapByDefault(frame, doc);},100);
         frame.focus();
       }catch(e){console.warn('Unable to call app function', e);}
     }
