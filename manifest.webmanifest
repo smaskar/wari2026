@@ -1,0 +1,12 @@
+{
+  "name": "वारी सहाय्य",
+  "short_name": "वारी सहाय्य",
+  "description": "वारी मार्गावरील रुग्णवाहिका, डॉक्टर, रुग्णालय आणि मुक्काम मदत केंद्रे.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff8e8",
+  "theme_color": "#f27405",
+  "lang": "mr-IN",
+  "orientation": "portrait-primary"
+}
