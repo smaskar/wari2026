@@ -68,14 +68,6 @@
       return s;
     }
 
-    function addPhoneLinkStyle(doc){
-      if(doc.getElementById('wariPhoneLinkStyle')) return;
-      var st=doc.createElement('style');
-      st.id='wariPhoneLinkStyle';
-      st.textContent='.meta .phone-pill{display:inline-flex;align-items:center;justify-content:center;gap:4px;margin:0;padding:4px 9px;border-radius:999px;background:#159653;color:#fff!important;text-decoration:none!important;font-weight:950;white-space:nowrap;font-size:12px}.meta div{margin-top:3px}.meta b{color:#3a2b1d}.meta .contact-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px;align-items:center;margin-top:5px;line-height:1.25}.meta .contact-label{font-weight:950;color:#3a2b1d;white-space:nowrap}.meta .contact-name{font-weight:850;color:#4b3b2b;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.meta .contact-spacer{width:0}@media(max-width:390px){.meta .contact-row{grid-template-columns:1fr auto}.meta .contact-label{grid-column:1/-1}.meta .contact-spacer{display:none}}';
-      doc.head.appendChild(st);
-    }
-
     function escHtml(s){
       return (s||'').toString().replace(/[&<>\"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[ch]||ch;});
     }
@@ -85,50 +77,95 @@
       return '<a class="phone-pill" href="tel:'+telHref(clean)+'">📞 '+escHtml(clean)+'</a>';
     }
 
-    function formatContactField(label, value){
-      var phoneRe=/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g;
-      var parts=(value||'').split(/\s*;\s*/).map(function(x){return x.trim();}).filter(Boolean);
-      if(!parts.length) return '';
-      return parts.map(function(part,idx){
-        var nums=part.match(phoneRe)||[];
-        var name=part.replace(phoneRe,'').replace(/[()]/g,'').replace(/\s+/g,' ').replace(/[,:;-]+$/,'').trim();
-        if(!name && nums.length) name='संपर्क';
-        var labelHtml=idx===0?'<span class="contact-label">'+escHtml(label)+'</span>':'<span class="contact-spacer"></span>';
-        var phoneHtml=nums.length?makePhoneLink(nums[0]):'<span></span>';
-        return '<div class="contact-row">'+labelHtml+'<span class="contact-name">'+escHtml(name)+'</span>'+phoneHtml+'</div>';
-      }).join('');
+    function addCardFormatStyle(doc){
+      if(doc.getElementById('wariCardFormatStyle')) return;
+      var st=doc.createElement('style');
+      st.id='wariCardFormatStyle';
+      st.textContent='.card.formatted-card{padding:14px!important}.card.formatted-card .ct,.card.formatted-card .meta{display:none!important}.formatted-title{font-size:16px;font-weight:950;line-height:1.25;color:#23160d}.formatted-vehicle{font-size:13px;font-weight:900;margin-top:8px;color:#4b3b2b}.formatted-service{margin-top:10px;padding:8px 10px;border-radius:13px;background:#f3ead8;font-size:12px;font-weight:950;color:#5a4430}.formatted-field{margin-top:8px;font-size:13px;line-height:1.35;color:#4b3b2b}.formatted-field b{color:#23160d}.contact-section{margin-top:12px}.contact-heading{font-size:13px;font-weight:950;color:#9a3a00;margin-bottom:6px}.contact-line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;margin-top:6px;padding:7px 8px;border-radius:12px;background:#fff8e8;border:1px solid #f1e5d1}.contact-name{font-size:13px;font-weight:900;color:#3a2b1d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.phone-pill{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 9px;border-radius:999px;background:#159653;color:#fff!important;text-decoration:none!important;font-size:12px;font-weight:950;white-space:nowrap}@media(max-width:370px){.contact-line{grid-template-columns:1fr}.phone-pill{width:max-content}}';
+      doc.head.appendChild(st);
     }
 
-    function linkifyHelpCardPhones(doc){
+    function splitContacts(value){
+      var phoneRe=/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g;
+      return (value||'').split(/\s*;\s*/).map(function(part){
+        part=part.trim();
+        if(!part) return null;
+        var nums=part.match(phoneRe)||[];
+        var name=part.replace(phoneRe,'').replace(/[()]/g,'').replace(/\s+/g,' ').replace(/[,:;—-]+$/,'').trim();
+        if(!name && nums.length) name='संपर्क';
+        return {name:name,phone:nums[0]||''};
+      }).filter(Boolean);
+    }
+
+    function contactSection(title, value){
+      var contacts=splitContacts(value);
+      if(!contacts.length) return '';
+      return '<div class="contact-section"><div class="contact-heading">'+escHtml(title)+'</div>'+contacts.map(function(c){
+        return '<div class="contact-line"><span class="contact-name">'+escHtml(c.name)+'</span>'+(c.phone?makePhoneLink(c.phone):'')+'</div>';
+      }).join('')+'</div>';
+    }
+
+    function serviceNameFromBadge(text){
+      if(text.indexOf('तुकाराम')>-1) return 'जगद्गुरू श्री संत तुकाराम महाराज';
+      if(text.indexOf('ज्ञानेश्वर')>-1) return 'श्री संत ज्ञानेश्वर महाराज';
+      return text;
+    }
+
+    function formatHelpCards(doc){
       if(!doc || !doc.body) return;
-      addPhoneLinkStyle(doc);
-      var re=/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g;
-      doc.querySelectorAll('.card .meta div').forEach(function(el){
-        if(el.dataset.phoneLinked==='yes') return;
-        if(el.innerHTML.indexOf('phone-pill')>-1 || el.innerHTML.indexOf('contact-row')>-1){el.dataset.phoneLinked='yes';return;}
-        var b=el.querySelector('b');
-        var label=b?b.textContent.trim():'';
-        var raw=el.textContent.replace(label,'').trim();
-        if(label && /डॉक्टर|EMSO|पायलट|EA/i.test(label) && re.test(raw)){
-          re.lastIndex=0;
-          el.innerHTML=formatContactField(label, raw);
-        }else{
-          re.lastIndex=0;
-          el.innerHTML=el.innerHTML.replace(re,function(m){return makePhoneLink(m);});
-        }
-        el.dataset.phoneLinked='yes';
+      addCardFormatStyle(doc);
+      doc.querySelectorAll('.card').forEach(function(card){
+        if(card.dataset.prettyFormatted==='yes') return;
+        var titleNode=card.querySelector('.ttl');
+        var meta=card.querySelector('.meta');
+        var act=card.querySelector('.act');
+        if(!titleNode || !meta || !act) return;
+        var clone=titleNode.cloneNode(true);
+        var badges=Array.from(clone.querySelectorAll('.badge')).map(function(b){return b.textContent.trim();}).filter(Boolean);
+        clone.querySelectorAll('.badges').forEach(function(x){x.remove();});
+        var baseTitle=clone.textContent.trim().replace(/\s+/g,' ');
+        var typeIcon=(card.querySelector('.ico')||{}).textContent||'';
+        var serviceType=typeIcon.indexOf('🚑')>-1?'रुग्णवाहिका सेवा':typeIcon.indexOf('🏥')>-1?'रुग्णालय सेवा':typeIcon.indexOf('🩺')>-1?'डॉक्टर / आरोग्य सेवा':typeIcon.indexOf('⛺')>-1?'मुक्काम सेवा':'मदत केंद्र';
+        var lines={};
+        meta.querySelectorAll('div').forEach(function(d){
+          var b=d.querySelector('b');
+          if(!b) return;
+          var label=b.textContent.trim().replace(/:$/,'');
+          var value=d.textContent.replace(b.textContent,'').trim();
+          lines[label]=value;
+        });
+        var palkhi=serviceNameFromBadge(badges[0]||'');
+        var ready=badges[1]||'';
+        var mems=badges[2]||'';
+        var serviceLine=[palkhi,ready,mems?('('+mems+')'):''].filter(Boolean).join(' – ');
+        var html='';
+        html+='<div class="formatted-title">'+escHtml(serviceType+' – '+baseTitle)+'</div>';
+        if(lines['वाहन क्रमांक']) html+='<div class="formatted-vehicle"><b>वाहन क्रमांक:</b> '+escHtml(lines['वाहन क्रमांक'])+'</div>';
+        if(serviceLine) html+='<div class="formatted-service"><b>सेवा:</b> '+escHtml(serviceLine)+'</div>';
+        if(lines['ठिकाण']) html+='<div class="formatted-field"><b>ठिकाण:</b> '+escHtml(lines['ठिकाण'])+'</div>';
+        if(lines['बेस']) html+='<div class="formatted-field"><b>बेस:</b> '+escHtml(lines['बेस'])+'</div>';
+        html+=contactSection('डॉक्टर / EMSO', lines['डॉक्टर/EMSO']||'');
+        html+=contactSection('पायलट / EA', lines['पायलट/EA']||'');
+        if(lines['तारीख']) html+='<div class="formatted-field"><b>तारीख:</b> '+escHtml(lines['तारीख'])+'</div>';
+        if(lines['टप्पा']) html+='<div class="formatted-field"><b>टप्पा:</b> '+escHtml(lines['टप्पा'])+'</div>';
+        var wrap=doc.createElement('div');
+        wrap.className='formatted-body';
+        wrap.innerHTML=html;
+        card.insertBefore(wrap,act);
+        card.classList.add('formatted-card');
+        card.dataset.prettyFormatted='yes';
       });
     }
 
-    function installPhoneLinkObserver(doc){
-      if(!doc || !doc.body || doc.body.dataset.phoneLinksReady==='yes') return;
-      doc.body.dataset.phoneLinksReady='yes';
-      linkifyHelpCardPhones(doc);
+    function installCardFormatObserver(doc){
+      if(!doc || !doc.body || doc.body.dataset.cardFormatReady==='yes') return;
+      doc.body.dataset.cardFormatReady='yes';
+      formatHelpCards(doc);
       var pending=false;
       new MutationObserver(function(){
         if(pending) return;
         pending=true;
-        setTimeout(function(){pending=false;linkifyHelpCardPhones(doc);},60);
+        setTimeout(function(){pending=false;formatHelpCards(doc);},80);
       }).observe(doc.body,{childList:true,subtree:true});
     }
 
@@ -147,8 +184,8 @@
           var doc=frame.contentDocument || frame.contentWindow.document;
           cleanAppText(doc);
           expandMapByDefault(frame, doc);
-          installPhoneLinkObserver(doc);
-          linkifyHelpCardPhones(doc);
+          installCardFormatObserver(doc);
+          formatHelpCards(doc);
           var help=doc.querySelector('.helpline');
           if(!help || help.dataset.autoCloseReady==='yes') return;
           help.dataset.autoCloseReady='yes';
@@ -167,12 +204,12 @@
         var doc=frame.contentDocument || frame.contentWindow.document;
         cleanAppText(doc);
         expandMapByDefault(frame, doc);
-        installPhoneLinkObserver(doc);
-        linkifyHelpCardPhones(doc);
+        installCardFormatObserver(doc);
+        formatHelpCards(doc);
         var help=doc.querySelector('.helpline');
         if(help) help.open=false;
         if(typeof frame.contentWindow[fn]==='function') frame.contentWindow[fn]();
-        setTimeout(function(){cleanAppText(doc);expandMapByDefault(frame, doc);linkifyHelpCardPhones(doc);},100);
+        setTimeout(function(){cleanAppText(doc);expandMapByDefault(frame, doc);formatHelpCards(doc);},120);
         frame.focus();
       }catch(e){console.warn('Unable to call app function', e);}
     }
