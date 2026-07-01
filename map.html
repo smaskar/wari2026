@@ -57,7 +57,7 @@
         </div>
       </div>
     </div>
-    <div class="legend"><span>🚑 रुग्णवाहिका</span><span>🩺 डॉक्टर/PHC</span><span>🏥 रुग्णालय</span><span>⛺ मुक्काम</span><span>🤱 हिरकणी कक्ष</span><span>🟧 ज्ञानेश्वर पुणे मार्ग</span><span>📍 माझे स्थान</span></div>
+    <div class="legend"><button class="legend-btn" data-filter="all" onclick="setType('all')">🗺 सर्व</button><button class="legend-btn" data-filter="ambulance" onclick="setType('ambulance')">🚑 रुग्णवाहिका</button><button class="legend-btn" data-filter="doctors" onclick="setType('doctors')">🩺 डॉक्टर</button><button class="legend-btn" data-filter="health" onclick="setType('health')">🏥 आरोग्य</button><button class="legend-btn" data-filter="halt" onclick="setType('halt')">⛺ मुक्काम</button><button class="legend-btn" data-filter="hirkani" onclick="setType('hirkani')">🤱 हिरकणी</button><button class="legend-btn loc-btn" onclick="locateMe()">📍 माझे स्थान</button></div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="./wari-points-1.js"></script>
