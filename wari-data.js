@@ -15,9 +15,9 @@ window.WariData=(function(){
   function isRuralHospital(p){var t=p.type||'';return /rural/i.test(t)&&/hospital/i.test(t)}
   function isHBT(p){return p.type==='HBT'}
   function isPrivateHospital(p){return p.type==='Hospital'}
-  function hasDoctor(p){return !!(p.doctor&&p.doctor.trim())}
-  function isMO(p){return hasDoctor(p)&&(isPHC(p)||isRuralHospital(p)||isHBT(p))}
-  function isEMS(p){return hasDoctor(p)&&hasAmb(p)&&!isMO(p)}
+  function isMO(p){return isPHC(p)||isRuralHospital(p)||isHBT(p)}
+  function isEMS(p){return hasAmb(p)&&!isMO(p)}
+  function hasDoctor(p){return isMO(p)||isEMS(p)}
   function isALS(p){return hasAmb(p)&&/\bALS\b/i.test(p.mems||'')}
   function isBLS(p){return hasAmb(p)&&/\bBLS\b/i.test(p.mems||'')}
   function is102(p){return hasAmb(p)&&/102/.test([p.mems,p.type,p.label].join(' '))}
