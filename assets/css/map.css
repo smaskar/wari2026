@@ -11,3 +11,5 @@
 .pin.hirkani{background:#e5399b}
 @media(max-width:700px){.panel{max-width:none}}
 .pop-thumb{width:100%;max-width:230px;border-radius:9px;display:block;margin:6px 0 4px}
+.docsub{margin-top:7px;padding:7px 9px;background:#eef8f0;border:1px solid #cfe9d6;border-radius:12px;align-items:center}
+.docsub-label{font-weight:900;font-size:12px;color:#2b6b45;margin-right:2px}

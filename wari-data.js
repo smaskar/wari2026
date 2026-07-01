@@ -11,6 +11,13 @@ window.WariData=(function(){
   function hasWater(p){return /water|पाणी/i.test([p.type,p.label].join(' '))}
   function hasHirkani(p){return /hirkani|हिरकणी/i.test([p.type,p.label,p.mems].join(' '))}
   function isSatara(p){return /satara|lonand|tardgaon|taradgaon|phaltan|barad|khandala|dahiwadi|koregaon|sakharwadi|girvi|rajale/i.test([p.mems,p.phase,p.place,p.base,p.label].join(' '))}
+  function isPHC(p){return p.type==='PHC'}
+  function isRuralHospital(p){return /rural hospital/i.test(p.type||'')}
+  function isHBT(p){return p.type==='HBT'}
+  function isPrivateHospital(p){return p.type==='Hospital'}
+  function hasDoctor(p){return !!(p.doctor&&p.doctor.trim())}
+  function isMO(p){return hasDoctor(p)&&(isPHC(p)||isRuralHospital(p)||isHBT(p))}
+  function isEMS(p){return hasDoctor(p)&&hasAmb(p)&&!isMO(p)}
   function cls(p){return hasHirkani(p)?'hirkani':hasAmb(p)?'ambulance':hasHealth(p)?'health':isHalt(p)?'halt':hasWater(p)?'water':'other'}
   function icon(p){return hasHirkani(p)?'🤱':hasAmb(p)?'🚑':isHalt(p)?'⛺':hasHospital(p)?'🏥':hasDoc(p)?'🩺':hasWater(p)?'💧':'📍'}
   function esc(s){return(s||'').toString().replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]))}
@@ -30,5 +37,5 @@ window.WariData=(function(){
     pts=pts.filter(p=>{let key=[p.palkhi,p.type,p.label,p.place,p.vehicle,p.lat.toFixed(5),p.lng.toFixed(5)].join('|').toLowerCase();if(seen.has(key))return false;seen.add(key);return true});
     return pts;
   }
-  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,cls,icon,esc,tel,countContacts,uniqueCount};
+  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,cls,icon,esc,tel,countContacts,uniqueCount};
 })();

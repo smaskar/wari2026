@@ -10,3 +10,5 @@
 .hk-vid{display:inline-flex;align-items:center;gap:6px;background:#fce4f1;color:#a01463;font-weight:800;padding:8px 12px;border-radius:11px;text-decoration:none;font-size:14px}
 .pop-vid{display:inline-block;margin-top:4px;color:#a01463;font-weight:800;text-decoration:none}
 .pop-thumb{width:100%;max-width:220px;border-radius:9px;display:block;margin:6px 0 4px}
+.docsub{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:10px;padding:9px 11px;background:#eef8f0;border:1px solid #cfe9d6;border-radius:14px}
+.docsub-label{font-weight:900;font-size:13px;color:#2b6b45;margin-right:2px}
