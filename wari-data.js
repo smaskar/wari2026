@@ -18,6 +18,10 @@ window.WariData=(function(){
   function hasDoctor(p){return !!(p.doctor&&p.doctor.trim())}
   function isMO(p){return hasDoctor(p)&&(isPHC(p)||isRuralHospital(p)||isHBT(p))}
   function isEMS(p){return hasDoctor(p)&&hasAmb(p)&&!isMO(p)}
+  function isALS(p){return hasAmb(p)&&/\bALS\b/i.test(p.mems||'')}
+  function isBLS(p){return hasAmb(p)&&/\bBLS\b/i.test(p.mems||'')}
+  function is102(p){return hasAmb(p)&&/102/.test([p.mems,p.type,p.label].join(' '))}
+  function is108(p){return hasAmb(p)&&/108/.test([p.mems,p.type,p.label].join(' '))}
   function cls(p){return hasHirkani(p)?'hirkani':hasAmb(p)?'ambulance':hasHealth(p)?'health':isHalt(p)?'halt':hasWater(p)?'water':'other'}
   function icon(p){return hasHirkani(p)?'🤱':hasAmb(p)?'🚑':isHalt(p)?'⛺':hasHospital(p)?'🏥':hasDoc(p)?'🩺':hasWater(p)?'💧':'📍'}
   function esc(s){return(s||'').toString().replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]))}
@@ -37,5 +41,5 @@ window.WariData=(function(){
     pts=pts.filter(p=>{let key=[p.palkhi,p.type,p.label,p.place,p.vehicle,p.lat.toFixed(5),p.lng.toFixed(5)].join('|').toLowerCase();if(seen.has(key))return false;seen.add(key);return true});
     return pts;
   }
-  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,cls,icon,esc,tel,countContacts,uniqueCount};
+  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,esc,tel,countContacts,uniqueCount};
 })();
