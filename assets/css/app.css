@@ -21,3 +21,15 @@
 .live-note{font-size:11px;color:#8a7a66;margin-top:4px}
 .pin.has-live{position:relative}
 .pin.has-live::after{content:"";position:absolute;top:-1px;right:-1px;width:9px;height:9px;border-radius:50%;background:#e50914;border:2px solid #fff}
+/* compact popup + multi-service pin highlight */
+.pop{font-size:13px;line-height:1.35}
+.pop .ptitle{font-weight:700;font-size:14px;margin-bottom:1px}
+.pop .psub{color:#667085;font-size:11px;margin-bottom:5px}
+.pchips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:5px}
+.pchip{background:#f0f2f5;border:1px solid #dfe3e8;border-radius:10px;padding:1px 7px;font-size:11px;white-space:nowrap}
+.pdet{color:#333;font-size:12px;margin:4px 0}
+.pop-thumb{max-width:100%;border-radius:6px;margin:4px 0;display:block}
+.pact{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pbtn{display:inline-block;padding:4px 10px;border-radius:8px;background:#eef1f4;color:#111;text-decoration:none;font-size:12px;font-weight:600}
+.pbtn.call{background:#0a7d2c;color:#fff}
+.pin.multi{box-shadow:0 0 0 2px #fff,0 0 0 4px #f27405}

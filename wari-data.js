@@ -1,6 +1,6 @@
 window.WariData=(function(){
   const RE_PHONE=/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g;
-  const NAMES={all:'दोन्ही पालख्या',dnyaneshwar:'श्री संत ज्ञानेश्वर महाराज',tukaram:'जगद्गुरू श्री संत तुकाराम महाराज'};
+  const NAMES={all:'दोन्ही पालख्या',both:'दोन्ही पालख्या',dnyaneshwar:'श्री संत ज्ञानेश्वर महाराज',tukaram:'जगद्गुरू श्री संत तुकाराम महाराज'};
   function cleanVeh(v){v=(v||'').trim();return /\d{3,4}/.test(v)?v:''}
   function norm(x,def){return{palkhi:x.p||x.palkhi||def||'dnyaneshwar',type:x.type||x.t||'',label:x.label||x.l||'',place:x.place||x.pl||'',base:x.base||x.b||'',vehicle:cleanVeh(x.vehicle||x.v||''),mems:x.mems||x.m||'',call:x.call||x.c||'',doctor:x.doctor||x.d||'',pilot:x.pilot||x.pi||'',mo:x.mo||'',live:x.live||'',toilet:x.toilet||'',lat:+x.lat,lng:+x.lng,ready:x.ready||x.r||'',date:x.date||x.dt||'',phase:x.phase||x.ph||''}}
   function txt(p){return[p.type,p.label,p.place,p.base,p.mems,p.phase].join(' ').toLowerCase()}
@@ -24,6 +24,19 @@ window.WariData=(function(){
   function is102(p){return hasAmb(p)&&/102|१०२/.test([p.mems,p.type,p.label].join(' '))}
   function is108(p){return hasAmb(p)&&/108|१०८/.test([p.mems,p.type,p.label].join(' '))}
   function cls(p){return hasHirkani(p)?'hirkani':isHalt(p)?'halt':hasHealth(p)?'health':hasAmb(p)?'ambulance':hasWater(p)?'water':'other'}
+  function services(p){var s=[];
+    if(isRuralHospital(p))s.push('🏥 ग्रामीण रुग्णालय');
+    if(isPHC(p))s.push('🩺 प्रा. आ. केंद्र');
+    if(isHBT(p))s.push('🏩 HBT दवाखाना');
+    if(isPrivateHospital(p))s.push('🏨 खाजगी रुग्णालय');
+    if(hasAmb(p)){if(is108(p))s.push('🚑 १०८');if(is102(p))s.push('🚑 १०२');if(isALS(p))s.push('🚑 ALS');if(isBLS(p))s.push('🚑 BLS');if(!is108(p)&&!is102(p)&&!isALS(p)&&!isBLS(p))s.push('🚑 रुग्णवाहिका');}
+    if(hasHirkani(p))s.push('🤱 हिरकणी कक्ष');
+    if(isHalt(p))s.push('⛺ मुक्काम');
+    if(hasWater(p))s.push('💧 पाणी टँकर');
+    if(p.toilet)s.push('🚻 शौचालये: '+p.toilet);
+    if(p.mo)s.push('🧑‍⚕️ वैद्यकीय अधिकारी');
+    return s;}
+  function multi(p){return services(p).filter(x=>!/शौचालये|वैद्यकीय अधिकारी/.test(x)).length>1}
   function icon(p){return hasHirkani(p)?'🤱':isHalt(p)?'⛺':hasHospital(p)?'🏥':hasDoc(p)?'🩺':hasAmb(p)?'🚑':hasWater(p)?'💧':'📍'}
   function esc(s){return(s||'').toString().replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]))}
   function tel(s){return(s||'').replace(/[^0-9+]/g,'')}
@@ -56,5 +69,5 @@ window.WariData=(function(){
     pts=pts.filter((p,i)=>vkeep[i]);
     return pts;
   }
-  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,esc,tel,countContacts,uniqueCount};
+  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,services,multi,esc,tel,countContacts,uniqueCount};
 })();
