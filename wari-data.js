@@ -1,7 +1,8 @@
 window.WariData=(function(){
   const RE_PHONE=/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g;
   const NAMES={all:'दोन्ही पालख्या',dnyaneshwar:'श्री संत ज्ञानेश्वर महाराज',tukaram:'जगद्गुरू श्री संत तुकाराम महाराज'};
-  function norm(x,def){return{palkhi:x.p||x.palkhi||def||'dnyaneshwar',type:x.type||x.t||'',label:x.label||x.l||'',place:x.place||x.pl||'',base:x.base||x.b||'',vehicle:x.vehicle||x.v||'',mems:x.mems||x.m||'',call:x.call||x.c||'',doctor:x.doctor||x.d||'',pilot:x.pilot||x.pi||'',mo:x.mo||'',live:x.live||'',toilet:x.toilet||'',lat:+x.lat,lng:+x.lng,ready:x.ready||x.r||'',date:x.date||x.dt||'',phase:x.phase||x.ph||''}}
+  function cleanVeh(v){v=(v||'').trim();return /\d{3,4}/.test(v)?v:''}
+  function norm(x,def){return{palkhi:x.p||x.palkhi||def||'dnyaneshwar',type:x.type||x.t||'',label:x.label||x.l||'',place:x.place||x.pl||'',base:x.base||x.b||'',vehicle:cleanVeh(x.vehicle||x.v||''),mems:x.mems||x.m||'',call:x.call||x.c||'',doctor:x.doctor||x.d||'',pilot:x.pilot||x.pi||'',mo:x.mo||'',live:x.live||'',toilet:x.toilet||'',lat:+x.lat,lng:+x.lng,ready:x.ready||x.r||'',date:x.date||x.dt||'',phase:x.phase||x.ph||''}}
   function txt(p){return[p.type,p.label,p.place,p.base,p.mems,p.phase].join(' ').toLowerCase()}
   function isHalt(p){return /halt|mukkam|मुक्काम/i.test(p.type||'')}
   function hasAmb(p){return /ambulance|102|108|रुग्णवाहिका/i.test([p.type,p.label,p.mems].join(' '))||/\b[A-Z]{2}\s*\d{1,2}\s*[A-Z]{1,3}\s*\d{3,4}\b/i.test(p.vehicle||'')}
@@ -42,6 +43,11 @@ window.WariData=(function(){
       .filter(p=>isFinite(p.lat)&&isFinite(p.lng));
     let seen=new Set();
     pts=pts.filter(p=>{let key=[p.palkhi,p.type,p.label,p.place,p.vehicle,p.lat.toFixed(5),p.lng.toFixed(5)].join('|').toLowerCase();if(seen.has(key))return false;seen.add(key);return true});
+    // drop uncallable ambulance markers (no vehicle number AND no phone)
+    pts=pts.filter(p=>!(/रुग्णवाहिका सेवा/.test(p.label)&&!p.vehicle&&!p.call));
+    // one pin per ambulance: collapse repeated route-waypoints of the same vehicle (per palkhi)
+    let vseen=new Set();
+    pts=pts.filter(p=>{if(!hasAmb(p)||!p.vehicle)return true;let vk=p.palkhi+'|'+p.vehicle.replace(/[\s-]/g,'').toUpperCase();if(vseen.has(vk))return false;vseen.add(vk);return true});
     return pts;
   }
   return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,esc,tel,countContacts,uniqueCount};
