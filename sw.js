@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'wari2026-v51';
+const CACHE_VERSION = 'wari2026-v52';
 const APP_SHELL = [
   './',
   './index.html',
@@ -75,7 +75,7 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return;
   const url = new URL(request.url);
   if (request.mode === 'navigate') { event.respondWith(networkFirst(request)); return; }
-  if (url.origin === location.origin && isDataOrAppRequest(url)) { event.respondWith(staleWhileRevalidate(request)); return; }
+  if (url.origin === location.origin && isDataOrAppRequest(url)) { event.respondWith(networkFirst(request)); return; }
   if (url.hostname === 'unpkg.com') { event.respondWith(staleWhileRevalidate(request)); return; }
   if (url.hostname.includes('tile.openstreetmap.org')) event.respondWith(staleWhileRevalidate(request));
 });
