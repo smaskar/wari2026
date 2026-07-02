@@ -21,8 +21,8 @@ window.WariData=(function(){
   function hasDoctor(p){return isMO(p)||isEMS(p)}
   function isALS(p){return hasAmb(p)&&/\bALS\b/i.test(p.mems||'')}
   function isBLS(p){return hasAmb(p)&&/\bBLS\b/i.test(p.mems||'')}
-  function is102(p){return hasAmb(p)&&/102/.test([p.mems,p.type,p.label].join(' '))}
-  function is108(p){return hasAmb(p)&&/108/.test([p.mems,p.type,p.label].join(' '))}
+  function is102(p){return hasAmb(p)&&/102|१०२/.test([p.mems,p.type,p.label].join(' '))}
+  function is108(p){return hasAmb(p)&&/108|१०८/.test([p.mems,p.type,p.label].join(' '))}
   function cls(p){return hasHirkani(p)?'hirkani':isHalt(p)?'halt':hasHealth(p)?'health':hasAmb(p)?'ambulance':hasWater(p)?'water':'other'}
   function icon(p){return hasHirkani(p)?'🤱':isHalt(p)?'⛺':hasHospital(p)?'🏥':hasDoc(p)?'🩺':hasAmb(p)?'🚑':hasWater(p)?'💧':'📍'}
   function esc(s){return(s||'').toString().replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]))}
