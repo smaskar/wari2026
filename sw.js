@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'wari2026-v69';
+const CACHE_VERSION = 'wari2026-v70';
 const APP_SHELL = [
   './',
   './index.html',
@@ -35,6 +35,7 @@ const APP_SHELL = [
   './wari-points-water-filling.js',
   './wari-points-amb-supplement.js',
   './wari-officials.js',
+  './wari-dignitaries.js',
   './assets/img/hirkani-booth.jpg',
   './assets/img/brand-deity.png',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
