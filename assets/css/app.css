@@ -95,3 +95,5 @@
 .ldr:nth-child(4),.ldr:nth-child(5){grid-column:span 3;flex-direction:row;display:flex;align-items:center;gap:8px;text-align:left;padding:7px 8px}
 .ldr:nth-child(4) img,.ldr:nth-child(5) img{margin:0;width:44px;height:54px;flex:none}
 .ldr:nth-child(4) div,.ldr:nth-child(5) div{min-width:0}
+
+.ldr:nth-child(4),.ldr:nth-child(5){grid-column:span 6}
