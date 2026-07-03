@@ -97,3 +97,10 @@
 .ldr:nth-child(4) div,.ldr:nth-child(5) div{min-width:0}
 
 .ldr:nth-child(4),.ldr:nth-child(5){grid-column:span 6}
+
+/* final: all five ministers in one row */
+.leaders{grid-template-columns:repeat(5,1fr)}
+.ldr{grid-column:auto}
+.ldr:nth-child(4),.ldr:nth-child(5){grid-column:auto;display:block;text-align:center;padding:5px 2px}
+.ldr:nth-child(4) img,.ldr:nth-child(5) img{margin:0 auto 3px;width:100%;max-width:52px;height:56px}
+.ldr:nth-child(4) div,.ldr:nth-child(5) div{min-width:0}
