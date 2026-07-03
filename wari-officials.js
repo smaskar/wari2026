@@ -121,17 +121,21 @@ window.WARI_OFFICIALS = {
       +'<div class="hnum">'+num+'</div></div>';}).join('');}
   function render(){
     var O=window.WARI_OFFICIALS;
-    var el=document.getElementById('officials-body');
+    var ab=document.getElementById('admin-body');
+    var hb=document.getElementById('health-body');
     var pb=document.getElementById('police-body');
+    var el=document.getElementById('officials-body');
+    var adminHtml='<div class="hgrp">🏛 महसूल व सामान्य प्रशासन · Administration</div>'+rows(O.admin)
+      +'<div class="hgrp">📍 तालुका अधिकारी · Taluka Officers</div>'+talukaRows(O.taluka);
+    var healthHtml='<div class="hgrp">🩺 आरोग्य अधिकारी · Health Officers</div>'+rows(O.health)
+      +'<div class="hgrp">🏥 जिल्हा आरोग्य पथक · District Health Team</div>'+rows(O.healthTeam)
+      +'<div class="hgrp">🏢 राज्यस्तरीय वरिष्ठ अधिकारी · State-level</div>'+rows(O.healthState);
     var policeHtml='<div class="hgrp">👮 पोलीस प्रशासन · Police Administration</div>'+rows(O.policeAdmin)
       +'<div class="hgrp">🚔 पोलीस स्टेशन — पालखी मार्ग ड्युटी ('+O.policeStations.length+' स्टेशन) · Police on Palkhi Duty</div>'+stationRows(O.policeStations);
-    if(el) el.innerHTML='<div class="hgrp">🏛 महसूल व सामान्य प्रशासन · Administration</div>'+rows(O.admin)
-      +'<div class="hgrp">🩺 आरोग्य अधिकारी · Health Officers</div>'+rows(O.health)
-      +'<div class="hgrp">🏥 जिल्हा आरोग्य पथक · District Health Team</div>'+rows(O.healthTeam)
-      +'<div class="hgrp">🏢 राज्यस्तरीय वरिष्ठ अधिकारी · State-level</div>'+rows(O.healthState)
-      +'<div class="hgrp">📍 तालुका अधिकारी · Taluka Officers</div>'+talukaRows(O.taluka)
-      +(pb?'':policeHtml);
+    if(ab) ab.innerHTML=adminHtml;
+    if(hb) hb.innerHTML=healthHtml;
     if(pb) pb.innerHTML=policeHtml;
+    if(el&&!ab) el.innerHTML=adminHtml+healthHtml+(pb?'':policeHtml);
   }
   if(document.readyState!=='loading') render(); else document.addEventListener('DOMContentLoaded', render);
 })();
