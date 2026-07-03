@@ -31,16 +31,12 @@
         <div class="chips" id="typeChips">
           <button class="chip active" data-filter="all">सर्व</button>
           <button class="chip" data-filter="ambulance">🚑 रुग्णवाहिका</button>
-          <button class="chip" data-filter="health">🏥 आरोग्य</button>
-          <button class="chip" data-filter="halt">⛺ मुक्काम</button>
-          <button class="chip" data-filter="water">💧 पाणी टँकर</button>
+          <button class="chip" data-filter="doc">🩺 डॉक्टर / दवाखाना</button>
+          <button class="chip" data-filter="water">💧 पाणी</button>
           <button class="chip" data-filter="toilet">🚻 शौचालये</button>
           <button class="chip" data-filter="hirkani">🤱 हिरकणी कक्ष</button>
-          <button class="chip" data-filter="phc">🩺 प्रा. आ. केंद्र</button>
-          <button class="chip" data-filter="ruralhospital">🏥 ग्रामीण रुग्णालय</button>
-          <button class="chip" data-filter="hbt">🏩 HBT दवाखाना</button>
-          <button class="chip" data-filter="doctors">🧑‍⚕️ सर्व डॉक्टर</button>
-          <button class="chip" data-filter="privatehospital">🏨 खाजगी रुग्णालय</button>        </div>
+          <button class="chip" data-filter="halt">⛺ मुक्काम / विसावा</button>
+        </div>
         <div class="chips docsub" id="ambsubChips" style="display:none">
           <span class="docsub-label">रुग्णवाहिका प्रकार:</span>
           <button class="chip active" data-amb="all">सर्व</button>
@@ -50,15 +46,30 @@
           <button class="chip" data-amb="108">१०८</button>
         </div>
         <div class="chips docsub" id="docsubChips" style="display:none">
-          <span class="docsub-label">डॉक्टर प्रकार:</span>
+          <span class="docsub-label">दवाखाना प्रकार:</span>
           <button class="chip active" data-doc="all">सर्व</button>
-          <button class="chip" data-doc="ems">EMS तज्ञ</button>
-          <button class="chip" data-doc="mo">वैद्यकीय अधिकारी (MO)</button>
+          <button class="chip" data-doc="phc">प्रा.आ.केंद्र</button>
+          <button class="chip" data-doc="rh">ग्रामीण/उपजि. रुग्णालय</button>
+          <button class="chip" data-doc="pvt">खाजगी रुग्णालय</button>
+          <button class="chip" data-doc="hbt">HBT</button>
+          <button class="chip" data-doc="icu">⛑ ICU/ट्रॉमा</button>
+        </div>
+        <div class="chips docsub" id="watsubChips" style="display:none">
+          <span class="docsub-label">पाणी प्रकार:</span>
+          <button class="chip active" data-wat="all">सर्व</button>
+          <button class="chip" data-wat="actual">टँकर भरण ठिकाण</button>
+          <button class="chip" data-wat="approx">अंदाजे (दर ५०० मी)</button>
+        </div>
+        <div class="chips docsub" id="haltsubChips" style="display:none">
+          <span class="docsub-label">थांबा प्रकार:</span>
+          <button class="chip active" data-halt="all">सर्व</button>
+          <button class="chip" data-halt="mukkam">मुक्काम</button>
+          <button class="chip" data-halt="visava">विसावा</button>
         </div>
         <details class="officials-box"><summary>👮 अधिकारी संपर्क · Officials</summary><div id="officials-body"></div></details>
       </div>
     </div>
-    <div class="legend"><button class="legend-btn" data-filter="all" onclick="setType('all')">🗺 सर्व</button><button class="legend-btn" data-filter="ambulance" onclick="setType('ambulance')">🚑 रुग्णवाहिका</button><button class="legend-btn" data-filter="doctors" onclick="setType('doctors')">🩺 डॉक्टर</button><button class="legend-btn" data-filter="health" onclick="setType('health')">🏥 आरोग्य</button><button class="legend-btn" data-filter="halt" onclick="setType('halt')">⛺ मुक्काम</button><button class="legend-btn" data-filter="water" onclick="setType('water')">💧 पाणी</button><button class="legend-btn" data-filter="toilet" onclick="setType('toilet')">🚻 शौचालये</button><button class="legend-btn" data-filter="hirkani" onclick="setType('hirkani')">🤱 हिरकणी</button><button class="legend-btn loc-btn" onclick="locateMe()">📍 माझे स्थान</button></div>
+    <div class="legend"><button class="legend-btn" data-filter="all" onclick="setType('all')">🗺 सर्व</button><button class="legend-btn" data-filter="ambulance" onclick="setType('ambulance')">🚑 रुग्णवाहिका</button><button class="legend-btn" data-filter="doc" onclick="setType('doc')">🩺 डॉक्टर/दवाखाना</button><button class="legend-btn" data-filter="water" onclick="setType('water')">💧 पाणी</button><button class="legend-btn" data-filter="toilet" onclick="setType('toilet')">🚻 शौचालये</button><button class="legend-btn" data-filter="hirkani" onclick="setType('hirkani')">🤱 हिरकणी</button><button class="legend-btn" data-filter="halt" onclick="setType('halt')">⛺ मुक्काम</button><button class="legend-btn loc-btn" onclick="locateMe()">📍 माझे स्थान</button></div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="./wari-points-1.js"></script>

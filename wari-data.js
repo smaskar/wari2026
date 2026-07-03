@@ -24,8 +24,12 @@ window.WariData=(function(){
   function is102(p){return hasAmb(p)&&/102|१०२/.test([p.mems,p.type,p.label].join(' '))}
   function is108(p){return hasAmb(p)&&/108|१०८/.test([p.mems,p.type,p.label].join(' '))}
   function isToilet(p){return /शौचालये|toilet/i.test(p.type||'')}
+  function isICU(p){return /\bicu\b|trauma|ट्रॉमा/i.test([p.type,p.label,p.place,p.base].join(' '))}
+  function isApprox(p){return /अंदाजे/.test([p.type,p.label].join(' '))}
+  function isVisava(p){return isHalt(p)&&/rest|विश्रांती|विसावा/i.test([p.type,p.label].join(' '))}
   function cls(p){return hasHirkani(p)?'hirkani':isToilet(p)?'toilet':isHalt(p)?'halt':hasHealth(p)?'health':hasAmb(p)?'ambulance':hasWater(p)?'water':'other'}
   function services(p){var s=[];
+    if(isICU(p))s.push('⛑ ICU/ट्रॉमा');
     if(isRuralHospital(p))s.push('🏥 ग्रामीण रुग्णालय');
     if(isPHC(p))s.push('🩺 प्रा. आ. केंद्र');
     if(isHBT(p))s.push('🏩 HBT दवाखाना');
@@ -33,7 +37,7 @@ window.WariData=(function(){
     if(hasAmb(p)){if(is108(p))s.push('🚑 १०८');if(is102(p))s.push('🚑 १०२');if(isALS(p))s.push('🚑 ALS');if(isBLS(p))s.push('🚑 BLS');if(!is108(p)&&!is102(p)&&!isALS(p)&&!isBLS(p))s.push('🚑 रुग्णवाहिका');}
     if(hasHirkani(p))s.push('🤱 हिरकणी कक्ष');
     if(isHalt(p))s.push('⛺ मुक्काम');
-    if(hasWater(p))s.push('💧 पाणी टँकर');
+    if(hasWater(p))s.push(/अंदाजे/.test((p.type||''))?'💧 पाणी — अंदाजे ठिकाण':'💧 पाणी टँकर');
     if(p.toilet)s.push('🚻 शौचालये: '+p.toilet);
     if(p.mo)s.push('🧑‍⚕️ वैद्यकीय अधिकारी');
     return s;}
@@ -72,5 +76,5 @@ window.WariData=(function(){
     pts=pts.filter((p,i)=>vkeep[i]);
     return pts;
   }
-  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,isToilet,services,multi,esc,tel,countContacts,uniqueCount};
+  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,isToilet,isICU,isApprox,isVisava,services,multi,esc,tel,countContacts,uniqueCount};
 })();

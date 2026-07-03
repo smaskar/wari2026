@@ -37,3 +37,5 @@
 /* officials directory group headers */
 .hgrp{font-weight:700;font-size:12px;color:#7A1E1E;background:#FFF2E8;padding:6px 10px;margin:8px 0 2px;border-radius:6px}
 #officials-body .hname small{display:block;color:#667085;font-weight:400;font-size:12px}
+
+.pin.approx{opacity:.55;border-style:dashed}

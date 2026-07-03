@@ -41,3 +41,5 @@
 .hname small{display:block;color:#667085;font-size:11px}
 .hnum{display:flex;flex-direction:column;gap:2px;text-align:right;white-space:nowrap}
 .hnum a{color:#0a7d2c;font-weight:600;text-decoration:none;font-size:12px}
+
+.pin.approx{opacity:.55;border-style:dashed}
