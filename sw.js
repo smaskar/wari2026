@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'wari2026-v83';
+const CACHE_VERSION = 'wari2026-v84';
 const APP_SHELL = [
   './',
   './index.html',
@@ -35,6 +35,7 @@ const APP_SHELL = [
   './wari-points-toilets.js',
   './wari-points-water-filling.js',
   './wari-points-amb-supplement.js',
+  './wari-points-phc102.js',
   './wari-mukkams.js',
   './wari-officials.js',
   './wari-dignitaries.js',
