@@ -104,3 +104,5 @@
 .ldr:nth-child(4),.ldr:nth-child(5){grid-column:auto;display:block;text-align:center;padding:5px 2px}
 .ldr:nth-child(4) img,.ldr:nth-child(5) img{margin:0 auto 3px;width:100%;max-width:52px;height:56px}
 .ldr:nth-child(4) div,.ldr:nth-child(5) div{min-width:0}
+
+.offcard{justify-content:flex-start;padding-top:9px}
