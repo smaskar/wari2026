@@ -17,7 +17,7 @@ window.WARI_SECRETARIES=[
   function render(){
     var sec=document.getElementById('secretaries-strip');
     if(sec) sec.innerHTML=window.WARI_SECRETARIES.map(function(o){
-      return '<div class="secrow"><b>'+o.n+'</b><span>'+o.d+'</span></div>';
+      return '<div class="sec"><b>'+o.n+'</b><small>'+o.d+'</small></div>';
     }).join('');
     var el=document.getElementById('leaders-strip'); if(!el) return;
     el.innerHTML=window.WARI_DIGNITARIES.map(function(o){
