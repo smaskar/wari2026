@@ -21,6 +21,7 @@
       <div class="panel-body" id="panelBody">
         <div class="filter-title">नकाशा नियंत्रण</div>
         <div class="chips"><button class="chip loc-chip" onclick="locateMe()">📍 माझे स्थान दाखवा</button><button class="chip" onclick="resetMap(false)">🗺 सर्व points</button></div>
+        <div class="filter-title">शोधा · Search</div><div class="chips"><input id="msearch" type="search" placeholder="गाव / वाहन क्र. / डॉक्टर / फोन…" style="width:100%;padding:8px;border-radius:10px;border:1.5px solid #eadfce;font-size:13px" oninput="setSearch(this.value)"></div>
         <div class="filter-title">मुक्काम निवडा</div><div class="chips"><select id="mukkamSel" style="width:100%;padding:8px;border-radius:10px;border:1.5px solid #eadfce;font-size:13px" onchange="gotoMukkam(this.value)"></select></div><div class="filter-title">पालखी</div>
         <div class="chips" id="palkhiChips">
           <button class="chip active" data-palkhi="all">दोन्ही पालख्या</button>
@@ -71,7 +72,7 @@
         <details class="officials-box"><summary>🚔 पोलीस संपर्क · Police (४४ स्टेशन)</summary><div id="police-body"></div></details>
       </div>
     </div>
-    <div class="legend"><button class="legend-btn" data-filter="all" onclick="setType('all')">🗺 सर्व</button><button class="legend-btn" data-filter="ambulance" onclick="setType('ambulance')">🚑 रुग्णवाहिका</button><button class="legend-btn" data-filter="doc" onclick="setType('doc')">🩺 डॉक्टर/दवाखाना</button><button class="legend-btn" data-filter="water" onclick="setType('water')">💧 पाणी</button><button class="legend-btn" data-filter="toilet" onclick="setType('toilet')">🚻 शौचालये</button><button class="legend-btn" data-filter="hirkani" onclick="setType('hirkani')">🤱 हिरकणी</button><button class="legend-btn" data-filter="halt" onclick="setType('halt')">⛺ मुक्काम</button><button class="legend-btn loc-btn" onclick="locateMe()">📍 माझे स्थान</button></div>
+    <div class="legend"><button class="legend-btn" data-filter="all" onclick="setType('all')">🗺 सर्व</button><button class="legend-btn" data-filter="ambulance" onclick="setType('ambulance')">🚑 रुग्णवाहिका</button><button class="legend-btn" data-filter="doc" onclick="setType('doc')">🩺 डॉक्टर/दवाखाना</button><button class="legend-btn" data-filter="water" onclick="setType('water')">💧 पाणी</button><button class="legend-btn" data-filter="toilet" onclick="setType('toilet')">🚻 शौचालये</button><button class="legend-btn" data-filter="hirkani" onclick="setType('hirkani')">🤱 हिरकणी</button><button class="legend-btn" data-filter="halt" onclick="setType('halt')">⛺ मुक्काम</button><button class="legend-btn loc-btn" onclick="locateMe()">📍 माझे स्थान</button><span class="legnote"><span class="lg-tuk">●</span> जगद्गुरू श्री संत तुकाराम महाराज &nbsp;<span class="lg-dny">●</span> श्री संत ज्ञानेश्वर महाराज · फिकट पिन = अंदाजे स्थान</span></div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="./wari-points-1.js"></script>

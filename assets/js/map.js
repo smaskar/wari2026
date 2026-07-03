@@ -15,7 +15,9 @@ function typeKeep(p){if(typeFilter==='all')return!W.hasWater(p);return false
 ||typeFilter==='halt'&&W.isHalt(p)&&(haltSub==='all'||haltSub==='mukkam'&&!W.isVisava(p)||haltSub==='visava'&&W.isVisava(p))}
 function togglePanel(){const pn=document.getElementById('panel'),tg=document.getElementById('ptoggle'),open=pn.classList.toggle('collapsed');tg.textContent=open?'नियंत्रण ▾':'बंद करा ▴';tg.setAttribute('aria-expanded',String(!open));setTimeout(()=>map.invalidateSize(true),220)}
 function palkhiKeep(p){return palkhiFilter==='all'||p.palkhi===palkhiFilter||p.palkhi==='both'}
-function keep(p){return palkhiKeep(p)&&typeKeep(p)}
+let searchQ='';function setSearch(v){searchQ=(v||'').trim().toLowerCase();draw()}
+function searchKeep(p){if(!searchQ)return true;return [p.label,p.place,p.vehicle,p.doctor,p.pilot,p.base,p.call,p.mo].some(f=>f&&String(f).toLowerCase().includes(searchQ))}
+function keep(p){return palkhiKeep(p)&&(searchQ?searchKeep(p):typeKeep(p))}
 function dir(p){return`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`}
 function notifyParent(){if(silent)return;try{parent.postMessage({type:'DESKTOP_MAP_FILTER',palkhi:palkhiFilter,typeFilter:typeFilter},'*')}catch(e){}}
 const HK_PHOTO='./assets/img/hirkani-booth.jpg',HK_VIDEO='./assets/video/hirkani-1.mp4';
