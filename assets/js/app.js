@@ -41,7 +41,9 @@ routeLayer=L.layerGroup().addTo(map);
 let dny=(window.WARI_DNYANESHWAR_PUNE_ROUTE||[]).concat(window.WARI_ROUTE_DNY_EXT||[]);
 let tuk=window.WARI_ROUTE_TUK||[];
 if(currentPalkhi!=='tukaram'&&dny.length)L.polyline(dny,{color:'#1d5fc4',weight:4,opacity:.8,lineCap:'round',lineJoin:'round'}).addTo(routeLayer);
-if(currentPalkhi!=='dnyaneshwar'&&tuk.length)L.polyline(tuk,{color:'#f4711f',weight:4,opacity:.8,lineCap:'round',lineJoin:'round'}).addTo(routeLayer);}
+if(currentPalkhi!=='dnyaneshwar'&&tuk.length)L.polyline(tuk,{color:'#f4711f',weight:4,opacity:.8,lineCap:'round',lineJoin:'round'}).addTo(routeLayer);
+let tr=window.WARI_ROUTE_TUK_RET||[];
+if(currentPalkhi!=='dnyaneshwar'&&tr.length)L.polyline(tr,{color:'#f4711f',weight:3,opacity:.55,dashArray:'8 8'}).addTo(routeLayer);}
 function draw(pts){if(!map)return;markers.forEach(m=>map.removeLayer(m));markers=[];pts.forEach(p=>{let m=L.marker([p.lat,p.lng],{icon:L.divIcon({className:'',html:`<div class="pin ${W.cls(p)} pal-${p.palkhi}${p.live?' has-live':''}${W.multi(p)?' multi':''}${W.isApprox(p)?' approx':''}">${W.icon(p)}</div>`,iconSize:[30,30],iconAnchor:[15,15]})}).addTo(map).bindPopup(popup(p),{maxWidth:250});markers.push(m)})}
 function fitMappedArea(){if(!map)return;let v=visible().filter(p=>isFinite(p.lat)&&isFinite(p.lng)).map(p=>[p.lat,p.lng]);if(v.length){map.fitBounds(L.latLngBounds(v).pad(.12));setTimeout(()=>map.invalidateSize(true),150)}}
 function phoneHref(raw){let s=(raw||'').replace(/[^0-9+]/g,'');return s.length===10&&/^[6-9]/.test(s)?'+91'+s:s}function phoneLink(n){n=(n||'').trim();return`<a class="phone-pill" href="tel:${phoneHref(n)}">📞 ${W.esc(n)}</a>`}function splitContacts(v){return(v||'').split(/\s*;\s*/).map(x=>x.trim()).filter(Boolean).map(x=>{let nums=x.match(/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g)||[];let name=x.replace(/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g,'').replace(/[()]/g,'').replace(/\s+/g,' ').trim();return{name:name||'संपर्क',phone:nums[0]||''}})}
