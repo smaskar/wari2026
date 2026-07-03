@@ -11,7 +11,7 @@ function initLive(){document.querySelectorAll('video[data-hls]:not([data-init])'
 function hirkaniMedia(){return`<div class="hk-media"><img src="${HIRKANI_PHOTO}" alt="हिरकणी कक्ष" loading="lazy" onerror="this.remove()"/><div class="hk-vids"><a class="hk-vid" target="_blank" rel="noopener" href="${HIRKANI_VIDEO}">🎬 ${HIRKANI_VIDEO_LABEL}</a></div></div>`}
 function inP(p){return currentPalkhi==='all'||p.palkhi===currentPalkhi||p.palkhi==='both'}
 function isDocCat(p){return(W.hasHealth(p)||W.hasDoctor(p))&&p.type!=='Ambulance'}
-function inC(p,c=cat){return c==='all'
+function inC(p,c=cat){if(c==='all')return!(W.hasWater(p)&&W.isApprox(p));return false
 ||c==='ambulance'&&W.hasAmb(p)&&(ambSub==='all'||ambSub==='als'&&W.isALS(p)||ambSub==='bls'&&W.isBLS(p)||ambSub==='102'&&W.is102(p)||ambSub==='108'&&W.is108(p))
 ||c==='doc'&&isDocCat(p)&&(docSub==='all'||docSub==='phc'&&W.isPHC(p)||docSub==='rh'&&W.isRuralHospital(p)||docSub==='pvt'&&W.isPrivateHospital(p)||docSub==='hbt'&&W.isHBT(p)||docSub==='icu'&&W.isICU(p))
 ||c==='water'&&W.hasWater(p)&&(watSub==='all'||watSub==='actual'&&!W.isApprox(p)||watSub==='approx'&&W.isApprox(p))

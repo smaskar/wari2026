@@ -6,7 +6,7 @@ function initLive(){document.querySelectorAll('video[data-hls]:not([data-init])'
 map.on('popupopen',()=>setTimeout(initLive,60));
 let routeLayer=L.layerGroup().addTo(map),layer=L.layerGroup().addTo(map),userLayer=L.layerGroup().addTo(map),typeFilter='all',docSub='all',ambSub='all',watSub='all',haltSub='all',palkhiFilter='all',silent=false,userLocation=null;
 function isDocCat(p){return(W.hasHealth(p)||W.hasDoctor(p))&&p.type!=='Ambulance'}
-function typeKeep(p){return typeFilter==='all'
+function typeKeep(p){if(typeFilter==='all')return!(W.hasWater(p)&&W.isApprox(p));return false
 ||typeFilter==='ambulance'&&W.hasAmb(p)&&(ambSub==='all'||ambSub==='als'&&W.isALS(p)||ambSub==='bls'&&W.isBLS(p)||ambSub==='102'&&W.is102(p)||ambSub==='108'&&W.is108(p))
 ||typeFilter==='doc'&&isDocCat(p)&&(docSub==='all'||docSub==='phc'&&W.isPHC(p)||docSub==='rh'&&W.isRuralHospital(p)||docSub==='pvt'&&W.isPrivateHospital(p)||docSub==='hbt'&&W.isHBT(p)||docSub==='icu'&&W.isICU(p))
 ||typeFilter==='water'&&W.hasWater(p)&&(watSub==='all'||watSub==='actual'&&!W.isApprox(p)||watSub==='approx'&&W.isApprox(p))
