@@ -6,13 +6,14 @@ function initLive(){document.querySelectorAll('video[data-hls]:not([data-init])'
 map.on('popupopen',()=>setTimeout(initLive,60));
 let routeLayer=L.layerGroup().addTo(map),layer=L.layerGroup().addTo(map),userLayer=L.layerGroup().addTo(map),typeFilter='all',docSub='all',ambSub='all',watSub='all',haltSub='all',palkhiFilter='all',silent=false,userLocation=null;
 function isDocCat(p){return(W.hasHealth(p)||W.hasDoctor(p))&&p.type!=='Ambulance'}
-function typeKeep(p){if(typeFilter==='all')return!(W.hasWater(p)&&W.isApprox(p));return false
+function typeKeep(p){if(typeFilter==='all')return!W.hasWater(p);return false
 ||typeFilter==='ambulance'&&W.hasAmb(p)&&(ambSub==='all'||ambSub==='als'&&W.isALS(p)||ambSub==='bls'&&W.isBLS(p)||ambSub==='102'&&W.is102(p)||ambSub==='108'&&W.is108(p))
 ||typeFilter==='doc'&&isDocCat(p)&&(docSub==='all'||docSub==='phc'&&W.isPHC(p)||docSub==='rh'&&W.isRuralHospital(p)||docSub==='pvt'&&W.isPrivateHospital(p)||docSub==='hbt'&&W.isHBT(p)||docSub==='icu'&&W.isICU(p))
 ||typeFilter==='water'&&W.hasWater(p)&&(watSub==='all'||watSub==='actual'&&!W.isApprox(p)||watSub==='approx'&&W.isApprox(p))
 ||typeFilter==='toilet'&&W.isToilet(p)
 ||typeFilter==='hirkani'&&W.hasHirkani(p)
-||typeFilter==='halt'&&W.isHalt(p)&&(haltSub==='all'||haltSub==='mukkam'&&!W.isVisava(p)||haltSub==='visava'&&W.isVisava(p))}
+||typeFilter==='halt'&&W.isHalt(p)&&(haltSub==='all'||haltSub==='mukkam'&&!W.isVisava(p)||haltSub==='visava'&&W.isVisava(p))
+||typeFilter==='police'&&W.isPolice(p)}
 function togglePanel(){const pn=document.getElementById('panel'),tg=document.getElementById('ptoggle'),open=pn.classList.toggle('collapsed');tg.textContent=open?'नियंत्रण ▾':'बंद करा ▴';tg.setAttribute('aria-expanded',String(!open));setTimeout(()=>map.invalidateSize(true),220)}
 function palkhiKeep(p){return palkhiFilter==='all'||p.palkhi===palkhiFilter||p.palkhi==='both'}
 function keep(p){return palkhiKeep(p)&&typeKeep(p)}

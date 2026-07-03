@@ -124,7 +124,7 @@ window.WARI_OFFICIALS = {
     var el=document.getElementById('officials-body');
     var pb=document.getElementById('police-body');
     var policeHtml='<div class="hgrp">👮 पोलीस प्रशासन · Police Administration</div>'+rows(O.policeAdmin)
-      +'<div class="hgrp">🚔 पोलीस स्टेशन — पालखी मार्ग ड्युटी ('+O.policeStations.length+' स्टेशन) · Police on Palkhi Duty</div>'+stationRows(O.policeStations);
+      +'<div class="hrow"><div class="hname">🚔 पोलीस स्टेशन — पालखी मार्ग ड्युटी<small>'+O.policeStations.length+' स्टेशन नकाशावर आहेत — 🚔 पोलीस फिल्टर वापरा</small></div></div>';
     if(el) el.innerHTML='<div class="hgrp">🏛 महसूल व सामान्य प्रशासन · Administration</div>'+rows(O.admin)
       +'<div class="hgrp">🩺 आरोग्य अधिकारी · Health Officers</div>'+rows(O.health)
       +'<div class="hgrp">🏥 जिल्हा आरोग्य पथक · District Health Team</div>'+rows(O.healthTeam)

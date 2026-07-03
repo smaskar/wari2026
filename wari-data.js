@@ -24,12 +24,14 @@ window.WariData=(function(){
   function is102(p){return hasAmb(p)&&/102|१०२/.test([p.mems,p.type,p.label].join(' '))}
   function is108(p){return hasAmb(p)&&/108|१०८/.test([p.mems,p.type,p.label].join(' '))}
   function isToilet(p){return /शौचालये|toilet/i.test(p.type||'')}
+  function isPolice(p){return /police|पोलीस/i.test(p.type||'')}
   function isICU(p){return /\bicu\b|trauma|ट्रॉमा/i.test([p.type,p.label,p.place,p.base].join(' '))}
   function isApprox(p){return /अंदाजे/.test([p.type,p.label].join(' '))}
   function isVisava(p){return isHalt(p)&&/rest|विश्रांती|विसावा/i.test([p.type,p.label].join(' '))}
-  function cls(p){return hasHirkani(p)?'hirkani':isToilet(p)?'toilet':isHalt(p)?'halt':hasHealth(p)?'health':hasAmb(p)?'ambulance':hasWater(p)?'water':'other'}
+  function cls(p){return isPolice(p)?'police':hasHirkani(p)?'hirkani':isToilet(p)?'toilet':isHalt(p)?'halt':hasHealth(p)?'health':hasAmb(p)?'ambulance':hasWater(p)?'water':'other'}
   function services(p){var s=[];
     if(isICU(p))s.push('⛑ ICU/ट्रॉमा');
+    if(isPolice(p))s.push('🚔 पोलीस स्टेशन');
     if(isRuralHospital(p))s.push('🏥 ग्रामीण रुग्णालय');
     if(isPHC(p))s.push('🩺 प्रा. आ. केंद्र');
     if(isHBT(p))s.push('🏩 HBT दवाखाना');
@@ -42,7 +44,7 @@ window.WariData=(function(){
     if(p.mo)s.push('🧑‍⚕️ वैद्यकीय अधिकारी');
     return s;}
   function multi(p){return services(p).filter(x=>!/शौचालये|वैद्यकीय अधिकारी/.test(x)).length>1}
-  function icon(p){return hasHirkani(p)?'🤱':isToilet(p)?'🚻':isHalt(p)?'⛺':hasHospital(p)?'🏥':hasDoc(p)?'🩺':hasAmb(p)?'🚑':hasWater(p)?'💧':'📍'}
+  function icon(p){return isPolice(p)?'🚔':hasHirkani(p)?'🤱':isToilet(p)?'🚻':isHalt(p)?'⛺':hasHospital(p)?'🏥':hasDoc(p)?'🩺':hasAmb(p)?'🚑':hasWater(p)?'💧':'📍'}
   function esc(s){return(s||'').toString().replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]))}
   function tel(s){return(s||'').replace(/[^0-9+]/g,'')}
   function countContacts(v){return(v||'').split(/\s*;\s*/).map(x=>x.trim()).filter(Boolean).reduce((n,x)=>n+((x.match(RE_PHONE)||[x]).length),0)}
@@ -59,8 +61,9 @@ window.WariData=(function(){
     let rawW=(window.WARI_WATER_POINTS||[]).map(x=>norm(x,'dnyaneshwar'));
     let rawTL=(window.WARI_TOILET_POINTS||[]).map(x=>norm(x,'dnyaneshwar'));
     let rawFP=(window.WARI_FILLING_POINTS||[]).map(x=>norm(x,'dnyaneshwar'));
+    let rawPS=(window.WARI_POLICE_POINTS||[]).map(x=>norm(x,'both'));
     let notHaltType=p=>!/halt|mukkam|मुक्काम/i.test(p.type||'');
-    let pts=[...rawD.filter(notHaltType),...rawT.filter(notHaltType),...rawHD,...rawHT,...rawS.filter(notHaltType),...rawHK,...rawPV,...rawSOL,...rawW,...rawTL,...rawFP]
+    let pts=[...rawD.filter(notHaltType),...rawT.filter(notHaltType),...rawHD,...rawHT,...rawS.filter(notHaltType),...rawHK,...rawPV,...rawSOL,...rawW,...rawTL,...rawFP,...rawPS]
       .filter(p=>isFinite(p.lat)&&isFinite(p.lng));
     let seen=new Set();
     pts=pts.filter(p=>{let key=[p.palkhi,p.type,p.label,p.place,p.vehicle,p.lat.toFixed(5),p.lng.toFixed(5)].join('|').toLowerCase();if(seen.has(key))return false;seen.add(key);return true});
@@ -76,5 +79,5 @@ window.WariData=(function(){
     pts=pts.filter((p,i)=>vkeep[i]);
     return pts;
   }
-  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,isToilet,isICU,isApprox,isVisava,services,multi,esc,tel,countContacts,uniqueCount};
+  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,isToilet,isPolice,isICU,isApprox,isVisava,services,multi,esc,tel,countContacts,uniqueCount};
 })();
