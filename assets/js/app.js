@@ -24,7 +24,9 @@ function setWatSub(s){watSub=s;document.querySelectorAll('#watsub .chip').forEac
 function setHaltSub(s){haltSub=s;document.querySelectorAll('#haltsub .chip').forEach(b=>b.classList.toggle('active',b.dataset.halt===s));refresh()}
 function setAmbSub(s){ambSub=s;document.querySelectorAll('#ambsub .chip').forEach(b=>b.classList.toggle('active',b.dataset.amb===s));refresh()}function okSearch(p){let q=$('search').value.trim().toLowerCase();return!q||[p.label,p.type,p.place,p.vehicle,p.doctor,p.pilot,p.base,p.phase,p.date].join(' ').toLowerCase().includes(q)}
 function visible(c=cat){let pts=POINTS.filter(p=>inP(p)&&inC(p,c)&&okSearch(p)).map(p=>({...p,_idx:POINTS.indexOf(p),dist:dist(p)}));if(userLocation&&rad<99999999)pts=pts.filter(p=>p.dist!=null&&p.dist<=rad);return pts.sort((a,b)=>userLocation?(a.dist??9e9)-(b.dist??9e9):(a.palkhi+a.type+a.label).localeCompare(b.palkhi+b.type+b.label))}
-function counts(){let s=userLocation?' जवळ':' एकूण';let set=(id,n)=>{let e=$(id);if(e)e.textContent=n+s};set('countAmb',visN(W.hasAmb));set('countDoc',visN(isDocCat));set('countHalt',visN(W.isHalt));set('countHirkani',visN(W.hasHirkani));set('countWater',visN(W.hasWater));
+function counts(){let s=userLocation?' जवळ':' एकूण';let set=(id,n)=>{let e=$(id);if(e)e.textContent=n+s};
+let ap=POINTS.filter(p=>inP(p)&&okSearch(p)&&W.hasAmb(p));if(userLocation&&rad<99999999)ap=ap.filter(p=>{let d=dist(p);return d!=null&&d<=rad});
+set('countAmb',W.vehicleCount(ap));set('countDoc',visN(isDocCat));set('countHalt',visN(W.isHalt));set('countHirkani',visN(W.hasHirkani));set('countWater',visN(W.hasWater));
 let tp=POINTS.filter(p=>inP(p)&&okSearch(p)&&W.isToilet(p));if(userLocation&&rad<99999999)tp=tp.filter(p=>{let d=dist(p);return d!=null&&d<=rad});
 let seats=tp.reduce((n,p)=>n+(parseInt(p.toilet)||0),0);let e=$('countToilet');if(e)e.textContent=seats.toLocaleString('en-IN')+s}
 function openMapPanel(){closeHelpline();$('page').classList.add('map-open');initMap();refresh();setTimeout(()=>{if(map){map.invalidateSize(true);fitMappedArea()}$('mapPanel').scrollIntoView({behavior:'smooth',block:'start'})},100)}

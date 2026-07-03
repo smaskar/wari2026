@@ -47,6 +47,7 @@ window.WariData=(function(){
   function icon(p){return isPolice(p)?'🚔':hasHirkani(p)?'🤱':isToilet(p)?'🚻':isHalt(p)?'⛺':hasHospital(p)?'🏥':hasDoc(p)?'🩺':hasAmb(p)?'🚑':hasWater(p)?'💧':'📍'}
   function esc(s){return(s||'').toString().replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]))}
   function tel(s){return(s||'').replace(/[^0-9+]/g,'')}
+  function vehicleCount(arr){let s=new Set();arr.forEach(p=>{(p.vehicle||'').toUpperCase().replace(/[\s-]/g,'').replace(/[A-Z]{2}\d{1,2}[A-Z]{1,3}\d{3,4}/g,m=>{s.add(m);return m})});return s.size}
   function countContacts(v){return(v||'').split(/\s*;\s*/).map(x=>x.trim()).filter(Boolean).reduce((n,x)=>n+((x.match(RE_PHONE)||[x]).length),0)}
   function uniqueCount(arr,fn){let s=new Set();arr.forEach(p=>{let k=fn(p);if(k)s.add(k)});return s.size}
   function build(){
@@ -76,7 +77,15 @@ window.WariData=(function(){
       if(vseen.has(vk))vkeep[i]=false;else vseen.add(vk);
     });
     pts=pts.filter((p,i)=>vkeep[i]);
+    // attach 102-fleet vehicles/drivers to existing facility pins (exact label-prefix match)
+    (window.WARI_AMB_SUPPLEMENT||[]).forEach(sup=>{
+      let t=pts.find(p=>(p.label||'').indexOf(sup.m)===0);
+      if(!t)return;
+      t.vehicle=t.vehicle?t.vehicle+'; '+sup.v:sup.v;
+      t.pilot=t.pilot?t.pilot+'; '+sup.d:sup.d;
+      if(!/102|१०२/.test(t.mems||''))t.mems=(t.mems?t.mems+' ':'')+'102';
+    });
     return pts;
   }
-  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,isToilet,isPolice,isICU,isApprox,isVisava,services,multi,esc,tel,countContacts,uniqueCount};
+  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,isToilet,isPolice,isICU,isApprox,isVisava,services,multi,esc,tel,countContacts,uniqueCount,vehicleCount};
 })();
