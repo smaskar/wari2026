@@ -71,6 +71,6 @@
 .secrow span{font-size:10.5px;color:#8a6a45;line-height:1.3;text-align:right}
 
 .secretaries{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;background:none;border-radius:0;padding:0;margin:2px 0 4px}
-.sec{background:rgba(255,255,255,.95);border-radius:9px;padding:7px 4px;text-align:center;min-width:0;display:flex;flex-direction:column;justify-content:center}
-.sec b{display:block;font-size:9.5px;line-height:1.3;color:#5a3208}
-.sec small{display:block;font-size:8.5px;line-height:1.25;color:#8a6a45;margin-top:3px}
+.offcard{background:rgba(255,255,255,.95);border-radius:9px;padding:7px 4px;text-align:center;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.offcard b{display:block;font-size:9.5px;line-height:1.3;color:#5a3208}
+.offcard small{display:block;font-size:8.5px;line-height:1.25;color:#8a6a45;margin-top:3px}
