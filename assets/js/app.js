@@ -71,4 +71,11 @@ let h='<button class="mchip clear" onclick="clearMukkam()">🗺 सर्व म
 window.WARI_MUKKAMS.forEach((m,i)=>{let ic=m.pal==='tukaram'?'🟠':'🔵';
 h+='<button class="mchip" onclick="chooseMukkam('+i+')">'+ic+' '+(m.d?m.d+' · ':'')+m.n+'</button>'});
 el.innerHTML=h})();
+(function(){try{if(localStorage.getItem('wariLocAsk'))return;}catch(e){return}
+let b=document.createElement('div');b.id='locask';
+b.innerHTML='<div class="locask-card"><div class="locask-ic">📍</div><b>जवळची मदत दाखवण्यासाठी<br>तुमचे स्थान (GPS) सुरू करा</b><small>रुग्णवाहिका, डॉक्टर, पाणी — तुमच्या अंतरानुसार दिसतील</small><div class="locask-btns"><button class="la-yes" onclick="locAskYes()">📍 स्थान द्या</button><button class="la-no" onclick="locAskNo()">नंतर</button></div></div>';
+document.body.appendChild(b)})();
+function locAskDone(){try{localStorage.setItem('wariLocAsk','1')}catch(e){}let b=document.getElementById('locask');if(b)b.remove()}
+function locAskYes(){locAskDone();locateMe()}
+function locAskNo(){locAskDone()}
 initMap();refresh();setTimeout(fitMappedArea,300);addEventListener('resize',()=>{if(map)setTimeout(()=>map.invalidateSize(true),150)});

@@ -80,3 +80,12 @@
 .mchip{flex:none;border:1.5px solid var(--line,#eadfce);background:#fff;border-radius:14px;padding:9px 13px;font-size:14.5px;font-weight:700;color:#5a3208;white-space:nowrap}
 .mchip.active{background:#8a3f00;color:#fff;border-color:#8a3f00}
 .mchip.clear{background:#f4ecdd}
+
+#locask{position:fixed;inset:0;background:rgba(40,20,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px}
+.locask-card{background:#fff;border-radius:20px;padding:22px 18px;text-align:center;max-width:320px;box-shadow:0 8px 40px rgba(0,0,0,.35)}
+.locask-ic{font-size:44px;margin-bottom:6px}
+.locask-card b{font-size:19px;line-height:1.4;color:#231d17;display:block}
+.locask-card small{display:block;font-size:14px;color:#7a6f63;margin:8px 0 14px;line-height:1.4}
+.locask-btns{display:flex;gap:10px}
+.la-yes{flex:1.4;background:#0d8a4f;color:#fff;border:0;border-radius:12px;padding:14px 8px;font-size:17px;font-weight:800}
+.la-no{flex:1;background:#f4ecdd;color:#5a4633;border:0;border-radius:12px;padding:14px 8px;font-size:16px;font-weight:700}
