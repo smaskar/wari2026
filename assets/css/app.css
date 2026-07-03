@@ -58,8 +58,8 @@
 .brand2 .b2{color:#5a4633;font-weight:700;font-size:14.5px;line-height:1.35}
 .brand2 .bq{background:#d81b60;color:#fff;border-radius:7px;padding:2px 8px;margin-right:5px;display:inline-block;font-size:13.5px}
 
-.leaders{display:flex;gap:8px;overflow-x:auto;padding:4px 0 2px;margin:8px 0 2px;-webkit-overflow-scrolling:touch}
-.ldr{flex:none;width:96px;background:rgba(255,255,255,.95);border-radius:10px;padding:6px 5px;text-align:center}
-.ldr img{width:52px;height:64px;object-fit:cover;border-radius:8px;display:block;margin:0 auto 4px}
-.ldr b{display:block;font-size:11px;line-height:1.25;color:#5a3208}
-.ldr small{display:block;font-size:9.5px;line-height:1.25;color:#8a6a45;margin-top:2px}
+.leaders{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:2px 0;margin:8px 0 2px}
+.ldr{background:rgba(255,255,255,.95);border-radius:9px;padding:5px 2px;text-align:center;min-width:0}
+.ldr img{width:100%;max-width:52px;height:56px;object-fit:cover;object-position:top;border-radius:7px;display:block;margin:0 auto 3px}
+.ldr b{display:block;font-size:9.5px;line-height:1.25;color:#5a3208}
+.ldr small{display:block;font-size:8.5px;line-height:1.2;color:#8a6a45;margin-top:1px}
