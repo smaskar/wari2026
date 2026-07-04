@@ -68,16 +68,9 @@ window.WariData=(function(){
       .filter(p=>isFinite(p.lat)&&isFinite(p.lng));
     let seen=new Set();
     pts=pts.filter(p=>{let key=[p.palkhi,p.type,p.label,p.place,p.vehicle,p.lat.toFixed(5),p.lng.toFixed(5)].join('|').toLowerCase();if(seen.has(key))return false;seen.add(key);return true});
-    // drop uncallable ambulance markers (no vehicle number AND no phone)
-    pts=pts.filter(p=>!(/रुग्णवाहिका सेवा/.test(p.label)&&!p.vehicle&&!p.call));
-    // one pin per ambulance: collapse repeated route-waypoints of the same vehicle (per palkhi)
-    let vseen=new Set(),vkeep=new Array(pts.length).fill(true);
-    pts.map((p,i)=>[p,i]).sort((a,b)=>(hasHealth(a[0])?0:1)-(hasHealth(b[0])?0:1)||a[1]-b[1]).forEach(([p,i])=>{
-      if(!hasAmb(p)||!p.vehicle)return;
-      let vk=p.palkhi+'|'+p.vehicle.replace(/[\s-]/g,'').toUpperCase();
-      if(vseen.has(vk))vkeep[i]=false;else vseen.add(vk);
-    });
-    pts=pts.filter((p,i)=>vkeep[i]);
+    // field-verified 04/07: MEMS route waypoints are real deployment positions (e.g. दिवे घाट chain) —
+    // keep ALL of them, incl. no-contact staging points; ambulance card counts distinct vehicles, not pins.
+    pts.forEach(p=>{if(/रुग्णवाहिका सेवा/.test(p.label)&&!p.vehicle&&!p.call&&!/अंदाजे|पडताळणी/.test(p.label))p.label+=' (तैनाती बिंदू — संपर्क विभागाकडे)';});
     // merge pins with identical label+coords (e.g. two ambulances staged at one point) into one pin
     (function(){const bykey={},out=[];pts.forEach(p=>{const k=(p.label||'')+'@'+p.lat.toFixed(5)+','+p.lng.toFixed(5);const t=bykey[k];if(t){['vehicle','doctor','pilot'].forEach(f=>{if(p[f]&&!(t[f]||'').includes(p[f]))t[f]=t[f]?t[f]+'; '+p[f]:p[f]});if(!t.call&&p.call)t.call=p.call;}else{bykey[k]=p;out.push(p)}});pts=out})();
     // attach 102-fleet vehicles/drivers to existing facility pins (exact label-prefix match)
