@@ -92,7 +92,7 @@ function forceHelpMap(){
   document.querySelectorAll('iframe').forEach(function(frame){
     var src=frame.getAttribute('src')||'';
     if(src.indexOf('google.com/maps')>-1 || src.indexOf('maps/d/u')>-1){
-      frame.setAttribute('src','./map.html?v=125');
+      frame.setAttribute('src','./map.html?v=126');
       frame.setAttribute('title','वारी सहाय्य मदत नकाशा');
     }
   });
@@ -103,7 +103,7 @@ setTimeout(forceHelpMap,1500);
 function registerOfflineSupport(){
   if(!('serviceWorker' in navigator)) return;
   window.addEventListener('load', function(){
-    navigator.serviceWorker.register('./sw.js?v=125').then(function(reg){
+    navigator.serviceWorker.register('./sw.js?v=126').then(function(reg){
       function syncNow(){
         if(reg.update) reg.update();
         if(navigator.serviceWorker.controller){navigator.serviceWorker.controller.postMessage({type:'SYNC_NOW'});}
