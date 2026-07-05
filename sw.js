@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'wari2026-v121';
+const CACHE_VERSION = 'wari2026-v125';
 const APP_SHELL = [
   './',
   './index.html',
@@ -44,7 +44,7 @@ const APP_SHELL = [
   './wari-officials.js',
   './wari-dignitaries.js',
   './assets/img/hirkani-booth.jpg',
-  './assets/img/brand-deity.jpg',
+  './assets/img/brand-deity-full.png',
   './assets/img/icon-192.png',
   './assets/img/facility/phaltan-sdh.jpg',
   './assets/img/facility/taradgaon-phc.jpg',
