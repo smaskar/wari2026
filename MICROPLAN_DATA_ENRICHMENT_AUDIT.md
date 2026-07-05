@@ -37,7 +37,7 @@ The workbook has 33 sheets. It is useful, but not directly map-ready: the inspec
 
 Health facility detail:
 
-| Sheet | HBT | PHC | Ambulance Pathak variants | ICU rows | OPD rows | Private hospital count total |
+| Sheet | हिंदुहृदयसम्राट बाळासाहेब ठाकरे आपला दवाखाना | PHC | Ambulance Pathak variants | ICU rows | OPD rows | Private hospital count total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Tukaram | 96 | 17 | 12 | 17 | 158 | 161 |
 | Dnyaneshwar | 107 | 14 | 29 | 28 | 139 | 295 |
@@ -65,10 +65,10 @@ These sheets contain rich operational details but should not be shown publicly w
 ## Data Quality Notes
 
 - No inspected sheet provides coordinates, so automated map-pin creation would create unverified locations.
-- Facility names are not consistently formatted against current app labels. A rough match found only a small direct overlap, especially for HBT and temporary service points.
+- Facility names are not consistently formatted against current app labels. A rough match found only a small direct overlap, especially for हिंदुहृदयसम्राट बाळासाहेब ठाकरे आपला दवाखाना and temporary service points.
 - The workbook mixes 2026 health/water planning sheets with 2024/2025 reference/manpower sheets. Do not treat every tab as current 2026 operational truth.
 - Several sheets include personal mobile numbers. These are useful for internal operations, but public display should be deliberate and minimal.
-- Some data-entry fields are inconsistent or misspelled, e.g. `Vehical`, mixed date text, inconsistent PHC/RH/HBT spellings, and partial potability data in the Tukaram water sheet.
+- Some data-entry fields are inconsistent or misspelled, e.g. `Vehical`, mixed date text, inconsistent PHC/RH/हिंदुहृदयसम्राट बाळासाहेब ठाकरे आपला दवाखाना spellings, and partial potability data in the Tukaram water sheet.
 
 ## Recommended Enrichment Path
 
@@ -82,7 +82,7 @@ These sheets contain rich operational details but should not be shown publicly w
    - `Water sources tested: X / Y`
    - `Tanker filling points in area: N`
 6. Keep AD/staff/roster sheets in an internal admin dataset unless there is explicit approval to publish specific phone numbers.
-7. For temporary HBT/ICU/ambulance pathak points that do not match existing map data, create a manual verification queue with geocoding candidates and source row references.
+7. For temporary हिंदुहृदयसम्राट बाळासाहेब ठाकरे आपला दवाखाना/ICU/ambulance pathak points that do not match existing map data, create a manual verification queue with geocoding candidates and source row references.
 
 ## Safe Immediate Decision
 

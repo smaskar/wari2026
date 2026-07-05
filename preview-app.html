@@ -123,7 +123,7 @@ function badge(p){
  if(isICU(p))b.push('<span class="bd icu">ICU/ट्रॉमा</span>');
  if(W.isPHC(p))b.push('<span class="bd">प्रा.आ.केंद्र</span>');
  else if(W.isRuralHospital(p))b.push('<span class="bd">ग्रामीण/उपजिल्हा रुग्णालय</span>');
- else if(W.isHBT(p))b.push('<span class="bd">HBT दवाखाना</span>');
+ else if(W.isHBT(p))b.push('<span class="bd">हिंदुहृदयसम्राट बाळासाहेब ठाकरे आपला दवाखाना</span>');
  else if(W.isPrivateHospital(p))b.push('<span class="bd">खाजगी रुग्णालय</span>');
  else if(p.type==='Ambulance')b.push('<span class="bd">रुग्णवाहिका'+(p.vehicle?' · '+W.esc(p.vehicle):'')+'</span>');
  else if(W.isToilet(p))b.push('<span class="bd">शौचालये'+(p.toilet?' · '+W.esc(String(p.toilet)):'')+'</span>');

@@ -34,7 +34,7 @@ window.WariData=(function(){
     if(isPolice(p))s.push('🚔 पोलीस स्टेशन');
     if(isRuralHospital(p))s.push('🏥 ग्रामीण रुग्णालय');
     if(isPHC(p))s.push('🩺 प्रा. आ. केंद्र');
-    if(isHBT(p))s.push('🏩 HBT दवाखाना');
+    if(isHBT(p))s.push('🏩 हिंदुहृदयसम्राट बाळासाहेब ठाकरे आपला दवाखाना');
     if(isPrivateHospital(p))s.push('🏨 खाजगी रुग्णालय');
     if(hasAmb(p)){if(is108(p))s.push('🚑 १०८');if(is102(p))s.push('🚑 १०२');if(isALS(p))s.push('🚑 ALS');if(isBLS(p))s.push('🚑 BLS');if(!is108(p)&&!is102(p)&&!isALS(p)&&!isBLS(p))s.push('🚑 रुग्णवाहिका');}
     if(hasHirkani(p))s.push('🤱 हिरकणी कक्ष');
