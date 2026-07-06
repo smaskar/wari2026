@@ -24,10 +24,12 @@ window.WARI_SECRETARIES=[
       var cm=i===0; // Chief Minister — emphasised: larger than peers, smaller than PM
       // Boxes keep the photo's own 208x256 (0.8125) ratio + object-fit:contain
       // so the FULL photo always shows — nothing is cropped. Peers a touch smaller.
-      var imgS=(cm?'max-width:60px;width:60px;height:74px':'max-width:48px;width:48px;height:59px')+';object-fit:contain';
-      var nmS=cm?' style="font-size:11px"':'';
-      var dsS=cm?' style="font-size:9.5px"':'';
-      return '<div class="ldr'+(cm?' ldr-cm':'')+'"><img style="'+imgS+'" src="'+o.img+'" alt="'+o.n+'" loading="lazy"/><div><b'+nmS+'>'+o.n+'</b><small'+dsS+'>'+o.d.replace(/, महाराष्ट्र (शासन|राज्य)/,'<br>महाराष्ट्र $1')+'</small></div></div>';
+      // Same treatment as the PM: white-bordered photo + white text on orange,
+      // no white card box. Peers a touch smaller than the CM.
+      var imgS=(cm?'max-width:60px;width:60px;height:74px':'max-width:48px;width:48px;height:59px')+';object-fit:contain;border:2px solid #fff;background:#fff;box-shadow:0 3px 9px rgba(0,0,0,.22);border-radius:9px';
+      var nmS='color:#fff'+(cm?';font-size:11px':'');
+      var dsS='color:#fff;opacity:.92'+(cm?';font-size:9.5px':'');
+      return '<div class="ldr'+(cm?' ldr-cm':'')+'" style="background:rgba(255,255,255,.10);box-shadow:none;padding:8px 4px 7px;border:1.5px solid rgba(255,255,255,.55);border-radius:10px"><img style="'+imgS+'" src="'+o.img+'" alt="'+o.n+'" loading="lazy"/><div><b style="'+nmS+'">'+o.n+'</b><small style="'+dsS+'">'+o.d.replace(/, महाराष्ट्र (शासन|राज्य)/,'<br>महाराष्ट्र $1')+'</small></div></div>';
     }).join('');
   }
   if(document.readyState!=='loading') render(); else document.addEventListener('DOMContentLoaded', render);
