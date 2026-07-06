@@ -2,7 +2,7 @@ window.WariData=(function(){
   const RE_PHONE=/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g;
   const NAMES={all:'दोन्ही पालख्या',both:'दोन्ही पालख्या',dnyaneshwar:'श्री संत ज्ञानेश्वर महाराज',tukaram:'जगद्गुरू श्री संत तुकाराम महाराज'};
   function cleanVeh(v){v=(v||'').trim();return /\d{3,4}/.test(v)?v:''}
-  function norm(x,def){return{palkhi:x.p||x.palkhi||def||'dnyaneshwar',type:x.type||x.t||'',label:x.label||x.l||'',place:x.place||x.pl||'',base:x.base||x.b||'',vehicle:cleanVeh(x.vehicle||x.v||''),mems:x.mems||x.m||'',call:x.call||x.c||'',doctor:x.doctor||x.d||'',pilot:x.pilot||x.pi||'',mo:x.mo||'',live:x.live||'',photo:x.photo||'',toilet:x.toilet||'',sites:x.sites||'',lat:+x.lat,lng:+x.lng,ready:x.ready||x.r||'',date:x.date||x.dt||'',phase:x.phase||x.ph||''}}
+  function norm(x,def){return{palkhi:x.p||x.palkhi||def||'dnyaneshwar',type:x.type||x.t||'',label:x.label||x.l||'',place:x.place||x.pl||'',base:x.base||x.b||'',vehicle:cleanVeh(x.vehicle||x.v||''),mems:x.mems||x.m||'',call:x.call||x.c||'',doctor:x.doctor||x.d||'',pilot:x.pilot||x.pi||'',mo:x.mo||'',live:x.live||'',photo:x.photo||'',toilet:x.toilet||'',sites:x.sites||'',lat:+x.lat,lng:+x.lng,ready:x.ready||x.r||'',date:x.date||x.dt||'',day:x.day||'',phase:x.phase||x.ph||''}}
   function txt(p){return[p.type,p.label,p.place,p.base,p.mems,p.phase].join(' ').toLowerCase()}
   function isHalt(p){return /halt|mukkam|मुक्काम/i.test(p.type||'')}
   function hasAmb(p){return /ambulance|102|108|रुग्णवाहिका/i.test([p.type,p.label,p.mems].join(' '))||/\b[A-Z]{2}\s*\d{1,2}\s*[A-Z]{1,3}\s*\d{3,4}\b/i.test(p.vehicle||'')}
@@ -25,11 +25,13 @@ window.WariData=(function(){
   function is108(p){return hasAmb(p)&&/108|१०८/.test([p.mems,p.type,p.label].join(' '))}
   function isToilet(p){return /शौचालये|toilet/i.test(p.type||'')}
   function isPolice(p){return /police|पोलीस/i.test(p.type||'')}
+  function isCharanseva(p){return /charanseva|चरणसेवा/i.test([p.type,p.label,p.mems].join(' '))}
   function isICU(p){return /\bicu\b|trauma|ट्रॉमा/i.test([p.type,p.label,p.place,p.base].join(' '))}
   function isApprox(p){return /अंदाजे/.test([p.type,p.label].join(' '))}
   function isVisava(p){return isHalt(p)&&/rest|विश्रांती|विसावा/i.test([p.type,p.label].join(' '))}
-  function cls(p){return isPolice(p)?'police':hasHirkani(p)?'hirkani':isToilet(p)?'toilet':isHalt(p)?'halt':hasHealth(p)?'health':hasAmb(p)?'ambulance':hasWater(p)?'water':'other'}
+  function cls(p){return isCharanseva(p)?'charanseva':isPolice(p)?'police':hasHirkani(p)?'hirkani':isToilet(p)?'toilet':isHalt(p)?'halt':hasHealth(p)?'health':hasAmb(p)?'ambulance':hasWater(p)?'water':'other'}
   function services(p){var s=[];
+    if(isCharanseva(p))s.push('🙏 चरणसेवा');
     if(isICU(p))s.push('⛑ ICU/ट्रॉमा');
     if(isPolice(p))s.push('🚔 पोलीस स्टेशन');
     if(isRuralHospital(p))s.push('🏥 ग्रामीण रुग्णालय');
@@ -44,7 +46,7 @@ window.WariData=(function(){
     if(p.mo)s.push('🧑‍⚕️ वैद्यकीय अधिकारी');
     return s;}
   function multi(p){return services(p).filter(x=>!/शौचालये|वैद्यकीय अधिकारी/.test(x)).length>1}
-  function icon(p){return isPolice(p)?'🚔':hasHirkani(p)?'🤱':isToilet(p)?'🚻':isHalt(p)?'⛺':hasHospital(p)?'🏥':hasDoc(p)?'🩺':hasAmb(p)?'🚑':hasWater(p)?'💧':'📍'}
+  function icon(p){return isCharanseva(p)?'🙏':isPolice(p)?'🚔':hasHirkani(p)?'🤱':isToilet(p)?'🚻':isHalt(p)?'⛺':hasHospital(p)?'🏥':hasDoc(p)?'🩺':hasAmb(p)?'🚑':hasWater(p)?'💧':'📍'}
   function esc(s){return(s||'').toString().replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]))}
   function tel(s){return(s||'').replace(/[^0-9+]/g,'')}
   function vehKey(v){return(v||'').toUpperCase().replace(/[^A-Z0-9]/g,'')}
@@ -65,21 +67,22 @@ window.WariData=(function(){
     let rawW=(window.WARI_WATER_POINTS||[]).map(x=>norm(x,'dnyaneshwar'));
     let rawTL=(window.WARI_TOILET_POINTS||[]).map(x=>norm(x,'dnyaneshwar'));
     let rawPO=(window.WARI_POLICE_POINTS||[]).map(x=>norm(x,x.p||'both'));
+    let rawCS=(window.WARI_CHARANSEVA_POINTS||[]).map(x=>norm(x,x.p||'both'));
     let rawFP=(window.WARI_FILLING_POINTS||[]).map(x=>norm(x,'dnyaneshwar'));
     let rawP2=(window.WARI_PHC102_POINTS||[]).map(x=>norm(x,'dnyaneshwar'));
     let rawVS=(window.WARI_VISAVA_POINTS||[]).map(x=>norm(x,x.p||'dnyaneshwar'));
     let rawMM=(window.WARI_MYMAPS_POINTS||[]).map(x=>norm(x,x.p||'dnyaneshwar'));
     let rawMB=(window.WARI_MEMSBOOK_POINTS||[]).map(x=>norm(x,x.p||'dnyaneshwar'));
     let notHaltType=p=>!/halt|mukkam|मुक्काम/i.test(p.type||'');
-    let pts=[...rawD.filter(notHaltType),...rawT.filter(notHaltType),...rawHD,...rawHT,...rawS.filter(notHaltType),...rawHK,...rawPV,...rawSOL,...rawW,...rawTL,...rawPO,...rawFP,...rawP2,...rawVS,...rawMM,...rawMB]
+    let pts=[...rawD.filter(notHaltType),...rawT.filter(notHaltType),...rawHD,...rawHT,...rawS.filter(notHaltType),...rawHK,...rawPV,...rawSOL,...rawW,...rawTL,...rawPO,...rawCS,...rawFP,...rawP2,...rawVS,...rawMM,...rawMB]
       .filter(p=>isFinite(p.lat)&&isFinite(p.lng));
     let seen=new Set();
-    pts=pts.filter(p=>{let key=[p.palkhi,p.type,p.label,p.place,p.vehicle,p.lat.toFixed(5),p.lng.toFixed(5)].join('|').toLowerCase();if(seen.has(key))return false;seen.add(key);return true});
+    pts=pts.filter(p=>{let key=[p.palkhi,p.type,p.label,p.place,p.vehicle,p.date,p.day,p.lat.toFixed(5),p.lng.toFixed(5)].join('|').toLowerCase();if(seen.has(key))return false;seen.add(key);return true});
     // field-verified 04/07: MEMS route waypoints are real deployment positions (e.g. दिवे घाट chain) —
     // keep ALL of them, incl. no-contact staging points; ambulance card counts distinct vehicles, not pins.
     pts.forEach(p=>{if(/रुग्णवाहिका सेवा/.test(p.label)&&!p.vehicle&&!p.call&&!/अंदाजे|पडताळणी|तैनाती/.test(p.label))p.label+=' (तैनाती बिंदू — संपर्क विभागाकडे)';});
     // merge pins with identical label+coords (e.g. two ambulances staged at one point) into one pin
-    (function(){const bykey={},out=[];pts.forEach(p=>{const k=(p.label||'')+'@'+p.lat.toFixed(5)+','+p.lng.toFixed(5);const t=bykey[k];if(t){['vehicle','doctor','pilot'].forEach(f=>{if(p[f]&&!(t[f]||'').includes(p[f]))t[f]=t[f]?t[f]+'; '+p[f]:p[f]});if(!t.call&&p.call)t.call=p.call;}else{bykey[k]=p;out.push(p)}});pts=out})();
+    (function(){const bykey={},out=[];pts.forEach(p=>{const k=(p.label||'')+'|'+(p.date||'')+'|'+(p.day||'')+'@'+p.lat.toFixed(5)+','+p.lng.toFixed(5);const t=bykey[k];if(t){['vehicle','doctor','pilot'].forEach(f=>{if(p[f]&&!(t[f]||'').includes(p[f]))t[f]=t[f]?t[f]+'; '+p[f]:p[f]});if(!t.call&&p.call)t.call=p.call;}else{bykey[k]=p;out.push(p)}});pts=out})();
     // attach 102-fleet vehicles/drivers to existing facility pins (exact label-prefix match)
     (window.WARI_AMB_SUPPLEMENT||[]).forEach(sup=>{
       let t=pts.find(p=>(p.label||'').indexOf(sup.m)===0);
@@ -91,5 +94,5 @@ window.WariData=(function(){
     applyAmbContacts(pts);
     return pts;
   }
-  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,isToilet,isPolice,isICU,isApprox,isVisava,services,multi,esc,tel,countContacts,uniqueCount,vehicleCount};
+  return{NAMES,build,isHalt,hasAmb,hasDoc,hasHospital,hasHealth,hasWater,hasHirkani,isSatara,isPHC,isRuralHospital,isHBT,isPrivateHospital,hasDoctor,isEMS,isMO,isALS,isBLS,is102,is108,cls,icon,isToilet,isPolice,isCharanseva,isICU,isApprox,isVisava,services,multi,esc,tel,countContacts,uniqueCount,vehicleCount};
 })();
