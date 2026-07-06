@@ -20,8 +20,12 @@ window.WARI_SECRETARIES=[
       return '<div class="offcard"><b>'+o.n+'</b><small>'+o.d.replace(/, महाराष्ट्र (शासन|राज्य)/,'<br>महाराष्ट्र $1')+'</small></div>';
     }).join('');
     var el=document.getElementById('leaders-strip'); if(!el) return;
-    el.innerHTML=window.WARI_DIGNITARIES.map(function(o){
-      return '<div class="ldr"><img src="'+o.img+'" alt="'+o.n+'" loading="lazy"/><div><b>'+o.n+'</b><small>'+o.d.replace(/, महाराष्ट्र (शासन|राज्य)/,'<br>महाराष्ट्र $1')+'</small></div></div>';
+    el.innerHTML=window.WARI_DIGNITARIES.map(function(o,i){
+      var cm=i===0; // Chief Minister — emphasised: larger than peers, smaller than PM
+      var imgS=cm?' style="max-width:62px;width:62px;height:72px"':'';
+      var nmS=cm?' style="font-size:11px"':'';
+      var dsS=cm?' style="font-size:9.5px"':'';
+      return '<div class="ldr'+(cm?' ldr-cm':'')+'"><img'+imgS+' src="'+o.img+'" alt="'+o.n+'" loading="lazy"/><div><b'+nmS+'>'+o.n+'</b><small'+dsS+'>'+o.d.replace(/, महाराष्ट्र (शासन|राज्य)/,'<br>महाराष्ट्र $1')+'</small></div></div>';
     }).join('');
   }
   if(document.readyState!=='loading') render(); else document.addEventListener('DOMContentLoaded', render);
