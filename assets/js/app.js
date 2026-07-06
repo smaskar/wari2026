@@ -1,7 +1,7 @@
 const W=window.WariData,names={all:'दोन्ही पालख्या',dnyaneshwar:'श्री संत ज्ञानेश्वर महाराज पालखी',tukaram:'जगद्गुरू श्री संत तुकाराम महाराज पालखी'};
 const MUKKAM_DEFAULT_RADIUS=1000;
 let POINTS=W.build(),map,userMarker=null,accCircle=null,markers=[],routeLayer=null,userLocation=null,mukkamRef=null,mukkamName='',mukkamLayer=null,cat='all',docSub='all',ambSub='all',watSub='all',haltSub='all',rad=500,currentPalkhi='all',selectedPoint='';
-function $(id){return document.getElementById(id)}function tick(){$('clock').textContent=new Date().toLocaleTimeString('mr-IN',{hour:'numeric',minute:'2-digit'})}tick();setInterval(tick,3e4);
+function $(id){return document.getElementById(id)}function tick(){$('clock').textContent=new Date().toLocaleTimeString('mr-IN',{hour:'numeric',minute:'2-digit',hour12:true})}tick();setInterval(tick,3e4);
 document.addEventListener('click',e=>{const a=e.target.closest?e.target.closest('a[href^="tel:"]'):null;if(a&&window.top!==window.self){e.preventDefault();try{window.top.location.href=a.getAttribute('href')}catch(_){window.location.href=a.getAttribute('href')}}});
 function closeHelpline(){let h=$('helpline');if(h)h.open=false}document.addEventListener('click',e=>{let h=$('helpline');if(h&&h.open&&!h.contains(e.target))h.open=false},true);
 function initMap(){if(map)return;if(!window.L){$('map').innerHTML='<div style="padding:18px;font-weight:900">नकाशा ऑफलाइन उपलब्ध नाही. मदत केंद्रांची यादी खाली उपलब्ध आहे.</div>';return}map=L.map('map',{zoomControl:false}).setView([18.41936,74.02765],10);L.control.zoom({position:'bottomleft'}).addTo(map);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);map.on('popupopen',()=>setTimeout(initLive,60))}

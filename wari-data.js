@@ -1,8 +1,32 @@
 window.WariData=(function(){
   const RE_PHONE=/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g;
   const NAMES={all:'दोन्ही पालख्या',both:'दोन्ही पालख्या',dnyaneshwar:'श्री संत ज्ञानेश्वर महाराज',tukaram:'जगद्गुरू श्री संत तुकाराम महाराज'};
+  const MN={1:'जानेवारी',2:'फेब्रुवारी',3:'मार्च',4:'एप्रिल',5:'मे',6:'जून',7:'जुलै',8:'ऑगस्ट',9:'सप्टेंबर',10:'ऑक्टोबर',11:'नोव्हेंबर',12:'डिसेंबर'};
+  function nd(s){return String(s).replace(/[०-९]/g,ch=>'०१२३४५६७८९'.indexOf(ch))}
+  function md(n){return String(n).replace(/[0-9]/g,d=>'०१२३४५६७८९'[d])}
+  function cleanInfo(v){
+    return (v||'').toString()
+      .replace(/अधिकृत MEMS\/संस्थान वेळापत्रकाशी जुळवले \(जाताना\)\s*·\s*परतीचा: SBM संदर्भ/g,'')
+      .replace(/अधिकृत MEMS\/संस्थान वेळापत्रक/g,'')
+      .replace(/MEMS पुस्तिका\s*[०-९0-9.\/-]+/g,'')
+      .replace(/मागील वर्ष\s*[–-]\s*संदर्भ यादी\s*\(पडताळणी करा\)/g,'')
+      .replace(/पुढील मुक्काम\s*[–-]\s*तारीख विभागाकडून/g,'')
+      .replace(/\s*·\s*[^·]*(?:जि\.प\. My Maps GPS|My Maps GPS)[^·]*/g,'')
+      .replace(/जि\.प\. My Maps:\s*/g,'')
+      .replace(/\s*·\s*जि\.प\. My Maps\b/g,'')
+      .replace(/जि\.प\. My Maps\s*[—-]\s*/g,'')
+      .replace(/\s*\(जि\.प\. नकाशा\)/g,'')
+      .replace(/\s*\(?अचूक GPS\)?/g,'')
+      .replace(/\s*\(SOP पान [^)]+\)/g,'')
+      .replace(/SOP पान\s*[०-९0-9-]+/g,'')
+      .replace(/([०-९0-9]{1,2})\.([०-९0-9]{2})(?=\s|$)/g,(m,d,mo)=>{let mm=+nd(mo);return MN[mm]?md(+nd(d))+' '+MN[mm]:m})
+      .replace(/\s*·\s*$/,'')
+      .replace(/^\s*·\s*/,'')
+      .replace(/\s{2,}/g,' ')
+      .trim()
+  }
   function cleanVeh(v){v=(v||'').trim();return /\d{3,4}/.test(v)?v:''}
-  function norm(x,def){return{palkhi:x.p||x.palkhi||def||'dnyaneshwar',type:x.type||x.t||'',label:x.label||x.l||'',place:x.place||x.pl||'',base:x.base||x.b||'',vehicle:cleanVeh(x.vehicle||x.v||''),mems:x.mems||x.m||'',call:x.call||x.c||'',doctor:x.doctor||x.d||'',pilot:x.pilot||x.pi||'',mo:x.mo||'',live:x.live||'',photo:x.photo||'',toilet:x.toilet||'',sites:x.sites||'',lat:+x.lat,lng:+x.lng,ready:x.ready||x.r||'',date:x.date||x.dt||'',day:x.day||'',phase:x.phase||x.ph||''}}
+  function norm(x,def){return{palkhi:x.p||x.palkhi||def||'dnyaneshwar',type:x.type||x.t||'',label:cleanInfo(x.label||x.l||''),place:cleanInfo(x.place||x.pl||''),base:cleanInfo(x.base||x.b||''),vehicle:cleanVeh(x.vehicle||x.v||''),mems:x.mems||x.m||'',call:x.call||x.c||'',doctor:x.doctor||x.d||'',pilot:x.pilot||x.pi||'',mo:x.mo||'',live:x.live||'',photo:x.photo||'',toilet:x.toilet||'',sites:x.sites||'',lat:+x.lat,lng:+x.lng,ready:x.ready||x.r||'',date:cleanInfo(x.date||x.dt||''),day:x.day||'',phase:cleanInfo(x.phase||x.ph||'')}}
   function txt(p){return[p.type,p.label,p.place,p.base,p.mems,p.phase].join(' ').toLowerCase()}
   function isHalt(p){return /halt|mukkam|मुक्काम/i.test(p.type||'')}
   function hasAmb(p){return /ambulance|102|108|रुग्णवाहिका/i.test([p.type,p.label,p.mems].join(' '))||/\b[A-Z]{2}\s*\d{1,2}\s*[A-Z]{1,3}\s*\d{3,4}\b/i.test(p.vehicle||'')}
