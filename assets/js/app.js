@@ -64,7 +64,7 @@ return pts.sort(function(a,b){
   var pa=catPri(a), pb=catPri(b); if(pa!==pb)return pa-pb;
   return (a.palkhi+a.label).localeCompare(b.palkhi+b.label);
 })}
-function counts(){let s=refLoc()?' जवळ':' एकूण';let set=(id,n)=>{let e=$(id);if(e)e.textContent=n+s};
+function counts(){let s=refLoc()?'':' एकूण';let set=(id,n)=>{let e=$(id);if(e)e.textContent=n+s};
 let ap=POINTS.filter(p=>inP(p)&&okSearch(p)&&W.hasAmb(p));if(refLoc()&&rad<99999999)ap=ap.filter(p=>{let d=dist(p);return d!=null&&d<=rad});
 set('countAmb',W.vehicleCount(ap));set('countDoc',visN(isDocCat));set('countHalt',visN(W.isHalt));set('countHirkani',visN(W.hasHirkani));set('countWater',visN(W.hasWater));set('countPolice',visN(W.isPolice));set('countCharanseva',visN(W.isCharanseva));
 let tp=POINTS.filter(p=>inP(p)&&okSearch(p)&&W.isToilet(p));if(refLoc()&&rad<99999999)tp=tp.filter(p=>{let d=dist(p);return d!=null&&d<=rad});
