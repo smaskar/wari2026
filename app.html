@@ -10,6 +10,24 @@
   <meta name="theme-color" content="#f27405" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="./assets/css/app.css?v=126" />
+  <script>
+  /* Register the service worker HERE — app.html is the page mobile users actually
+     run (index.html redirects here before its own load-handler can register).
+     Without this, the PWA had no SW = no offline. Auto-applies updates. */
+  (function(){
+    if(!('serviceWorker' in navigator))return;
+    var hadCtrl=!!navigator.serviceWorker.controller,reloaded=false;
+    navigator.serviceWorker.addEventListener('controllerchange',function(){
+      if(!hadCtrl){hadCtrl=true;return;}            /* first install: no reload */
+      if(reloaded)return;reloaded=true;location.reload();  /* update: apply now */
+    });
+    navigator.serviceWorker.register('./sw.js').then(function(reg){
+      function upd(){try{reg.update()}catch(e){}}
+      if(navigator.onLine)upd();
+      window.addEventListener('online',upd);
+    }).catch(function(){});
+  })();
+  </script>
 </head>
 <body>
   <div class="page map-open" id="page">
