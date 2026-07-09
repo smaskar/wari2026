@@ -52,6 +52,45 @@ NOTE: the package name can NEVER be changed after first upload — pick carefull
      bubblewrap fingerprint     # prints the SHA-256 for assetlinks.json
 
 --------------------------------------------------------------------------
+1C) THE SIGNING KEY  (how to generate it)
+--------------------------------------------------------------------------
+Recommended: enable Play App Signing (Option C) + keep a self-made upload key.
+
+  OPTION A - Let PWABuilder create it (easiest)
+    In the Android packaging step, under "Signing key" choose "Create New".
+    The downloaded ZIP contains signing.keystore + a file with the alias and
+    passwords. Back ALL of it up.
+
+  OPTION B - Generate it yourself with keytool (JDK required; run on your machine)
+    keytool -genkeypair -v \
+      -keystore wari-upload.keystore \
+      -alias wari \
+      -keyalg RSA -keysize 2048 -validity 10000 \
+      -storepass CHOOSE_A_STRONG_PASSWORD \
+      -keypass  CHOOSE_A_STRONG_PASSWORD \
+      -dname "CN=Public Health Department, OU=Aarogya Wari, O=Government of Maharashtra, L=Pune, ST=Maharashtra, C=IN"
+
+    -> creates wari-upload.keystore   (alias: wari)
+    Get its SHA-256 (for assetlinks.json):
+      keytool -list -v -keystore wari-upload.keystore -alias wari -storepass YOUR_PASSWORD | grep SHA256
+    For Bubblewrap: rename to android.keystore (or edit signingKey.path in
+    twa-manifest.json) — alias is already "wari".
+
+  OPTION C - Play App Signing (enable regardless)
+    Play Console -> Setup -> App integrity -> Play App Signing (on by default).
+    Google generates & HOLDS the real distribution key; your keystore (A or B)
+    is only the UPLOAD key. If the upload key is ever lost, you can reset it.
+
+  IMPORTANT - which SHA-256 goes in assetlinks.json:
+    Use the "App signing key certificate" SHA-256 from
+    Play Console -> App integrity  (Google's key, because Play re-signs the app),
+    NOT the upload key's SHA-256.
+
+  BACK IT UP: store the .keystore file + alias + both passwords in a password
+  manager AND an offline copy in 2 safe places. Whoever holds them can publish
+  updates; losing them (without Play App Signing) = you can never update the app.
+
+--------------------------------------------------------------------------
 2) CREATE THE APP IN PLAY CONSOLE
 --------------------------------------------------------------------------
   Play Console -> Create app
