@@ -27,6 +27,9 @@ function updateSubChips(){[['docsubChips','doc','doc',()=>docSub,v=>docSub=v],['
  el.querySelectorAll('.chip').forEach(function(b){b.classList.toggle('active',b.dataset[attr]===active)});
 })}
 function togglePanel(){const pn=document.getElementById('panel'),tg=document.getElementById('ptoggle'),open=pn.classList.toggle('collapsed');tg.textContent=open?'नियंत्रण ▾':'बंद करा ▴';tg.setAttribute('aria-expanded',String(!open));setTimeout(()=>map.invalidateSize(true),220)}
+// Ensure the control panel is expanded so the "इथून सर्व सेवा" nearest-services summary is
+// actually visible when a mukkam is picked or the user is located (parity with the mobile app).
+function expandPanel(){const pn=document.getElementById('panel'),tg=document.getElementById('ptoggle');if(pn&&pn.classList.contains('collapsed')){pn.classList.remove('collapsed');if(tg){tg.textContent='बंद करा ▴';tg.setAttribute('aria-expanded','true');}setTimeout(()=>{if(map)map.invalidateSize(true)},220)}var ns=document.getElementById('nearSummary');if(ns&&ns.scrollIntoView)try{ns.scrollIntoView({block:'nearest'})}catch(e){}}
 function palkhiKeep(p){return palkhiFilter==='all'||p.palkhi===palkhiFilter||p.palkhi==='both'}
 let searchQ='';function setSearch(v){searchQ=(v||'').trim().toLowerCase();draw()}
 function searchKeep(p){if(!searchQ)return true;return [p.label,p.place,p.vehicle,p.doctor,p.pilot,p.base,p.call,p.mo].some(f=>f&&String(f).toLowerCase().includes(searchQ))}
@@ -50,7 +53,7 @@ if(palkhiFilter!=='dnyaneshwar'&&tr.length)L.polyline(tr,{color:'#f4711f',weight
 const SC_MIN_ZOOM=13;let scVis=false;function isSC(p){return /sub-centre/i.test(p.type||'')}
 let zoomRedraw=false;map.on('zoomend',()=>{if((map.getZoom()>=SC_MIN_ZOOM)!==scVis){zoomRedraw=true;try{draw()}finally{zoomRedraw=false}}});
 function draw(){updateSubChips();scVis=map.getZoom()>=SC_MIN_ZOOM;routeLayer.clearLayers();layer.clearLayers();drawRoute();let pts=POINTS.filter(keep);document.getElementById('count').textContent=pts.length;pts.forEach(p=>{if(isSC(p)&&!scVis)return;return L.marker([p.lat,p.lng],{icon:L.divIcon({className:'',html:`<div class="pin ${W.cls(p)} pal-${p.palkhi}${p.live?' has-live':''}${W.multi(p)?' multi':''}${W.isApprox(p)?' approx':''}">${W.icon(p)}</div>`,iconSize:[30,30],iconAnchor:[15,15]})}).bindPopup(popup(p),{maxWidth:250}).addTo(layer)});if(!zoomRedraw&&pts.length&&!userLocation){map.fitBounds(L.latLngBounds(pts.map(p=>[p.lat,p.lng])).pad(.1));}if(typeof renderNearSummaryM==='function')renderNearSummaryM();}
-function showUser(lat,lng,acc){userLocation=[lat,lng];userLayer.clearLayers();L.circle([lat,lng],{radius:Math.max(acc||20,20),className:'accuracy'}).addTo(userLayer);L.marker([lat,lng],{icon:L.divIcon({className:'',html:'<div class="userpin"></div>',iconSize:[24,24],iconAnchor:[12,12]})}).bindPopup('आपण येथे आहात').addTo(userLayer).openPopup();document.getElementById('locStatus').textContent='माझे स्थान दिसत आहे';map.setView([lat,lng],16);renderNearSummaryM();setTimeout(()=>map.invalidateSize(true),120)}
+function showUser(lat,lng,acc){userLocation=[lat,lng];userLayer.clearLayers();L.circle([lat,lng],{radius:Math.max(acc||20,20),className:'accuracy'}).addTo(userLayer);L.marker([lat,lng],{icon:L.divIcon({className:'',html:'<div class="userpin"></div>',iconSize:[24,24],iconAnchor:[12,12]})}).bindPopup('आपण येथे आहात').addTo(userLayer).openPopup();document.getElementById('locStatus').textContent='माझे स्थान दिसत आहे';map.setView([lat,lng],16);renderNearSummaryM();expandPanel();setTimeout(()=>map.invalidateSize(true),120)}
 function locateMe(){if(!navigator.geolocation){document.getElementById('locStatus').textContent='Location सुविधा उपलब्ध नाही';return;}document.getElementById('locStatus').textContent='GPS स्थान घेत आहोत…';navigator.geolocation.getCurrentPosition(pos=>showUser(pos.coords.latitude,pos.coords.longitude,pos.coords.accuracy),()=>{document.getElementById('locStatus').textContent='GPS permission द्या';},{enableHighAccuracy:true,timeout:15000,maximumAge:20000})}
 function setPalkhi(p,fromParent){silent=!!fromParent;palkhiFilter=p||'all';document.querySelectorAll('#palkhiChips .chip').forEach(x=>x.classList.toggle('active',x.dataset.palkhi===palkhiFilter));draw();notifyParent();silent=false}
 const SUBROWS=[['docsubChips','doc','doc',v=>docSub=v],['ambsubChips','ambulance','amb',v=>ambSub=v],['watsubChips','water','wat',v=>watSub=v],['haltsubChips','halt','halt',v=>haltSub=v]];
@@ -83,7 +86,7 @@ setPalkhi(m.pal);
 mkRef=[m.lat,m.lng];mkName=m.n||'';
 mkLayer=L.layerGroup().addTo(map);
 L.circle([m.lat,m.lng],{radius:1000,color:'#d92b2b',weight:3,fillOpacity:.08}).addTo(mkLayer);
-map.setView([m.lat,m.lng],13);renderNearSummaryM();}
+map.setView([m.lat,m.lng],13);renderNearSummaryM();expandPanel();}
 draw();
 
 /* ---- Desktop-map parity: "इथून सर्व सेवा" nearest-of-each panel (mirrors app.js) ---- */

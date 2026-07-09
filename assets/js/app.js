@@ -92,7 +92,12 @@ if(currentPalkhi!=='dnyaneshwar'&&tr.length)L.polyline(tr,{color:'#f4711f',weigh
 const SC_MIN_ZOOM=13;function isSC(p){return /sub-centre/i.test(p.type||'')}
 let drawnPts=[],scVis=false;
 function draw(pts){if(!map)return;drawnPts=pts;scVis=map.getZoom()>=SC_MIN_ZOOM;markers.forEach(m=>map.removeLayer(m));markers=[];pts.forEach(p=>{if(isSC(p)&&!scVis)return;let m=L.marker([p.lat,p.lng],{icon:L.divIcon({className:'',html:`<div class="pin ${W.cls(p)} pal-${p.palkhi}${p.live?' has-live':''}${W.multi(p)?' multi':''}${W.isApprox(p)?' approx':''}">${W.icon(p)}</div>`,iconSize:[30,30],iconAnchor:[15,15]})}).addTo(map).bindPopup(popup(p),{maxWidth:250});markers.push(m)})}
-function fitMappedArea(){if(!map)return;let v=visible().filter(p=>isFinite(p.lat)&&isFinite(p.lng)).map(p=>[p.lat,p.lng]);if(v.length){map.fitBounds(L.latLngBounds(v).pad(.12));setTimeout(()=>map.invalidateSize(true),150)}}
+function fitMappedArea(){if(!map)return;
+ // Mukkam mode: always frame the mukkam ± radius circle so the 1 km area (and its circle) is
+ // reliably centred, even if 0 points fall inside. Avoids a race where fitting to all visible
+ // points would zoom the map right out (to ~zoom 8) and make the cluster an invisible speck.
+ if(mukkamRef&&!userLocation&&rad<99999999){var la=rad/111000,ln=rad/(111000*Math.cos(mukkamRef[0]*Math.PI/180));map.fitBounds(L.latLngBounds([mukkamRef[0]-la,mukkamRef[1]-ln],[mukkamRef[0]+la,mukkamRef[1]+ln]).pad(.15));setTimeout(()=>map.invalidateSize(true),150);return;}
+ let v=visible().filter(p=>isFinite(p.lat)&&isFinite(p.lng)).map(p=>[p.lat,p.lng]);if(v.length){map.fitBounds(L.latLngBounds(v).pad(.12));setTimeout(()=>map.invalidateSize(true),150)}}
 function phoneHref(raw){let s=(raw||'').replace(/[^0-9+]/g,'');return s.length===10&&/^[6-9]/.test(s)?'+91'+s:s}function phoneLink(n){n=(n||'').trim();return`<a class="phone-pill" href="tel:${phoneHref(n)}">📞 ${W.esc(n)}</a>`}function splitContacts(v){return(v||'').split(/\s*;\s*/).map(x=>x.trim()).filter(Boolean).map(x=>{let nums=x.match(/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g)||[];let name=x.replace(/(?:\+?91[\s-]?)?[6-9]\d{9}|0\d{2,4}[\s-]?\d{6,8}|1800[\s-]?\d{2,4}[\s-]?\d{3,4}|155388|1075|1077|104|102/g,'').replace(/[()]/g,'').replace(/\s+/g,' ').trim();return{name:name||'संपर्क',phone:nums[0]||''}})}
 function contactSection(title,val,extra=[]){let arr=[...extra,...splitContacts(val)];if(!arr.length)return'';return`<div class="contact-section"><div class="contact-heading">${W.esc(title)}</div>${arr.map(c=>`<div class="contact-line ${c.cls||''}"><span class="contact-name">${W.esc(c.name)}</span>${c.phone?phoneLink(c.phone):''}</div>`).join('')}</div>`}
 function charansevaCard(p){let route=W.NAMES[p.palkhi]||p.palkhi,when=[p.date,p.day].filter(Boolean).join(' · ');return`<article class="card charanseva charanseva-card"><span class="dist">${fd(p.dist)}</span><div class="cs-head"><img src="${W.escAttr(CHARANSEVA_PHOTO)}" alt="चरणसेवा" loading="lazy"><div><div class="cs-kicker">भक्ती विठोबाची · सेवा वारकऱ्यांची</div><div class="formatted-title">${W.esc(p.label)}</div></div></div><div class="badges">${p._fb?'<span class="badge ok">🧭 सर्वात जवळचे</span>':''}<span class="badge">${W.esc(route)}</span></div><div class="formatted-service cs-service"><b>सेवा:</b> भाविकांची चरणसेवा</div>${p.place?`<div class="formatted-field"><b>ठिकाण:</b> ${W.esc(p.place)}</div>`:''}${when?`<div class="formatted-field"><b>तारीख:</b> ${W.esc(when)}</div>`:''}${p.phase?`<div class="formatted-field"><b>पालखी:</b> ${W.esc(p.phase.replace(' चरणसेवा',''))}</div>`:''}<div class="act"><a class="dir" target="_blank" rel="noopener noreferrer" href="${dir(p)}">🧭 दिशा</a><button class="share" onclick="openShare(${p._idx})">📤 शेअर</button></div></article>`}
@@ -190,3 +195,67 @@ initMap();refresh();setTimeout(fitMappedArea,300);addEventListener('resize',()=>
 function wxDesc(c){if(c===0)return['☀️','स्वच्छ'];if(c<=2)return['🌤️','थोडे ढग'];if(c===3)return['☁️','ढगाळ'];if(c===45||c===48)return['🌫️','धुके'];if(c>=51&&c<=57)return['🌦️','रिमझिम'];if(c>=61&&c<=67)return['🌧️','पाऊस'];if(c>=71&&c<=77)return['🌨️','बर्फ'];if(c>=80&&c<=82)return['🌧️','सरी'];if(c>=95)return['⛈️','गडगडाटी पाऊस'];return['🌡️','—']}
 function loadWeather(lat,lng,place){var u='https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lng+'&current=temperature_2m,weather_code&daily=precipitation_probability_max&timezone=Asia%2FKolkata&forecast_days=1';fetch(u).then(r=>r.json()).then(d=>{if(!d||!d.current)throw 0;var wd=wxDesc(d.current.weather_code),set=function(id,v){var e=$(id);if(e)e.textContent=v};var ic=$('wxIcon');if(ic)ic.textContent=wd[0];if(place)set('wxPlace',place);set('wxCond',wd[1]);set('wxTemp',Math.round(d.current.temperature_2m)+'°');var rp=(d.daily&&d.daily.precipitation_probability_max)?d.daily.precipitation_probability_max[0]:null;set('wxRain',rp!=null?rp+'%':'—')}).catch(()=>{var co=$('wxCond'),tm=$('wxTemp');if(co)co.textContent='तपशीलांसाठी दाबा ↗';if(tm)tm.textContent=''})}
 loadWeather(18.5204,73.8567,'पुणे');
+
+/* ---- Offline maps: one-time background download of route-corridor tiles ----
+   Government-deployment requirement: the map must work with NO network. Leaflet is bundled
+   locally; here we pre-download OpenStreetMap tiles along both palkhi routes so the map is
+   usable offline. Runs once, only when online, in the background via the service worker
+   (which stores them in a persistent cache that survives app updates). ~20 MB. */
+(function(){
+  var FLAG='wariTilesPrecached_v2';
+  function lon2t(lon,z){return Math.floor((lon+180)/360*Math.pow(2,z));}
+  function lat2t(lat,z){var r=lat*Math.PI/180;return Math.floor((1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*Math.pow(2,z));}
+  function buildTileList(){
+    var pts=(window.WARI_MUKKAMS||[]).filter(function(m){return isFinite(m.lat)&&isFinite(m.lng);});
+    if(!pts.length)return [];
+    var set={}, cap=2600;
+    function add(z,x,y){var n=Math.pow(2,z);if(x<0||y<0||x>=n||y>=n)return;set[z+'/'+x+'/'+y]=1;}
+    // Overview: bounding box of the whole route at low zoom
+    var lats=pts.map(function(p){return p.lat;}),lngs=pts.map(function(p){return p.lng;});
+    var minLa=Math.min.apply(null,lats),maxLa=Math.max.apply(null,lats),minLo=Math.min.apply(null,lngs),maxLo=Math.max.apply(null,lngs);
+    [9,10,11].forEach(function(z){
+      var x0=lon2t(minLo,z),x1=lon2t(maxLo,z),y0=lat2t(maxLa,z),y1=lat2t(minLa,z);
+      for(var x=x0-1;x<=x1+1;x++)for(var y=y0-1;y<=y1+1;y++)add(z,x,y);
+    });
+    // Corridor: 3×3 tile block around each mukkam at the zooms used for the 1 km view
+    pts.forEach(function(p){
+      [12,13,14].forEach(function(z){
+        var cx=lon2t(p.lng,z),cy=lat2t(p.lat,z);
+        for(var dx=-1;dx<=1;dx++)for(var dy=-1;dy<=1;dy++)add(z,cx+dx,cy+dy);
+      });
+    });
+    // Continuous corridor: follow the route polylines so the map is covered BETWEEN mukkams too
+    // (a warkari walking the road, not only at overnight stops). Dense vertices → contiguous tiles.
+    [window.WARI_ROUTE_TUK,window.WARI_ROUTE_TUK_RET,window.WARI_ROUTE_DNY_EXT,window.WARI_DNYANESHWAR_PUNE_ROUTE].forEach(function(route){
+      if(!Array.isArray(route))return;
+      route.forEach(function(c){
+        if(!c||!isFinite(c[0])||!isFinite(c[1]))return;
+        [12,13,14].forEach(function(z){add(z,lon2t(c[1],z),lat2t(c[0],z));});
+      });
+    });
+    var keys=Object.keys(set).slice(0,cap);
+    return keys.map(function(k){return 'https://tile.openstreetmap.org/'+k+'.png';});
+  }
+  function setStatus(t){var e=document.getElementById('offlineStatus');if(e)e.textContent=t;}
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.addEventListener('message',function(e){
+      if(!e.data)return;
+      if(e.data.type==='TILES_PROGRESS'){setStatus('नकाशा उतरवत आहे… '+Math.round(e.data.done/e.data.total*100)+'%');}
+      if(e.data.type==='TILES_DONE'){localStorage.setItem(FLAG,'1');setStatus('✓ ऑफलाइन नकाशा तयार');}
+    });
+  }
+  function kick(){
+    try{
+      if(!navigator.onLine)return;
+      if(localStorage.getItem(FLAG))return;
+      if(!navigator.serviceWorker||!navigator.serviceWorker.controller)return;
+      var urls=buildTileList();
+      if(!urls.length)return;
+      navigator.serviceWorker.controller.postMessage({type:'PRECACHE_TILES',urls:urls});
+    }catch(e){}
+  }
+  // give the SW time to take control on first load, then start in the background
+  if(navigator.serviceWorker&&navigator.serviceWorker.controller){setTimeout(kick,4000);}
+  else if('serviceWorker' in navigator){navigator.serviceWorker.addEventListener('controllerchange',function(){setTimeout(kick,4000);});}
+  window.addEventListener('online',kick);
+})();

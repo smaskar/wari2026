@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https://www.youtube.com; connect-src 'self' https:; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https://www.youtube.com; connect-src 'self' https:; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>आरोग्य संपन्न वारी</title>
   <link rel="manifest" href="./manifest.webmanifest" />
   <meta name="theme-color" content="#f27405" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="./assets/vendor/leaflet/leaflet.css" />
   <link rel="stylesheet" href="./assets/css/app.css?v=126" />
   <script>
   /* Register the service worker HERE — app.html is the page mobile users actually
@@ -43,7 +43,7 @@
     <div class="sum"><div class="sumrow"><span><b id="count">0</b> मदत केंद्रे</span><span id="gps">GPS सुरू नाही</span></div></div><div id="nearSummary"></div><div id="list" class="list"></div>
   </div>
   <div id="modal" class="modal" onclick="closeModal(event)"><div class="modal-card"><h2>स्थान शेअर करा / मदत मागा</h2><input id="dindi" class="field" placeholder="दिंडी क्रमांक / नाव / मोबाईल संदर्भ"><select id="issue" class="field"><option>वैद्यकीय आपत्कालीन मदत</option><option>रुग्णवाहिका हवी</option><option>पाणी हवे</option><option>व्यक्ती हरवली</option><option>इतर मदत</option></select><div class="act"><button onclick="closeModal()">रद्द करा</button><button class="share" onclick="shareCurrentLocation()">शेअर करा</button></div></div></div>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="./assets/vendor/leaflet/leaflet.js"></script>
   <script src="./wari-points-1.js"></script>
   <script src="./wari-points-2.js"></script>
   <script src="./wari-points-3.js"></script>
