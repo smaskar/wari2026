@@ -97,8 +97,44 @@ function phoneHref(raw){let s=(raw||'').replace(/[^0-9+]/g,'');return s.length==
 function contactSection(title,val,extra=[]){let arr=[...extra,...splitContacts(val)];if(!arr.length)return'';return`<div class="contact-section"><div class="contact-heading">${W.esc(title)}</div>${arr.map(c=>`<div class="contact-line ${c.cls||''}"><span class="contact-name">${W.esc(c.name)}</span>${c.phone?phoneLink(c.phone):''}</div>`).join('')}</div>`}
 function charansevaCard(p){let route=W.NAMES[p.palkhi]||p.palkhi,when=[p.date,p.day].filter(Boolean).join(' · ');return`<article class="card charanseva charanseva-card"><span class="dist">${fd(p.dist)}</span><div class="cs-head"><img src="${W.escAttr(CHARANSEVA_PHOTO)}" alt="चरणसेवा" loading="lazy"><div><div class="cs-kicker">भक्ती विठोबाची · सेवा वारकऱ्यांची</div><div class="formatted-title">${W.esc(p.label)}</div></div></div><div class="badges">${p._fb?'<span class="badge ok">🧭 सर्वात जवळचे</span>':''}<span class="badge">${W.esc(route)}</span></div><div class="formatted-service cs-service"><b>सेवा:</b> भाविकांची चरणसेवा</div>${p.place?`<div class="formatted-field"><b>ठिकाण:</b> ${W.esc(p.place)}</div>`:''}${when?`<div class="formatted-field"><b>तारीख:</b> ${W.esc(when)}</div>`:''}${p.phase?`<div class="formatted-field"><b>पालखी:</b> ${W.esc(p.phase.replace(' चरणसेवा',''))}</div>`:''}<div class="act"><a class="dir" target="_blank" rel="noopener noreferrer" href="${dir(p)}">🧭 दिशा</a><button class="share" onclick="openShare(${p._idx})">📤 शेअर</button></div></article>`}
 function card(p){if(W.isCharanseva(p))return charansevaCard(p);let c=W.tel(p.call),mems=W.isHBT(p)?'हिंदुहृदयसम्राट बाळासाहेब ठाकरे आपला दवाखाना':W.isPolice(p)?'पोलीस स्टेशन':p.mems,service=[W.NAMES[p.palkhi],mems?`(${mems})`:'' ].filter(Boolean).join(' – ');let extra=c&&W.hasAmb(p)?[{name:'रुग्णवाहिका संपर्क',phone:c,cls:'ambulance-main'}]:[];return`<article class="card ${W.cls(p)}"><span class="dist">${fd(p.dist)}</span><div class="formatted-title">${W.esc(W.hasHirkani(p)||W.isToilet(p)||W.isPolice(p)||W.isHalt(p)?p.label:(t=>{let b=p.label.replace(/\b[A-Z]{2}\s*\d{1,2}\s*[A-Z]{1,3}\s*\d{3,4}\b/ig,'').replace(/\s*[|–-]\s*$/,'').trim();return b.startsWith(t)||/^(प्रा\.? ?आ\.? ?केंद्र|ग्रामीण रुग्णालय|उपजिल्हा रुग्णालय|महानगरपालिका रुग्णालय|खाजगी रुग्णालय|हिंदुहृदयसम्राट बाळासाहेब ठाकरे आपला दवाखाना|HBT|रुग्णालय|दवाखाना)/.test(b)?b:t+' – '+b})(W.hasAmb(p)?'रुग्णवाहिका सेवा':W.hasHospital(p)?'रुग्णालय सेवा':W.hasDoc(p)?'डॉक्टर / आरोग्य सेवा':W.hasWater(p)?'पाणी':'मदत केंद्र'))}</div><div class="badges">${p._fb?'<span class="badge ok">🧭 सर्वात जवळचे</span>':''}<span class="badge">${W.esc(W.NAMES[p.palkhi])}</span></div>${p.vehicle?`<div class="formatted-vehicle"><b>वाहन क्रमांक:</b> ${W.esc(p.vehicle)}</div>`:''}<div class="formatted-service"><b>सेवा:</b> ${W.esc(service)}</div>${p.place?`<div class="formatted-field"><b>ठिकाण:</b> ${W.esc(p.place)}</div>`:''}${p.base?`<div class="formatted-field"><b>बेस:</b> ${W.esc(p.base)}</div>`:''}${p.toilet?`<div class="formatted-field"><b>🚻 एकूण शौचालये:</b> ${W.esc(p.toilet)}${p.sites?` <b>· ठिकाणे:</b> ${W.esc(p.sites)}`:''}</div>`:''}${p.mo?contactSection('वैद्यकीय अधिकारी (MO)',p.mo):''}${contactSection(W.isPolice(p)?'पोलीस अधिकारी':W.hasHirkani(p)?'हिरकणी कक्ष संपर्क':'डॉक्टर / EMSO',p.doctor)}${contactSection('पायलट / EA / रुग्णवाहिका संपर्क',p.pilot,extra)}${p.date?`<div class="formatted-field"><b>तारीख:</b> ${W.esc(p.date)}${p.day?` · ${W.esc(p.day)}`:''}</div>`:''}${p.phase?`<div class="formatted-field"><b>टप्पा:</b> ${W.esc(p.phase)}</div>`:''}${p.live?liveBlock(p.live):''}${p.photo?hirkaniMedia(p):''}<div class="act">${W.isHalt(p)?`<button style="grid-column:1/-1;border:0;border-radius:13px;padding:10px 6px;font-weight:950;background:#f27405;color:#fff" onclick="nearbyAt(${p._idx})">⭕ या मुक्कामाजवळील सर्व मदत (१ किमी)</button>`:''}<a class="dir" target="_blank" rel="noopener noreferrer" href="${dir(p)}">🧭 दिशा</a><button class="share" onclick="openShare(${p._idx})">📤 शेअर</button></div></article>`}
+// "All services from here" glance panel — the single nearest point of every
+// category from the current location/mukkam, each with distance + call + directions.
+var NEAR_CATS=[
+  {s:'रुग्णवाहिका',ic:'🚑',c:'#e52920',bg:'#ffe9e8',m:p=>p.type==='Ambulance'},
+  {s:'अतिदक्षता (ICU)',ic:'⛑',c:'#b51d18',bg:'#fdecec',m:p=>W.isICU(p)},
+  {s:'डॉक्टर / रुग्णालय',ic:'🩺',c:'#159653',bg:'#e9f8f0',m:p=>isDocCat(p)&&!W.isICU(p)},
+  {s:'पाणी',ic:'💧',c:'#2f8fcf',bg:'#e9f1ff',m:p=>W.hasWater(p)},
+  {s:'शौचालय',ic:'🚻',c:'#7c3aed',bg:'#f1eafe',m:p=>W.isToilet(p)},
+  {s:'हिरकणी कक्ष',ic:'🤱',c:'#e5399b',bg:'#fdeaf4',m:p=>W.hasHirkani(p)},
+  {s:'चरणसेवा',ic:'🙏',c:'#c2740a',bg:'#fff3dc',m:p=>W.isCharanseva(p)},
+  {s:'मुक्काम / विसावा',ic:'⛺',c:'#9b5b00',bg:'#fff3dc',m:p=>W.isHalt(p)},
+  {s:'पोलीस',ic:'🚔',c:'#1a2f6e',bg:'#e7ecfa',m:p=>W.isPolice(p)}
+];
+function nearestOf(pred){let best=null,bd=Infinity;POINTS.forEach(p=>{if(!inP(p)||!pred(p))return;let d=dist(p);if(d==null)return;if(d<bd){bd=d;best=p}});return best?{p:best,d:bd}:null}
+function focusNear(i){let o=(window._near||[])[i];if(!o)return;cat='all';document.querySelectorAll('.help,.legend-btn,.mini[data-cat]').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'));openMapPanel();refresh();if(map)map.setView([o.p.lat,o.p.lng],16)}
+function renderNearSummary(){let el=$('nearSummary');if(!el)return;
+  if(!refLoc()){el.innerHTML='';return;}
+  let where=userLocation?'तुमचे स्थान':('मुक्काम '+(mukkamName||''));
+  let list=[],rows='';
+  NEAR_CATS.forEach(cat_=>{let n=nearestOf(cat_.m);if(!n)return;let i=list.length;list.push(n);
+    let ph=firstPhone(n.p.call,n.p.mo,n.p.doctor,n.p.pilot);
+    let nm=(n.p.label||'').replace(/\s*\|\s*MH[\s\S]*$/i,'').trim();
+    rows+='<div class="nrow" style="background:#fffef9;border:1px solid #eadfce;border-left:7px solid '+cat_.c+';border-radius:14px;padding:9px 11px;display:flex;align-items:center;gap:10px;margin-bottom:8px">'
+      +'<div onclick="focusNear('+i+')" style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;cursor:pointer">'
+        +'<div style="width:38px;height:38px;flex:0 0 auto;border-radius:12px;background:'+cat_.bg+';display:flex;align-items:center;justify-content:center;font-size:20px">'+cat_.ic+'</div>'
+        +'<div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:950;color:#23160d">'+cat_.s+'</div>'
+        +'<div style="font-size:11.5px;color:#6b5238;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+W.esc(nm)+'</div>'
+        +'<div style="font-size:11px;color:#9a3a00;font-weight:900;margin-top:1px">'+fd(n.d)+'</div></div></div>'
+      +'<div style="display:flex;gap:6px;flex:0 0 auto">'
+        +(ph?'<a href="tel:'+phoneHref(ph)+'" aria-label="फोन करा" style="width:38px;height:38px;border-radius:11px;background:#159653;color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;text-decoration:none">📞</a>':'')
+        +'<a href="'+dir(n.p)+'" target="_blank" rel="noopener noreferrer" aria-label="दिशा" style="width:38px;height:38px;border-radius:11px;background:#2f6fd6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;text-decoration:none">🧭</a>'
+      +'</div></div>';
+  });
+  window._near=list;
+  el.innerHTML=list.length?('<div style="background:#f27405;border-radius:14px;padding:11px 13px;color:#fff;margin-bottom:9px"><div style="font-size:15px;font-weight:950">📍 इथून सर्व सेवा</div><div style="font-size:12px;opacity:.92">'+W.esc(where)+' · प्रत्येक सेवेतील सर्वात जवळचे</div></div>'+rows):'';
+}
 function render(pts){$('list').innerHTML=pts.length?pts.slice(0,100).map(card).join(''):'<div class="card">या फिल्टरमध्ये कोणतेही मदत केंद्र सापडले नाही.</div>';initLive()}
-function refresh(){updateSubChips();let pts=visible();$('count').textContent=pts.length;$('gps').textContent=(refLoc()&&rad<99999999&&!pts.length)?'या अंतरात काही नाही — मोठे अंतर निवडा':userLocation?(cat==='near'?('आसपासच्या सर्व सेवा — '+(rad<99999999?dev(rad)+' मी. परिसर':'संपूर्ण मार्ग')):'अंतरानुसार क्रम'):mukkamRef?('मुक्काम '+mukkamName+' — '+(rad<99999999?dev(rad)+' मी. परिसर':'संपूर्ण मार्ग')):'GPS सुरू नाही';drawRoute();draw(pts);render(pts);counts();if(map)setTimeout(()=>map.invalidateSize(true),100)}
+function refresh(){updateSubChips();let pts=visible();$('count').textContent=pts.length;$('gps').textContent=(refLoc()&&rad<99999999&&!pts.length)?'या अंतरात काही नाही — मोठे अंतर निवडा':userLocation?(cat==='near'?('आसपासच्या सर्व सेवा — '+(rad<99999999?dev(rad)+' मी. परिसर':'संपूर्ण मार्ग')):'अंतरानुसार क्रम'):mukkamRef?('मुक्काम '+mukkamName+' — '+(rad<99999999?dev(rad)+' मी. परिसर':'संपूर्ण मार्ग')):'GPS सुरू नाही';drawRoute();draw(pts);render(pts);counts();renderNearSummary();if(map)setTimeout(()=>map.invalidateSize(true),100)}
 // Detect the user's device so we can show the right "enable location" steps.
 function deviceOS(){var ua=navigator.userAgent||'';if(/iPhone|iPad|iPod/i.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1))return'ios';if(/Android/i.test(ua))return'android';return'other';}
 function locHelpSteps(){var os=deviceOS(),st,head;
