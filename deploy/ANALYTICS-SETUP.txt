@@ -1,0 +1,116 @@
+========================================================================
+ आरोग्य संपन्न वारी — Usage Analytics: nginx setup (server admin runbook)
+========================================================================
+Host: wari.maharashtra.gov.in  (AWS 13.232.135.198, nginx on Ubuntu)
+What it does: the app sends ONE anonymous beacon to /api/hit on EVERY app
+open. nginx logs it and returns HTTP 204. No database, no service.
+Recorded per open (anonymous): random install-id, open time, screen size,
+timezone, language, installed-app-vs-browser, pixel ratio, app version,
+and the browser/device User-Agent.
+NOT recorded: name, phone, IP address, GPS location.
+
+Two edits + one reload. ~5 minutes.
+
+------------------------------------------------------------------------
+STEP 0 — Find the nginx files
+------------------------------------------------------------------------
+  sudo grep -rn "wari.maharashtra.gov.in" /etc/nginx/
+
+Typical layout:
+  /etc/nginx/nginx.conf                 -> has the  http { ... }  block
+  /etc/nginx/sites-available/wari       -> has the  server { ... } block
+  (site file may instead be 'default' or /etc/nginx/conf.d/wari.conf)
+
+------------------------------------------------------------------------
+STEP 1 — Add the log format  (inside the  http { }  block)
+------------------------------------------------------------------------
+  sudo nano /etc/nginx/nginx.conf
+
+Inside  http { ... }  (near the other log_format / access_log lines),
+paste this ONE directive. NOTE: deliberately NO $remote_addr = no IP logged.
+
+log_format wari_hit '$time_iso8601 uid=$arg_u t=$arg_t scr=$arg_s tz=$arg_tz '
+                    'lang=$arg_lang pwa=$arg_pwa dpr=$arg_dpr ver=$arg_v ua="$http_user_agent"';
+
+------------------------------------------------------------------------
+STEP 2 — Add the endpoint  (inside the  server { }  block for the site)
+------------------------------------------------------------------------
+  sudo nano /etc/nginx/sites-available/wari
+
+Inside the  server { ... }  block that serves wari.maharashtra.gov.in, paste:
+
+location = /api/hit {
+    access_log /var/log/nginx/wari-hits.log wari_hit;
+    add_header Cache-Control "no-store";
+    return 204;
+}
+
+------------------------------------------------------------------------
+STEP 3 — Test and reload
+------------------------------------------------------------------------
+  sudo nginx -t && sudo systemctl reload nginx
+
+"nginx -t" must say "syntax is ok" / "test is successful" first.
+If it errors with unknown "arg_u" variable or 'log_format "wari_hit" not
+found', the log_format (Step 1) is NOT in the http{} block -> move it there.
+
+------------------------------------------------------------------------
+STEP 4 — Verify it is logging
+------------------------------------------------------------------------
+  # 1) hit the endpoint (should return HTTP 204):
+  curl -I "https://wari.maharashtra.gov.in/api/hit?u=test123&t=1&s=100x200&tz=330&lang=mr&pwa=0&dpr=2&v=164"
+
+  # 2) confirm the line landed (no IP, only anonymous fields):
+  sudo tail -n 3 /var/log/nginx/wari-hits.log
+
+Expected line:
+  2026-07-09T14:05:00+05:30 uid=test123 t=1 scr=100x200 tz=330 lang=mr pwa=0 dpr=2 ver=164 ua="curl/8.4.0"
+
+Then open the app on a phone once -> a real line appears with the device UA.
+
+------------------------------------------------------------------------
+STEP 5 — Read the numbers anytime
+------------------------------------------------------------------------
+Copy wari-usage.sh (from this same folder) to the box, then:
+  chmod +x wari-usage.sh
+  ./wari-usage.sh /var/log/nginx/wari-hits.log
+
+Prints: total opens, unique users, PWA vs browser, opens per day,
+daily-active users, by device/OS, by browser, opens by hour.
+
+Across rotated logs:
+  zcat -f /var/log/nginx/wari-hits.log* | ./wari-usage.sh /dev/stdin
+
+------------------------------------------------------------------------
+STEP 6 (optional) — visual dashboard with GoAccess
+------------------------------------------------------------------------
+  sudo apt-get install -y goaccess
+  goaccess /var/log/nginx/wari-hits.log \
+    --log-format='%d %^ uid=%^ t=%^ scr=%^ tz=%^ lang=%^ pwa=%^ dpr=%^ ver=%^ ua="%u"' \
+    --date-format='%Y-%m-%d' -o /root/wari-stats.html
+Keep wari-stats.html off the public web root (or behind auth).
+
+------------------------------------------------------------------------
+LOG ROTATION
+------------------------------------------------------------------------
+Ubuntu's default logrotate already covers /var/log/nginx/*.log, so
+wari-hits.log rotates automatically. wari-usage.sh counts the CURRENT log;
+use the zcat command above to include rotated (.gz) history.
+
+------------------------------------------------------------------------
+QUICK COPY BLOCK (both edits together)
+------------------------------------------------------------------------
+# --- put in http { } (nginx.conf) ---
+log_format wari_hit '$time_iso8601 uid=$arg_u t=$arg_t scr=$arg_s tz=$arg_tz '
+                    'lang=$arg_lang pwa=$arg_pwa dpr=$arg_dpr ver=$arg_v ua="$http_user_agent"';
+
+# --- put in server { } (site config) ---
+location = /api/hit {
+    access_log /var/log/nginx/wari-hits.log wari_hit;
+    add_header Cache-Control "no-store";
+    return 204;
+}
+
+# --- then ---
+sudo nginx -t && sudo systemctl reload nginx
+========================================================================

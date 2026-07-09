@@ -1,0 +1,210 @@
+==========================================================================
+ आरोग्य संपन्न वारी — Google Play Store publishing guide (Android)
+ Approach: TWA (Trusted Web Activity) wrapping the PWA at
+           https://wari.maharashtra.gov.in
+==========================================================================
+
+The Android app is a thin native wrapper (TWA) that opens the already-live
+PWA full-screen. Benefit: content/data updates on the website appear in the
+app instantly — you only re-upload to Play when the native shell changes.
+
+--------------------------------------------------------------------------
+0) DECISIONS TO CONFIRM (used everywhere below)
+--------------------------------------------------------------------------
+  App (package) name : in.gov.maharashtra.wari      <- recommended; must be permanent
+  App title (Play)   : आरोग्य संपन्न वारी            (<=30 chars)
+  Website / origin   : https://wari.maharashtra.gov.in   (must be HTTPS, root domain)
+  Developer account  : your existing Google Play Console (the one you shared)
+  Signing            : Google Play App Signing (recommended — Google holds the key)
+  Contact email      : admin@sarvaha.com (or an official gov.in email)
+  Privacy policy URL : https://wari.maharashtra.gov.in/privacy.html   (page provided)
+
+NOTE: the package name can NEVER be changed after first upload — pick carefully.
+
+--------------------------------------------------------------------------
+1) BUILD THE ANDROID APP BUNDLE (.aab)
+   PATH A — PWABuilder (recommended; no Android tools to install)
+--------------------------------------------------------------------------
+  1. Go to  https://www.pwabuilder.com
+  2. Enter  https://wari.maharashtra.gov.in  and click Start.
+     (It reads the manifest we published — icons, name, theme, etc.)
+  3. It scores the PWA. Manifest/SW are ready; proceed to "Package for stores".
+  4. Choose  Android  ->  "Generate Package".
+  5. In the Android options set:
+       Package ID           : in.gov.maharashtra.wari
+       App name             : आरोग्य संपन्न वारी
+       Launcher name        : आरोग्य वारी
+       App version / code   : 1 / 1
+       Signing key          : "Create new" (let it make one)  ->  DOWNLOAD & KEEP
+                              the signing.keystore + passwords SAFELY (offline backup).
+       Include source code  : yes (optional, good to keep)
+  6. Download the ZIP. It contains:
+       - app-release-signed.aab   <- upload THIS to Play
+       - assetlinks.json          <- the Digital Asset Links (see step 3)
+       - signing key + a README with the SHA-256 fingerprint
+  Keep the whole ZIP; you need the keystore for every future native update.
+
+  PATH B — Bubblewrap CLI (if you prefer local build; needs JDK 17 + Android SDK)
+     npm i -g @bubblewrap/cli
+     bubblewrap init --manifest https://wari.maharashtra.gov.in/manifest.webmanifest
+        (set packageId = in.gov.maharashtra.wari when prompted)
+     bubblewrap build          # produces app-release-signed.aab + assetlinks
+     bubblewrap fingerprint     # prints the SHA-256 for assetlinks.json
+
+--------------------------------------------------------------------------
+2) CREATE THE APP IN PLAY CONSOLE
+--------------------------------------------------------------------------
+  Play Console -> Create app
+    App name        : आरोग्य संपन्न वारी
+    Default language : Marathi (mr-IN)   (add English (en-US) as well)
+    App or game     : App
+    Free or paid    : Free
+    Declarations    : tick the Developer Program Policies + US export laws
+  Then upload the .aab under:  Testing -> Internal testing -> Create release
+    (start on Internal testing; promote to Production after it verifies.)
+  Enable  Setup -> App integrity -> Play App Signing  (default; keep on).
+
+--------------------------------------------------------------------------
+3) DIGITAL ASSET LINKS  (makes the app open WITHOUT a browser URL bar)
+--------------------------------------------------------------------------
+  This proves the app + website belong together. Without it the TWA shows a
+  Chrome address bar at the top.
+
+  a. Get the SHA-256 fingerprint of the *Play app-signing key*:
+       Play Console -> your app -> Setup -> App integrity
+       -> "App signing key certificate" -> copy the SHA-256 fingerprint
+       (Use THIS one, not the upload key — Play re-signs the app.)
+  b. Edit the file we already ship at:
+       wari.maharashtra.gov.in/.well-known/assetlinks.json
+     Replace the placeholder with that SHA-256, keep package_name
+     "in.gov.maharashtra.wari". (The file is in the repo — edit + git pull /
+     re-upload; it must be reachable at exactly /.well-known/assetlinks.json.)
+  c. Verify it is live:
+       curl https://wari.maharashtra.gov.in/.well-known/assetlinks.json
+     Must return the JSON with the real fingerprint (HTTP 200, no redirect).
+
+--------------------------------------------------------------------------
+4) STORE LISTING — text (ready to paste; Marathi primary, add English too)
+--------------------------------------------------------------------------
+  APP NAME (<=30):
+    आरोग्य संपन्न वारी
+
+  SHORT DESCRIPTION (<=80):
+    वारी मार्गावरील रुग्णवाहिका, डॉक्टर, रुग्णालय व मुक्काम — जवळची आरोग्य मदत, ऑफलाइनही.
+
+  FULL DESCRIPTION (Marathi):
+    “आरोग्य संपन्न वारी” हे सार्वजनिक आरोग्य विभाग, महाराष्ट्र शासन यांच्या संकल्पनेतून
+    तयार केलेले अधिकृत मदत अ‍ॅप आहे. श्री संत ज्ञानेश्वर महाराज व जगद्गुरू श्री संत तुकाराम
+    महाराज पालखी मार्गावरील वारकरी व सेवेकऱ्यांसाठी जवळची आरोग्य मदत एका ठिकाणी.
+
+    ठळक वैशिष्ट्ये:
+    • रुग्णवाहिका (१०८/१०२), डॉक्टर, प्राथमिक आरोग्य केंद्र, ग्रामीण/उपजिल्हा रुग्णालय,
+      अतिदक्षता (ICU), पाणी, शौचालय, हिरकणी कक्ष, चरणसेवा व मुक्काम केंद्रे नकाशावर.
+    • “माझ्या जवळ मदत शोधा” — तुमच्या ठिकाणापासून प्रत्येक सेवेतील सर्वात जवळचे केंद्र.
+    • मुक्कामाजवळील १ किमी परिसरातील सर्व सेवा एका क्लिकवर.
+    • जिल्हानिहाय अधिकारी संपर्क — पुणे, सातारा, सोलापूर (प्रशासन, आरोग्य, तालुका).
+    • थेट फोन व दिशादर्शन (नकाशा) एका स्पर्शात.
+    • संपूर्ण नकाशा व माहिती अ‍ॅपमध्येच — इंटरनेट नसतानाही (offline) चालते.
+
+    संकल्पना: सार्वजनिक आरोग्य विभाग, महाराष्ट्र शासन.
+
+  FULL DESCRIPTION (English):
+    “Aarogya Sampanna Wari” is the official health-help app by the Public Health
+    Department, Government of Maharashtra, for warkaris and support staff on the
+    Shri Sant Dnyaneshwar Maharaj and Jagadguru Shri Sant Tukaram Maharaj palkhi
+    routes. Find the nearest ambulance (108/102), doctor, PHC, rural/sub-district
+    hospital, ICU, water, toilet, mother-&-child (Hirkani) room, Charanseva and
+    halt (mukkam) points on a map — call or navigate in one tap. "Find help near
+    me" shows the nearest of every service; a mukkam tap shows everything within
+    1 km. District-wise officer contacts for Pune, Satara and Solapur. Works fully
+    OFFLINE — the map and all data are bundled in the app.
+
+--------------------------------------------------------------------------
+5) GRAPHICS  (files provided in this play-assets/ folder)
+--------------------------------------------------------------------------
+  PROVIDED:
+    play-icon-512.png            App icon — 512x512  (Store listing icon)
+    icon-maskable-512.png        Adaptive/maskable icon (used by the build)
+    feature-graphic-1024x500.png Feature graphic — 1024x500 (placeholder; a
+                                 designer can polish this in Canva if desired)
+  YOU CAPTURE (on a phone from the live app — best quality):
+    Phone screenshots: 2 to 8 images, PNG/JPG, portrait, 1080x1920 (or similar,
+    9:16). Suggested shots:
+      1. Home — emergency 108/112 + service categories
+      2. Map with a mukkam selected + 1 km circle
+      3. "इथून सर्व सेवा" nearest-services panel
+      4. जिल्हानिहाय अधिकारी संपर्क (district officers)
+      5. Offline working (optional)
+    (Tip: take them on an actual Android phone from wari.maharashtra.gov.in.)
+
+--------------------------------------------------------------------------
+6) CONTENT RATING (IARC questionnaire)  ->  expected result: "Everyone / 3+"
+--------------------------------------------------------------------------
+  Category            : Reference / Health app (Utility)
+  Violence / scary    : No
+  Sexual content      : No
+  Profanity           : No
+  Controlled substance: No
+  Gambling            : No
+  User-gen content / social : No
+  Answer everything "No" -> rating comes out Everyone.
+
+--------------------------------------------------------------------------
+7) DATA SAFETY FORM  (Play Console -> App content -> Data safety)
+--------------------------------------------------------------------------
+  Does your app collect or share user data?  YES (anonymous usage only)
+  Is data encrypted in transit?              YES (HTTPS)
+  Can users request data deletion?           Data is anonymous (no identity),
+                                             so there is nothing to delete/attach
+                                             to a person; state this.
+  Data types COLLECTED (not shared with third parties, purpose = Analytics,
+  NOT linked to a user's identity):
+    - App activity  -> app interactions (anonymous "app opened" event)
+    - Device or other IDs -> a random app-generated install id (not the
+      advertising ID / not a hardware ID) + device/browser info (User-Agent),
+      screen size, timezone, language, app version.
+  Data types NOT collected:
+    - Name, email, phone, financial info: NO
+    - Precise/approximate LOCATION: NO — location is used ONLY on the device
+      for "near me"; it is never sent to or stored on any server.
+    - No IP address is stored (server log_format omits it).
+  Third-party sharing: NONE. No ads. No Google Analytics. No SDKs.
+  (This matches the published privacy policy at /privacy.html.)
+
+--------------------------------------------------------------------------
+8) OTHER "APP CONTENT" DECLARATIONS
+--------------------------------------------------------------------------
+  Privacy policy URL : https://wari.maharashtra.gov.in/privacy.html
+  Ads                : No ads
+  App access         : All features available without login (no sign-in)
+  Target audience    : 13+ / General (Everyone). Not directed at children.
+  Government app      : If prompted, this is an official Government of
+                        Maharashtra (Public Health Dept) app — you may be asked
+                        to verify with an official email/domain.
+  Category            : Health & Fitness (or Medical)
+  Tags               : health, medical, travel, government
+  Countries           : India (add others if desired)
+  Pricing             : Free
+
+--------------------------------------------------------------------------
+9) RELEASE FLOW
+--------------------------------------------------------------------------
+  1. Internal testing -> upload .aab -> add your testers -> install & verify:
+       - app opens full-screen (NO browser address bar = assetlinks OK)
+       - map, offline, contacts all work
+  2. Fix assetlinks if a URL bar shows (step 3).
+  3. Complete: Store listing + Graphics + Content rating + Data safety +
+     Privacy policy + App access + Target audience.
+  4. Promote the release to Production -> submit for review.
+     (First Google review typically 1–7 days.)
+
+--------------------------------------------------------------------------
+10) UPDATING LATER
+--------------------------------------------------------------------------
+  - CONTENT/DATA changes (numbers, map, features): just update the website
+    (git pull on the server). The app shows them automatically — NO Play upload.
+  - NATIVE shell changes (app name, icon, target SDK bump Google requires):
+    rebuild the .aab with the SAME keystore, increase versionCode, upload.
+  KEEP the signing keystore + passwords backed up safely — losing it means you
+  cannot update the app.
+==========================================================================
