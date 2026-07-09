@@ -31,7 +31,7 @@ window.WariData=(function(){
   function isHalt(p){return /halt|mukkam|मुक्काम/i.test(p.type||'')}
   function hasAmb(p){return /ambulance|102|108|रुग्णवाहिका/i.test([p.type,p.label,p.mems].join(' '))||/\b[A-Z]{2}\s*\d{1,2}\s*[A-Z]{1,3}\s*\d{3,4}\b/i.test(p.vehicle||'')}
   function hasDoc(p){return isPHC(p)||isHBT(p)}
-  function hasHospital(p){return isRuralHospital(p)||isPrivateHospital(p)}
+  function hasHospital(p){return isRuralHospital(p)||isPrivateHospital(p)||isICU(p)}
   function hasHealth(p){return hasDoc(p)||hasHospital(p)}
   function hasWater(p){return /water|पाणी/i.test([p.type,p.label].join(' '))}
   function hasHirkani(p){return /hirkani|हिरकणी/i.test([p.type,p.label,p.mems].join(' '))}
@@ -101,8 +101,9 @@ window.WariData=(function(){
     let rawMM=(window.WARI_MYMAPS_POINTS||[]).map(x=>norm(x,x.p||'dnyaneshwar'));
     let rawMB=(window.WARI_MEMSBOOK_POINTS||[]).map(x=>norm(x,x.p||'dnyaneshwar'));
     let rawMR=(window.WARI_MRSAC_POINTS||[]).map(x=>norm(x,x.p||'both'));
+    let rawICU=(window.WARI_ICU_POINTS||[]).map(x=>norm(x,x.p||'both'));
     let notHaltType=p=>!/halt|mukkam|मुक्काम/i.test(p.type||'');
-    let pts=[...rawD.filter(notHaltType),...rawT.filter(notHaltType),...rawHD,...rawHT,...rawS.filter(notHaltType),...rawHK,...rawPV,...rawSOL,...rawW,...rawTL,...rawPO,...rawCS,...rawFP,...rawP2,...rawVS,...rawMM,...rawMB,...rawMR]
+    let pts=[...rawD.filter(notHaltType),...rawT.filter(notHaltType),...rawHD,...rawHT,...rawS.filter(notHaltType),...rawHK,...rawPV,...rawSOL,...rawW,...rawTL,...rawPO,...rawCS,...rawFP,...rawP2,...rawVS,...rawMM,...rawMB,...rawMR,...rawICU]
       .filter(p=>isFinite(p.lat)&&isFinite(p.lng));
     let seen=new Set();
     pts=pts.filter(p=>{let key=[p.palkhi,p.type,p.label,p.place,p.vehicle,p.date,p.day,p.lat.toFixed(5),p.lng.toFixed(5)].join('|').toLowerCase();if(seen.has(key))return false;seen.add(key);return true});
