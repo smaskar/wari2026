@@ -40,14 +40,13 @@ opens = [r for r in good if not r.get('e')]
 calls = [r for r in good if r.get('e') == 'call']
 locs  = [r for r in good if r.get('e') == 'loc']
 
-users = set(r.get('uid') for r in opens)          # Total visitors (browser + installed/PWA)
-callers = set(r.get('uid') for r in calls)
-call_rate = (len(callers) / len(users) * 100) if users else 0
+visits = len(opens)                               # Total visits = all opens (app + browser)
+call_rate = (len(calls) / visits * 100) if visits else 0
 by_call = Counter(r.get('k', 'contact') for r in calls)
 by_area = Counter(r.get('near', '') for r in locs if r.get('near'))
 
 dates = sorted(set(r['date'] for r in opens))
-vis_day = {d: len(set(r['uid'] for r in opens if r['date'] == d)) for d in dates}
+vis_day = {d: sum(1 for r in opens if r['date'] == d) for d in dates}   # total visits per day
 call_day = {d: sum(1 for r in calls if r['date'] == d) for d in dates}
 daily = [(d, vis_day[d], call_day.get(d, 0)) for d in dates]
 
@@ -108,7 +107,7 @@ def hbars(counter, limit=12):
         '<div class="bar"><div class="bl">%s</div><div class="bt"><div class="bf" style="width:%.1f%%"></div></div><div class="bv">%d</div></div>'
         % (esc(k), v / mx * 100, v) for k, v in items) + '</div>'
 
-stat = lambda big, lab, sub: '<div class="stat"><div class="n">%s</div><div class="l">%s</div><div class="s">%s</div></div>' % (big, lab, sub)
+stat = lambda big, lab, sub='': '<div class="stat"><div class="n">%s</div><div class="l">%s</div>%s</div>' % (big, lab, ('<div class="s">%s</div>' % sub if sub else ''))
 card = lambda t, b: '<section class="card"><h2>%s</h2>%s</section>' % (t, b)
 
 page = """<!doctype html><html lang="mr"><head><meta charset="utf-8">
@@ -156,8 +155,8 @@ footer{text-align:center;font-size:11px;color:#a89a80;padding:10px 0 24px}
   <footer>निनावी एकत्रित आकडेवारी · No personal data · अ‍ॅप आवृत्ती-निहाय</footer>
 </div></body></html>""" % dict(
     last=esc(dates[-1] if dates else '—'), bots=bot_n,
-    c1=stat('%s' % f'{len(users):,}', 'एकूण भेटी · Total visitors', f'{len(opens):,} opens (अ‍ॅप + ब्राउझर)'),
-    c2=stat('%s' % f'{len(calls):,}', 'फोन कॉल · Phone calls', f'{len(callers):,} वापरकर्त्यांनी'),
+    c1=stat(f'{visits:,}', 'एकूण भेटी · Total visitors'),
+    c2=stat(f'{len(calls):,}', 'फोन कॉल · Phone calls'),
     c3=stat('%.0f%%' % call_rate, 'कॉल दर · Call rate', 'भेट → कॉल'),
     daily=card('📈 रोजचा वापर · Daily visitors &amp; calls', daily_chart(daily)),
     calls=card('📞 कॉल प्रकार · Calls by type', donut(by_call)),
@@ -166,4 +165,4 @@ footer{text-align:center;font-size:11px;color:#a89a80;padding:10px 0 24px}
 
 with open(out, 'w', encoding='utf-8') as f:
     f.write(page)
-print('Wrote %s  (visitors=%d, opens=%d, calls=%d, call_rate=%.0f%%, bots=%d)' % (out, len(users), len(opens), len(calls), call_rate, bot_n))
+print('Wrote %s  (visits=%d, calls=%d, call_rate=%.0f%%, bots=%d)' % (out, visits, len(calls), call_rate, bot_n))
