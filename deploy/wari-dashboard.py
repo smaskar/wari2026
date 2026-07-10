@@ -44,6 +44,7 @@ visits = len(opens)                               # Total visits = all opens (ap
 call_rate = (len(calls) / visits * 100) if visits else 0
 by_call = Counter(r.get('k', 'contact') for r in calls)
 by_area = Counter(r.get('near', '') for r in locs if r.get('near'))
+_top_area = by_area.most_common(1)
 
 dates = sorted(set(r['date'] for r in opens))
 vis_day = {d: sum(1 for r in opens if r['date'] == d) for d in dates}   # total visits per day
@@ -52,26 +53,32 @@ daily = [(d, vis_day[d], call_day.get(d, 0)) for d in dates]
 
 def esc(x): return html.escape(str(x))
 
-# ---- SVG: daily grouped bars (visitors vs calls) ----
+# ---- SVG: daily LINE graph (visits & calls over time) ----
 def daily_chart(daily):
     if not daily: return '<p class="note">अजून डेटा नाही</p>'
-    n = len(daily); H = 260; pad = 34; step = 74; W = max(360, pad * 2 + step * n)
+    n = len(daily); H = 270; padL = 42; padR = 18; top = 26; base = H - 42
+    step = max(70, (900 - padL - padR) // max(n, 1)); W = max(360, padL + padR + step * max(n - 1, 1) + 20)
     mx = max([v for _, v, _ in daily] + [c for _, _, c in daily] + [1])
-    top = 40; base = H - 34; bw = 22
+    X = lambda i: padL + (step * i if n > 1 else (W - padL - padR) / 2)
+    Y = lambda val: base - (val / mx) * (base - top)
     s = ['<svg viewBox="0 0 %d %d" width="100%%" height="%d" preserveAspectRatio="xMinYMid meet">' % (W, H, H)]
-    for gy in range(0, 5):
-        y = top + (base - top) * gy / 4
-        s.append('<line x1="%d" y1="%.0f" x2="%d" y2="%.0f" stroke="#eee3cf" stroke-width="1"/>' % (pad, y, W - 8, y))
-    for i, (d, v, c) in enumerate(daily):
-        cx = pad + step * i + step / 2
-        hv = (v / mx) * (base - top); hc = (c / mx) * (base - top)
-        s.append('<rect x="%.0f" y="%.0f" width="%d" height="%.0f" rx="4" fill="#f27405"/>' % (cx - bw - 2, base - hv, bw, hv))
-        s.append('<rect x="%.0f" y="%.0f" width="%d" height="%.0f" rx="4" fill="#159653"/>' % (cx + 2, base - hc, bw, hc))
-        s.append('<text x="%.0f" y="%.0f" text-anchor="middle" font-size="10" font-weight="800" fill="#c2600a">%d</text>' % (cx - bw / 2 - 2, base - hv - 5, v))
-        if c: s.append('<text x="%.0f" y="%.0f" text-anchor="middle" font-size="10" font-weight="800" fill="#0f7a43">%d</text>' % (cx + bw / 2 + 2, base - hc - 5, c))
-        s.append('<text x="%.0f" y="%d" text-anchor="middle" font-size="11" fill="#6b5238">%s</text>' % (cx, base + 18, esc(d[5:])))
+    for g in range(5):
+        y = top + (base - top) * g / 4; lbl = round(mx * (4 - g) / 4)
+        s.append('<line x1="%d" y1="%.0f" x2="%d" y2="%.0f" stroke="#eee3cf"/>' % (padL, y, W - padR, y))
+        s.append('<text x="%d" y="%.0f" font-size="10" fill="#a2927a" text-anchor="end">%d</text>' % (padL - 6, y + 3, lbl))
+    def series(vals, color):
+        pts = ' '.join('%.1f,%.1f' % (X(i), Y(vals[i])) for i in range(n))
+        out = '<polyline points="%s" fill="none" stroke="%s" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>' % (pts, color)
+        for i in range(n):
+            out += '<circle cx="%.1f" cy="%.1f" r="4" fill="#fff" stroke="%s" stroke-width="2.5"/>' % (X(i), Y(vals[i]), color)
+            out += '<text x="%.1f" y="%.1f" font-size="10.5" font-weight="800" fill="%s" text-anchor="middle">%d</text>' % (X(i), Y(vals[i]) - 9, color, vals[i])
+        return out
+    s.append(series([v for _, v, _ in daily], '#f27405'))
+    s.append(series([c for _, _, c in daily], '#159653'))
+    for i, (d, _, _) in enumerate(daily):
+        s.append('<text x="%.1f" y="%d" font-size="11" fill="#6b5238" text-anchor="middle">%s</text>' % (X(i), base + 20, esc(d[5:])))
     s.append('</svg>')
-    legend = ('<div class="legend"><div class="lg"><span style="background:#f27405"></span>भेटी · Visitors</div>'
+    legend = ('<div class="legend"><div class="lg"><span style="background:#f27405"></span>भेटी · Visits</div>'
               '<div class="lg"><span style="background:#159653"></span>फोन कॉल · Calls</div></div>')
     return '<div class="chartscroll">' + ''.join(s) + '</div>' + legend
 
@@ -157,8 +164,9 @@ footer{text-align:center;font-size:11px;color:#a89a80;padding:10px 0 24px}
     last=esc(dates[-1] if dates else '—'), bots=bot_n,
     c1=stat(f'{visits:,}', 'एकूण भेटी · Total visitors'),
     c2=stat(f'{len(calls):,}', 'फोन कॉल · Phone calls'),
-    c3=stat('%.0f%%' % call_rate, 'कॉल दर · Call rate', 'भेट → कॉल'),
-    daily=card('📈 रोजचा वापर · Daily visitors &amp; calls', daily_chart(daily)),
+    c3=stat((f'{_top_area[0][1]:,}' if _top_area else '—'), '📍 सर्वाधिक वापर भाग · Top area',
+            (esc(_top_area[0][0]) if _top_area else 'v166 नंतर उपलब्ध')),
+    daily=card('📈 रोजचा वापर · Daily visits &amp; calls', daily_chart(daily)),
     calls=card('📞 कॉल प्रकार · Calls by type', donut(by_call)),
     area=card('📍 भागानुसार वापर · Usage by area', hbars(by_area)),
 )
