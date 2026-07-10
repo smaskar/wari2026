@@ -34,8 +34,8 @@ for ln in lines():
     d['date'] = ln[:10]; rows.append(d)
 
 def is_bot(d): return bool(BOT.search(d.get('ua', ''))) or not d.get('ver')
-good = [r for r in rows if not is_bot(r)]
-bot_n = len(rows) - len(good)
+good = rows                 # count everything (bots included in total, per request)
+bot_n = 0
 opens = [r for r in good if not r.get('e')]
 calls = [r for r in good if r.get('e') == 'call']
 locs  = [r for r in good if r.get('e') == 'loc']
@@ -147,7 +147,7 @@ header h1{margin:0;font-size:21px}.hs{opacity:.92;font-size:12px;margin-top:3px}
 footer{text-align:center;font-size:11px;color:#a89a80;padding:10px 0 24px}
 </style></head><body>
 <header><h1>📊 आरोग्य संपन्न वारी — वापर डॅशबोर्ड</h1>
-<div class="hs">Public Health Department, Maharashtra &nbsp;·&nbsp; अखेरची नोंद %(last)s &nbsp;·&nbsp; bots वगळले: %(bots)d</div></header>
+<div class="hs">Public Health Department, Maharashtra &nbsp;·&nbsp; अखेरची नोंद %(last)s</div></header>
 <div class="wrap">
   <div class="stats">
     %(c1)s
@@ -161,7 +161,7 @@ footer{text-align:center;font-size:11px;color:#a89a80;padding:10px 0 24px}
   </div>
   <footer>निनावी एकत्रित आकडेवारी · No personal data · अ‍ॅप आवृत्ती-निहाय</footer>
 </div></body></html>""" % dict(
-    last=esc(dates[-1] if dates else '—'), bots=bot_n,
+    last=esc(dates[-1] if dates else '—'),
     c1=stat(f'{visits:,}', 'एकूण भेटी · Total visitors'),
     c2=stat(f'{len(calls):,}', 'फोन कॉल · Phone calls'),
     c3=stat((f'{_top_area[0][1]:,}' if _top_area else '—'), '📍 सर्वाधिक वापर भाग · Top area',
